@@ -1,0 +1,3 @@
+podcastfy
+feedparser
+edge-tts
