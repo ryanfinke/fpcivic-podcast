@@ -13,6 +13,7 @@ import os
 import re
 import sys
 import tempfile
+import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import formatdate, parsedate_to_datetime
@@ -384,7 +385,10 @@ def main() -> None:
     if "episodes" not in state:
         state["episodes"] = []
 
-    for post in new_posts:
+    for i, post in enumerate(new_posts):
+        if i > 0:
+            print("  Waiting 5s to avoid rate limits...")
+            time.sleep(5)
         episode_path = generate_episode(post)
 
         if episode_path:
