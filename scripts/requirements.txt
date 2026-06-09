@@ -1,3 +1,4 @@
 podcastfy
 feedparser
 edge-tts
+playwright
