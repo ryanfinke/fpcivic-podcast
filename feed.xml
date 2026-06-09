@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:ns0="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:ns1="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Forest Park Civic Podcast</title>
+    <link>https://www.fpcivic.org</link>
+    <description>Automated conversational podcast of Forest Park Civic Association meeting minutes and community updates. Powered by AI.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Jun 2026 23:30:37 GMT</lastBuildDate>
+    <generator>fpcivic-podcast (Podcastfy + Edge TTS)</generator>
+    <ns0:author>Forest Park Civic Association</ns0:author>
+    <ns0:summary>AI-generated conversational recaps of Forest Park Civic Association meetings.</ns0:summary>
+    <ns0:category text="Government" />
+    <ns0:explicit>no</ns0:explicit>
+    <ns1:link href="https://ryanfinke.github.io/fpcivic-podcast/feed.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
