@@ -29,9 +29,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Install Python dependencies
-        run: |
-          pip install -r scripts/requirements.txt
-          playwright install chromium --with-deps
+        run: pip install -r scripts/requirements.txt
 
       - name: Generate new episodes
         env:

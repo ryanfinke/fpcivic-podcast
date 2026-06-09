@@ -1,4 +1,6 @@
-podcastfy
-feedparser
 edge-tts
-playwright
+feedparser
+google-generativeai
+requests
+beautifulsoup4
+pydub
