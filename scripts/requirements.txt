@@ -1,6 +1,6 @@
 edge-tts
 feedparser
-google-generativeai
+groq
 requests
 beautifulsoup4
 pydub

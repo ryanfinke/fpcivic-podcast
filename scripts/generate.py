@@ -21,9 +21,9 @@ from pathlib import Path
 
 import edge_tts
 import feedparser
-import google.generativeai as genai
 import requests
 from bs4 import BeautifulSoup
+from groq import Groq
 from pydub import AudioSegment
 
 # ---------------------------------------------------------------------------
@@ -40,7 +40,7 @@ SITE_BASE_URL = os.environ.get(
     "SITE_BASE_URL", "https://OWNER.github.io/fpcivic-podcast"
 )
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
 # Edge TTS voices
 VOICE_HOST = "en-US-AndrewMultilingualNeural"
@@ -144,27 +144,28 @@ def scrape_post_content(url: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Script generation with Gemini
+# Script generation with Groq (Llama)
 # ---------------------------------------------------------------------------
 
 
 def generate_script(title: str, content: str) -> list[tuple[str, str]]:
-    """Use Gemini to generate a conversational podcast script.
+    """Use Groq to generate a conversational podcast script.
     Returns list of (speaker, text) tuples."""
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    client = Groq(api_key=GROQ_API_KEY)
 
     prompt = f"Blog post title: {title}\n\nBlog post content:\n{content[:8000]}"
 
-    response = model.generate_content(
-        [{"role": "user", "parts": [SYSTEM_PROMPT + "\n\n" + prompt]}],
-        generation_config=genai.types.GenerationConfig(
-            temperature=0.7,
-            max_output_tokens=2048,
-        ),
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.7,
+        max_tokens=2048,
     )
 
-    script_text = response.text
+    script_text = response.choices[0].message.content
     lines = []
 
     for line in script_text.strip().split("\n"):
@@ -175,7 +176,7 @@ def generate_script(title: str, content: str) -> list[tuple[str, str]]:
             lines.append(("guest", line[6:].strip()))
 
     if not lines:
-        raise ValueError("Gemini returned no valid HOST:/GUEST: lines")
+        raise ValueError("LLM returned no valid HOST:/GUEST: lines")
 
     return lines
 
@@ -367,8 +368,8 @@ def build_feed(state: dict) -> None:
 
 
 def main() -> None:
-    if not GEMINI_API_KEY:
-        print("ERROR: GEMINI_API_KEY environment variable is required", file=sys.stderr)
+    if not GROQ_API_KEY:
+        print("ERROR: GROQ_API_KEY environment variable is required", file=sys.stderr)
         sys.exit(1)
 
     EPISODES_DIR.mkdir(exist_ok=True)
