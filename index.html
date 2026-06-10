@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forest Park Civic Association News Podcast</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #2e7d32;
+      color: #fff;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .subscribe {
+      display: inline-block;
+      margin-top: 16px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: background 0.2s;
+    }
+
+    .subscribe:hover { background: rgba(255,255,255,0.3); }
+
+    .feed-url {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      opacity: 0.7;
+      word-break: break-all;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .episode {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .episode h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .episode h2 a {
+      color: #2e7d32;
+      text-decoration: none;
+    }
+
+    .episode h2 a:hover { text-decoration: underline; }
+
+    .meta {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 12px;
+    }
+
+    .episode audio {
+      width: 100%;
+      height: 40px;
+      border-radius: 6px;
+    }
+
+    .ai-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #999;
+      margin-top: 32px;
+    }
+
+    .ai-note a { color: #999; }
+
+    #loading {
+      text-align: center;
+      padding: 60px 0;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Forest Park Civic Association News Podcast</h1>
+  <p>AI-generated conversational recaps of community meetings and updates</p>
+  <a class="subscribe" href="feed.xml">Subscribe via RSS</a>
+  <span class="feed-url">https://ryanfinke.github.io/fpcivic-podcast/feed.xml</span>
+</header>
+
+<main>
+  <div id="loading">Loading episodes...</div>
+  <div id="episodes"></div>
+</main>
+
+<script>
+  function formatDate(rfc2822) {
+    const d = new Date(rfc2822);
+    if (isNaN(d)) return rfc2822;
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    const mb = bytes / (1024 * 1024);
+    return mb.toFixed(1) + ' MB';
+  }
+
+  function titleCase(str) {
+    return str.replace(/\b\w+/g, w =>
+      w.length <= 3 && w.toUpperCase() === w ? w :
+      w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
+    );
+  }
+
+  fetch('state.json')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('loading').style.display = 'none';
+      const container = document.getElementById('episodes');
+      const episodes = (data.episodes || []).slice().reverse();
+
+      if (episodes.length === 0) {
+        container.innerHTML = '<p style="text-align:center;color:#999;padding:40px 0;">No episodes yet. Check back soon!</p>';
+        return;
+      }
+
+      episodes.forEach(ep => {
+        const div = document.createElement('div');
+        div.className = 'episode';
+        div.innerHTML = `
+          <h2><a href="${ep.source_link}" target="_blank" rel="noopener">${titleCase(ep.title)}</a></h2>
+          <div class="meta">${formatDate(ep.pub_date)} &middot; ${ep.author} &middot; ${formatSize(ep.file_size)}</div>
+          <audio controls preload="none" src="episodes/${ep.filename}"></audio>
+        `;
+        container.appendChild(div);
+      });
+
+      container.insertAdjacentHTML('beforeend',
+        '<p class="ai-note">Episodes are AI-generated from <a href="https://www.fpcivic.org">fpcivic.org</a> posts using Groq + Edge TTS.</p>'
+      );
+    })
+    .catch(() => {
+      document.getElementById('loading').textContent = 'Failed to load episodes.';
+    });
+</script>
+
+</body>
+</html>
