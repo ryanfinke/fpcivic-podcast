@@ -65,7 +65,7 @@ Guidelines:
 - End with a brief wrap-up
 
 Example format:
-HOST: Hey everyone, welcome back to the Forest Park Civic Podcast!
+HOST: Hey everyone, welcome back to the Forest Park Civic Association News Podcast!
 GUEST: So what happened at the latest meeting?
 HOST: Well, there were a few big items on the agenda...
 """
@@ -296,7 +296,7 @@ def build_feed(state: dict) -> None:
     rss.set("xmlns:atom", "http://www.w3.org/2005/Atom")
 
     channel = ET.SubElement(rss, "channel")
-    ET.SubElement(channel, "title").text = "Forest Park Civic Podcast"
+    ET.SubElement(channel, "title").text = "Forest Park Civic Association News Podcast"
     ET.SubElement(channel, "link").text = "https://www.fpcivic.org"
     ET.SubElement(
         channel, "description"
