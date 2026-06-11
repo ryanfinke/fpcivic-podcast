@@ -9,7 +9,8 @@
     "https://www.fpcivic.org/?p=5463",
     "https://www.fpcivic.org/?p=5488",
     "https://www.fpcivic.org/?p=5490",
-    "https://www.fpcivic.org/?p=5501"
+    "https://www.fpcivic.org/?p=5501",
+    "https://www.fpcivic.org/?p=5527"
   ],
   "episodes": [
     {
@@ -111,6 +112,16 @@
       "author": "Lou Bernard",
       "file_size": 3044781,
       "generated_at": "2026-06-10T00:31:08.781613+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5527",
+      "title": "FOREST PARK CIVIC ASSOCIATION MEETING    June Meeting",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-june-meeting/",
+      "filename": "forest-park-civic-association-meeting-june-meeting.mp3",
+      "pub_date": "Thu, 11 Jun 2026 13:38:43 GMT",
+      "author": "Lou Bernard",
+      "file_size": 2974893,
+      "generated_at": "2026-06-11T16:47:18.083753+00:00"
     }
   ]
 }

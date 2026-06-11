@@ -5,13 +5,23 @@
     <link>https://www.fpcivic.org</link>
     <description>Automated conversational podcast of Forest Park Civic Association meeting minutes and community updates. Powered by AI.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Jun 2026 16:30:20 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2026 16:47:18 GMT</lastBuildDate>
     <generator>fpcivic-podcast (Gemini + Edge TTS)</generator>
     <ns0:author>Forest Park Civic Association</ns0:author>
     <ns0:summary>AI-generated conversational recaps of Forest Park Civic Association meetings.</ns0:summary>
     <ns0:category text="Government" />
     <ns0:explicit>no</ns0:explicit>
     <ns1:link href="https://ryanfinke.github.io/fpcivic-podcast/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FOREST PARK CIVIC ASSOCIATION MEETING    June Meeting</title>
+      <link>https://www.fpcivic.org/forest-park-civic-association-meeting-june-meeting/</link>
+      <description>AI-generated podcast of: FOREST PARK CIVIC ASSOCIATION MEETING    June Meeting</description>
+      <pubDate>Thu, 11 Jun 2026 13:38:43 GMT</pubDate>
+      <guid isPermaLink="false">https://www.fpcivic.org/?p=5527</guid>
+      <enclosure url="https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-meeting-june-meeting.mp3" length="2974893" type="audio/mpeg" />
+      <ns0:author>Lou Bernard</ns0:author>
+      <ns0:summary>AI-generated conversational recap of: FOREST PARK CIVIC ASSOCIATION MEETING    June Meeting</ns0:summary>
+    </item>
     <item>
       <title>FOREST PARK CIVIC ASSOCIATION MEETING May Minutes</title>
       <link>https://www.fpcivic.org/forest-park-civic-association-meeting-may-minutes/</link>
