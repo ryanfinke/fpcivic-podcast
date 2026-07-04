@@ -1,4 +1,116 @@
 {
-  "processed": [],
-  "episodes": []
+  "processed": [
+    "https://www.fpcivic.org/?p=5407",
+    "https://www.fpcivic.org/?p=5402",
+    "https://www.fpcivic.org/?p=5415",
+    "https://www.fpcivic.org/?p=5429",
+    "https://www.fpcivic.org/?p=5465",
+    "https://www.fpcivic.org/?p=5463",
+    "https://www.fpcivic.org/?p=5488",
+    "https://www.fpcivic.org/?p=5490",
+    "https://www.fpcivic.org/?p=5501",
+    "https://www.fpcivic.org/?p=5527"
+  ],
+  "episodes": [
+    {
+      "post_id": "https://www.fpcivic.org/?p=5407",
+      "title": "March 2026 Outreach Report",
+      "source_link": "https://www.fpcivic.org/march-2026-outreach-report/",
+      "filename": "march-2026-outreach-report.mp3",
+      "pub_date": "Wed, 18 Mar 2026 19:16:57 GMT",
+      "author": "Lou Bernard",
+      "file_size": 3468717,
+      "generated_at": "2026-07-04T11:38:47.185215+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5402",
+      "title": "FOREST PARK CIVIC ASSOCIATION MARCH MEETING",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-march-meeting/",
+      "filename": "forest-park-civic-association-march-meeting.mp3",
+      "pub_date": "Wed, 18 Mar 2026 19:21:27 GMT",
+      "author": "Lou Bernard",
+      "file_size": 3466797,
+      "generated_at": "2026-07-04T11:39:43.336428+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5415",
+      "title": "NCC March Meeting Update",
+      "source_link": "https://www.fpcivic.org/ncc-march-meeting-update/",
+      "filename": "ncc-march-meeting-update.mp3",
+      "pub_date": "Sun, 22 Mar 2026 22:54:53 GMT",
+      "author": "Lou Bernard",
+      "file_size": 5070381,
+      "generated_at": "2026-07-04T11:41:03.394146+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5429",
+      "title": "2026 Mulch Sale Update",
+      "source_link": "https://www.fpcivic.org/2026-mulch-sale-update/",
+      "filename": "2026-mulch-sale-update.mp3",
+      "pub_date": "Mon, 30 Mar 2026 23:15:31 GMT",
+      "author": "Scott Biggs",
+      "file_size": 3978285,
+      "generated_at": "2026-07-04T11:42:06.420144+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5465",
+      "title": "April 2026 Outreach Report",
+      "source_link": "https://www.fpcivic.org/april-2026-outreach-report/",
+      "filename": "april-2026-outreach-report.mp3",
+      "pub_date": "Sun, 19 Apr 2026 16:33:00 GMT",
+      "author": "Lou Bernard",
+      "file_size": 3800109,
+      "generated_at": "2026-07-04T11:43:06.146555+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5463",
+      "title": "FOREST PARK CIVIC ASSOCIATION MEETING April Minutes",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-april-minutes/",
+      "filename": "forest-park-civic-association-meeting-april-minutes.mp3",
+      "pub_date": "Sun, 19 Apr 2026 16:36:26 GMT",
+      "author": "Lou Bernard",
+      "file_size": 4772781,
+      "generated_at": "2026-07-04T11:44:28.372082+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5488",
+      "title": "May 2026 Outreach Report",
+      "source_link": "https://www.fpcivic.org/may-2026-outreach-report/",
+      "filename": "may-2026-outreach-report.mp3",
+      "pub_date": "Thu, 14 May 2026 16:16:26 GMT",
+      "author": "Lou Bernard",
+      "file_size": 3522477,
+      "generated_at": "2026-07-04T11:45:34.316992+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5490",
+      "title": "May 2026 NCC Report",
+      "source_link": "https://www.fpcivic.org/may-2026-ncc-report/",
+      "filename": "may-2026-ncc-report.mp3",
+      "pub_date": "Thu, 14 May 2026 16:26:54 GMT",
+      "author": "Lou Bernard",
+      "file_size": 4894125,
+      "generated_at": "2026-07-04T11:46:56.036052+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5501",
+      "title": "FOREST PARK CIVIC ASSOCIATION MEETING May Minutes",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-may-minutes/",
+      "filename": "forest-park-civic-association-meeting-may-minutes.mp3",
+      "pub_date": "Sun, 17 May 2026 14:57:24 GMT",
+      "author": "Lou Bernard",
+      "file_size": 3870381,
+      "generated_at": "2026-07-04T11:47:57.346253+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5527",
+      "title": "FOREST PARK CIVIC ASSOCIATION MEETING    June Meeting",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-june-meeting/",
+      "filename": "forest-park-civic-association-meeting-june-meeting.mp3",
+      "pub_date": "Thu, 11 Jun 2026 13:38:43 GMT",
+      "author": "Lou Bernard",
+      "file_size": 4526253,
+      "generated_at": "2026-07-04T11:49:18.566160+00:00"
+    }
+  ]
 }
