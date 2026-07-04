@@ -44,30 +44,46 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
 # Edge TTS voices
 VOICE_HOST = "en-US-AndrewMultilingualNeural"
-VOICE_GUEST = "en-US-AvaMultilingualNeural"
+VOICE_COHOST = "en-US-AvaMultilingualNeural"
 
 SYSTEM_PROMPT = """\
-You are a podcast script writer. Given the text content of a civic association \
-blog post, write a natural two-person conversational podcast script about it.
+You are a podcast script writer. Given the text content of a Forest Park Civic \
+Association blog post, write a natural two-person conversational podcast script.
 
-The hosts are:
-- HOST: A friendly, knowledgeable narrator who summarizes the key points
-- GUEST: A curious neighbor who asks follow-up questions and reacts naturally
+The hosts are co-hosts who BOTH contribute substantive content:
+- HOST: One co-host who covers certain topics in depth
+- COHOST: The other co-host who covers different topics in depth
+
+Both hosts should share the reporting equally. They take turns presenting \
+different sections of the content, add context, and build on each other's \
+points. Neither is just asking questions — both are informed and bring value.
+
+Content structure and priorities:
+- Northland Community Council (NCC) updates should come EARLY in the episode \
+  because they are the most interesting to listeners and typically relate to \
+  community development
+- The Outreach Committee report should be covered in detail
+- Membership Coordinator updates should be included
+- Forester Editor updates should be included
+- Business Membership updates should be included
+- Key decisions, votes, and action items from the meeting
+- What it all means for Forest Park residents
 
 Guidelines:
-- Keep it casual, warm, and informative — like two neighbors chatting
-- Cover the main topics, key decisions, and what it means for residents
-- About 400-600 words total
+- Target about 1000-1200 words total (approximately 5 minutes of audio)
+- Keep it casual, warm, and informative — like two informed community members
+- Both hosts should present content, share opinions, and add context
 - Do NOT use sound effects, music cues, or stage directions
 - Do NOT use asterisks, parenthetical actions, or markdown formatting
-- Each line must start with exactly "HOST:" or "GUEST:" followed by their dialogue
-- Make it sound natural — use contractions, filler words occasionally, reactions
-- End with a brief wrap-up
+- Each line must start with exactly "HOST:" or "COHOST:" followed by their dialogue
+- Make it sound natural — use contractions, reactions, and conversational flow
+- End with a brief wrap-up of what's coming up or how residents can get involved
 
 Example format:
 HOST: Hey everyone, welcome back to the Forest Park Civic Association News Podcast!
-GUEST: So what happened at the latest meeting?
-HOST: Well, there were a few big items on the agenda...
+COHOST: We've got a packed episode today. Let's start with the NCC update because there's some big news on the development front.
+HOST: Yeah, so the Northland Community Council reported that...
+COHOST: And speaking of community involvement, the Outreach Committee had some updates too...
 """
 
 
@@ -172,11 +188,11 @@ def generate_script(title: str, content: str) -> list[tuple[str, str]]:
         line = line.strip()
         if line.startswith("HOST:"):
             lines.append(("host", line[5:].strip()))
-        elif line.startswith("GUEST:"):
-            lines.append(("guest", line[6:].strip()))
+        elif line.startswith("COHOST:"):
+            lines.append(("cohost", line[7:].strip()))
 
     if not lines:
-        raise ValueError("LLM returned no valid HOST:/GUEST: lines")
+        raise ValueError("LLM returned no valid HOST:/COHOST: lines")
 
     return lines
 
@@ -199,7 +215,7 @@ async def generate_audio(script: list[tuple[str, str]], output_path: Path) -> No
 
     with tempfile.TemporaryDirectory() as tmpdir:
         for i, (speaker, text) in enumerate(script):
-            voice = VOICE_HOST if speaker == "host" else VOICE_GUEST
+            voice = VOICE_HOST if speaker == "host" else VOICE_COHOST
             tmp_file = os.path.join(tmpdir, f"line_{i:03d}.mp3")
 
             print(f"  TTS [{speaker}]: {text[:60]}...")
