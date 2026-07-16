@@ -14,7 +14,10 @@
     "https://www.fpcivic.org/?p=5548",
     "https://www.fpcivic.org/?p=5551",
     "https://www.fpcivic.org/?p=5554",
-    "https://www.fpcivic.org/?p=5557"
+    "https://www.fpcivic.org/?p=5557",
+    "https://www.fpcivic.org/?p=5561",
+    "https://www.fpcivic.org/?p=5563",
+    "https://www.fpcivic.org/?p=5567"
   ],
   "episodes": [
     {
@@ -116,6 +119,26 @@
       "author": "Lou Bernard",
       "file_size": 4526253,
       "generated_at": "2026-07-04T11:49:18.566160+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5561",
+      "title": "July 2026 Outreach Report",
+      "source_link": "https://www.fpcivic.org/july-2026-outreach-report/",
+      "filename": "july-2026-outreach-report.mp3",
+      "pub_date": "Wed, 15 Jul 2026 23:30:23 GMT",
+      "author": "Lou Bernard",
+      "file_size": 3860397,
+      "generated_at": "2026-07-16T14:55:21.615759+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5567",
+      "title": "FOREST PARK CIVIC ASSOCIATION MEETING July Meeting",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/",
+      "filename": "forest-park-civic-association-meeting-july-meeting.mp3",
+      "pub_date": "Thu, 16 Jul 2026 00:02:10 GMT",
+      "author": "Lou Bernard",
+      "file_size": 4273965,
+      "generated_at": "2026-07-16T15:00:48.394443+00:00"
     }
   ]
 }
