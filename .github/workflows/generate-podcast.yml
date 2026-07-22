@@ -6,10 +6,10 @@ on:
     - cron: "0 13 * * *"
   workflow_dispatch: # Allow manual runs
     inputs:
-      regenerate_july:
-        description: "Regenerate the combined July 2026 episode from pinned sources"
-        type: boolean
-        default: false
+      regenerate_months:
+        description: "Months to regenerate as combined episodes, comma-separated (e.g. may,june,july). Blank = normal cron."
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -40,7 +40,7 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           SITE_BASE_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-        run: python scripts/generate.py ${{ github.event.inputs.regenerate_july == 'true' && '--regenerate-july' || '' }}
+        run: python scripts/generate.py ${{ github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '' }}
 
       - name: Commit new episodes and updated feed
         run: |

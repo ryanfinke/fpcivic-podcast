@@ -89,27 +89,72 @@ SPACING_SECONDS = 65
 # security/supplemental content we actually want in the digest.
 FORESTER_KEYWORDS = ["security", "patrol", "crime", "police", "safe", "911", "theft"]
 
-# Pinned sources for the July 2026 regeneration (deterministic first run).
-# Going forward, resolve_digest_sources() discovers these automatically.
-JULY_MINUTES = {
-    "id": "https://www.fpcivic.org/?p=5567",
-    "title": "FOREST PARK CIVIC ASSOCIATION MEETING July Meeting",
-    "link": "https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/",
-    "published": "Thu, 16 Jul 2026 00:02:10 +0000",
-    "author": "Lou Bernard",
+# Pinned sources for regenerating past months as combined episodes. Going forward,
+# resolve_digest_sources() discovers companion docs automatically for new meetings;
+# these are pinned because old outreach posts age out of the RSS feed. Each config's
+# `supersede` lists old standalone episodes now folded into the combined News episode
+# (the combined episode itself upserts on the meeting post id, replacing the recap).
+REGEN_CONFIGS = {
+    "july": {
+        "title": "Forest Park Civic Association July News",
+        "slug": "forest-park-civic-association-july-2026-news",
+        "minutes": {
+            "id": "https://www.fpcivic.org/?p=5567",
+            "title": "FOREST PARK CIVIC ASSOCIATION MEETING July Meeting",
+            "link": "https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/",
+            "published": "Thu, 16 Jul 2026 00:02:10 +0000", "author": "Lou Bernard",
+        },
+        "sources": [
+            ("NCC Report for June 2026 (summary)",
+             "https://www.fpcivic.org/ncc-report-for-june-2026/"),
+            ("NCC Development Committee Report — June 24, 2026 (zoning cases & votes)",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf"),
+            ("July 2026 Outreach Report",
+             "https://www.fpcivic.org/july-2026-outreach-report/"),
+            ("July 2026 Forester — security & supplemental items",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"),
+        ],
+        "supersede": ["https://www.fpcivic.org/?p=5567#digest",
+                      "https://www.fpcivic.org/?p=5561"],  # old digest + July outreach
+    },
+    "june": {
+        "title": "Forest Park Civic Association June News",
+        "slug": "forest-park-civic-association-june-2026-news",
+        "minutes": {
+            "id": "https://www.fpcivic.org/?p=5527",
+            "title": "FOREST PARK CIVIC ASSOCIATION MEETING June Meeting",
+            "link": "https://www.fpcivic.org/forest-park-civic-association-meeting-june-meeting/",
+            "published": "Thu, 11 Jun 2026 13:38:43 +0000", "author": "Lou Bernard",
+        },
+        "sources": [
+            ("NCC Development Committee Report — May 27, 2026 (zoning cases & votes)",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260527_reva.pdf"),
+            ("June 2026 Forester — security & supplemental items",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/06-JUNE-Forester-2026.pdf"),
+        ],  # no June outreach report was published (404)
+        "supersede": [],  # no June standalone outreach/NCC episodes exist
+    },
+    "may": {
+        "title": "Forest Park Civic Association May News",
+        "slug": "forest-park-civic-association-may-2026-news",
+        "minutes": {
+            "id": "https://www.fpcivic.org/?p=5501",
+            "title": "FOREST PARK CIVIC ASSOCIATION MEETING May Minutes",
+            "link": "https://www.fpcivic.org/forest-park-civic-association-meeting-may-minutes/",
+            "published": "Sun, 17 May 2026 14:57:24 +0000", "author": "Lou Bernard",
+        },
+        "sources": [
+            ("NCC Development Committee Report — April 29, 2026 (zoning cases & votes)",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/05/NCC_Development_Report_20260429.pdf"),
+            ("May 2026 Outreach Report",
+             "https://www.fpcivic.org/may-2026-outreach-report/"),
+            ("May 2026 Forester — security & supplemental items",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/05-MAY-Forester-2026-HI-RES.pdf"),
+        ],
+        "supersede": ["https://www.fpcivic.org/?p=5488",   # May Outreach Report
+                      "https://www.fpcivic.org/?p=5490"],  # May NCC Report
+    },
 }
-JULY_DIGEST_SOURCES = [
-    ("NCC Report for June 2026 (summary)",
-     "https://www.fpcivic.org/ncc-report-for-june-2026/"),
-    ("NCC Development Committee Report — June 24, 2026 (zoning cases & votes)",
-     "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf"),
-    ("July 2026 Outreach Report",
-     "https://www.fpcivic.org/july-2026-outreach-report/"),
-    ("July 2026 Forester — security & supplemental items",
-     "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"),
-]
-# The standalone episode(s) that the July digest supersedes (folded in as ingredients).
-JULY_SUPERSEDES = ["https://www.fpcivic.org/?p=5561"]  # July 2026 Outreach Report
 
 MONTHS = {m.lower(): i for i, m in enumerate(
     ["", "January", "February", "March", "April", "May", "June",
@@ -786,22 +831,24 @@ def build_feed(state: dict) -> None:
 # ---------------------------------------------------------------------------
 
 
-def regenerate_july(state: dict, guide: str, dry_run: bool) -> None:
-    print("=== Regenerating July 2026 combined episode (pinned sources) ===")
-    ok = make_combined_episode(
-        JULY_MINUTES, JULY_DIGEST_SOURCES, state, guide, dry_run,
-        title="Forest Park Civic Association July News",
-        slug="forest-park-civic-association-july-2026-news",
-        post_id=JULY_MINUTES["id"])  # reuse the meeting post id -> replaces old recap entry
-    # Only fold in / drop the old artifacts if the combined episode actually built,
-    # so a failed run can't leave July with nothing.
-    if ok and not dry_run:
-        # The combined episode upserts on post_id 5567, replacing the old recap entry.
-        # Also drop the old standalone digest + outreach entries it now contains.
-        remove_episode(state, "https://www.fpcivic.org/?p=5567#digest",
-                       reason="merged into combined News episode")
-        for pid in JULY_SUPERSEDES:
-            remove_episode(state, pid, reason="merged into combined News episode")
+def regenerate_months(keys: list[str], state: dict, guide: str, dry_run: bool) -> None:
+    for i, key in enumerate(keys):
+        cfg = REGEN_CONFIGS.get(key)
+        if not cfg:
+            print(f"Unknown month '{key}' — choices: {', '.join(REGEN_CONFIGS)}", file=sys.stderr)
+            continue
+        print(f"\n=== Regenerating {cfg['title']} (pinned sources) ===")
+        if i > 0 and not dry_run:
+            print(f"  (waiting {SPACING_SECONDS}s between months for the token-rate window)")
+            time.sleep(SPACING_SECONDS)
+        ok = make_combined_episode(
+            cfg["minutes"], cfg["sources"], state, guide, dry_run,
+            title=cfg["title"], slug=cfg["slug"], post_id=cfg["minutes"]["id"])
+        # Only fold in / drop old artifacts if the combined episode actually built,
+        # so a failed run can't leave a month with nothing.
+        if ok and not dry_run:
+            for pid in cfg["supersede"]:
+                remove_episode(state, pid, reason="merged into combined News episode")
 
 
 def run_cron(state: dict, guide: str, dry_run: bool) -> None:
@@ -833,8 +880,9 @@ def run_cron(state: dict, guide: str, dry_run: bool) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="FP Civic Podcast generator")
-    ap.add_argument("--regenerate-july", action="store_true",
-                    help="Regenerate the combined July 2026 episode from pinned sources")
+    ap.add_argument("--regenerate-months", default="",
+                    help="Comma-separated months to regenerate as combined episodes from "
+                         "pinned sources (e.g. 'may,june,july')")
     ap.add_argument("--dry-run", action="store_true",
                     help="Resolve/scrape/extract sources and write transcripts, but "
                          "skip all LLM and TTS calls (no API key needed)")
@@ -849,8 +897,9 @@ def main() -> None:
     guide = load_guide()
     state = load_state()
 
-    if args.regenerate_july:
-        regenerate_july(state, guide, args.dry_run)
+    if args.regenerate_months:
+        keys = [m.strip().lower() for m in args.regenerate_months.split(",") if m.strip()]
+        regenerate_months(keys, state, guide, args.dry_run)
     else:
         run_cron(state, guide, args.dry_run)
 
