@@ -171,11 +171,14 @@ REGEN_CONFIGS = {
              "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/04/NCC_Development_Report_20260325.pdf"),
             ("April 2026 Outreach Report",
              "https://www.fpcivic.org/april-2026-outreach-report/"),
+            ("2026 Mulch Sale — spring fundraiser announcement",
+             "https://www.fpcivic.org/2026-mulch-sale-update/"),
             ("April 2026 Forester — security & supplemental items",
              "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/04-APRIL-Forester-2026-hi-res.pdf"),
         ],
         "supersede": ["https://www.fpcivic.org/?p=5465",   # April Outreach Report
-                      "https://www.fpcivic.org/?p=5415"],  # NCC March Meeting Update (Mar 25 NCC)
+                      "https://www.fpcivic.org/?p=5415",   # NCC March Meeting Update (Mar 25 NCC)
+                      "https://www.fpcivic.org/?p=5429"],  # 2026 Mulch Sale Update (folded in)
     },
     "march": {
         "title": "Forest Park Civic Association March News",
@@ -843,7 +846,8 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
     digest_user = ("Continue the same episode with the community reports. Lead with the "
                    "NCC development report — go through each case ONE AT A TIME, referring "
                    "to them as 'case one', 'case two', etc. (never read the reference "
-                   "codes) — then Outreach, then Forester security/supplemental. Ignore "
+                   "codes) — then Outreach, then any community announcements included below "
+                   "(e.g. fundraisers/sales), then Forester security/supplemental. Ignore "
                    "the Forester masthead/ads/directory.\n\n" + combined_src)
     try:
         part1 = clean_script(generate_script(recap_sys, recap_user, MEETING_MAX_TOKENS))
