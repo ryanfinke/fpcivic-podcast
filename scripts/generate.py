@@ -154,6 +154,45 @@ REGEN_CONFIGS = {
         "supersede": ["https://www.fpcivic.org/?p=5488",   # May Outreach Report
                       "https://www.fpcivic.org/?p=5490"],  # May NCC Report
     },
+    "april": {
+        "title": "Forest Park Civic Association April News",
+        "slug": "forest-park-civic-association-april-2026-news",
+        "minutes": {
+            "id": "https://www.fpcivic.org/?p=5463",
+            "title": "FOREST PARK CIVIC ASSOCIATION MEETING April Minutes",
+            "link": "https://www.fpcivic.org/forest-park-civic-association-meeting-april-minutes/",
+            "published": "Sun, 19 Apr 2026 16:36:26 +0000", "author": "Lou Bernard",
+        },
+        "sources": [
+            ("NCC Development Committee Report — March 25, 2026 (zoning cases & votes)",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/04/NCC_Development_Report_20260325.pdf"),
+            ("April 2026 Outreach Report",
+             "https://www.fpcivic.org/april-2026-outreach-report/"),
+            ("April 2026 Forester — security & supplemental items",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/04-APRIL-Forester-2026-hi-res.pdf"),
+        ],
+        "supersede": ["https://www.fpcivic.org/?p=5465",   # April Outreach Report
+                      "https://www.fpcivic.org/?p=5415"],  # NCC March Meeting Update (Mar 25 NCC)
+    },
+    "march": {
+        "title": "Forest Park Civic Association March News",
+        "slug": "forest-park-civic-association-march-2026-news",
+        "minutes": {
+            "id": "https://www.fpcivic.org/?p=5402",
+            "title": "FOREST PARK CIVIC ASSOCIATION MARCH MEETING",
+            "link": "https://www.fpcivic.org/forest-park-civic-association-march-meeting/",
+            "published": "Wed, 18 Mar 2026 19:21:27 +0000", "author": "Lou Bernard",
+        },
+        "sources": [
+            ("NCC Development Committee Report — February 25, 2026 (zoning cases & votes)",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/03/NCC_Development_Report_20260225.pdf"),
+            ("March 2026 Outreach Report",
+             "https://www.fpcivic.org/march-2026-outreach-report/"),
+            ("March 2026 Forester — security & supplemental items",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/02-MARCH-2026-Forester.pdf"),
+        ],
+        "supersede": ["https://www.fpcivic.org/?p=5407"],  # March Outreach Report
+    },
 }
 
 MONTHS = {m.lower(): i for i, m in enumerate(
