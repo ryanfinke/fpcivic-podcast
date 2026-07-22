@@ -5,6 +5,11 @@ on:
     # Check for new posts daily at 9am ET (1pm UTC)
     - cron: "0 13 * * *"
   workflow_dispatch: # Allow manual runs
+    inputs:
+      regenerate_july:
+        description: "Regenerate the July 2026 episodes from pinned sources"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -35,13 +40,13 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           SITE_BASE_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-        run: python scripts/generate.py
+        run: python scripts/generate.py ${{ github.event.inputs.regenerate_july == 'true' && '--regenerate-july' || '' }}
 
       - name: Commit new episodes and updated feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add episodes/ feed.xml state.json
+          git add episodes/ transcripts/ feed.xml state.json
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

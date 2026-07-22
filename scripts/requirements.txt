@@ -4,3 +4,4 @@ groq
 requests
 beautifulsoup4
 pydub
+pdfplumber
