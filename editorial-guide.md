@@ -26,7 +26,9 @@ Each meeting cycle produces exactly two episodes:
 - Forester Editor report
 - Civic Action / 311 Officer report
 - Committee Reports
-- Old Business
+- **Old Business — ALWAYS include every Old Business item**, even brief ones. Name
+  the specific item and its status/outcome (e.g., the Sign Team's request for 4
+  more entrance signs and the city's response). Do not skip or gloss this section.
 - New Business / Announcements / Ideas
 
 ## Meeting Recap (EP1) — SKIP these
@@ -59,10 +61,19 @@ Each meeting cycle produces exactly two episodes:
 
 - Two co-hosts who BOTH present substantive content — neither is just asking
   questions.
-- Warm, natural, and concise. Use contractions and genuine reactions.
+- Warm, natural, and engaging. Use contractions and genuine reactions.
 - No sound effects, music cues, stage directions, asterisks, or markdown.
-- Target length: Meeting Recap ~7–8 minutes; Community Reports ~9 minutes.
 - End with a brief note on how residents can get involved or what's coming up.
+
+## Depth & length (IMPORTANT — do not summarize)
+
+- Write a FULL episode: **at least 1,200 words** for the Meeting Recap and **at
+  least 1,300 words** for the Community Reports digest. Longer is fine.
+- Give EVERY included section real depth: **2 to 4 back-and-forth exchanges per
+  section**, not a single sentence. Cover the specifics — names, dates, numbers,
+  locations, decisions/votes — and briefly say what each item means for residents.
+- Do NOT compress several sections into one line, and do not rush to wrap up.
+  Only end after every included item has been genuinely discussed.
 
 ---
 
@@ -70,4 +81,8 @@ Each meeting cycle produces exactly two episodes:
 
 _Add dated entries as feedback comes in. The most recent guidance wins._
 
-- (none yet)
+- **2026-07-21:** First July episodes ran too short (~3.5 min each). Ryan wants
+  fuller episodes — added the Depth & length section above (1,200+/1,300+ words,
+  2–4 exchanges per section).
+- **2026-07-21:** The July recap dropped the Old Business "Sign Team" item. Old
+  Business must ALWAYS be covered — emphasized in the INCLUDE list above.

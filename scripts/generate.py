@@ -71,8 +71,8 @@ HTTP_HEADERS = {"User-Agent": "FPCivicPodcastBot/1.0 (+https://www.fpcivic.org)"
 MEETING_MAX_CHARS = 12000
 DIGEST_PER_SOURCE_CHARS = 17000  # fits the full keyword-filtered Forester (~16.5k)
 DIGEST_MAX_CHARS = 24000
-MEETING_MAX_TOKENS = 3000
-DIGEST_MAX_TOKENS = 3500        # ~10.8k req tokens worst case, under the 12k/min cap
+MEETING_MAX_TOKENS = 4096      # room for a full ~1,200+ word recap
+DIGEST_MAX_TOKENS = 4000       # ~11.3k req tokens worst case, under the 12k/min cap
 SPACING_SECONDS = 65
 
 # Forester newsletters are mostly masthead/ads; keep only pages relevant to the
