@@ -1,7 +1,7 @@
 # July 2026 Community Reports
 
 - Episode type: EP2 Community Reports
-- Generated: 2026-07-22T01:22:57.551723+00:00
+- Generated: 2026-07-22T01:56:45.891531+00:00
 - Sources:
   - NCC Report for June 2026 (summary) — https://www.fpcivic.org/ncc-report-for-june-2026/
   - NCC Development Committee Report — June 24, 2026 (zoning cases & votes) — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf
@@ -12,20 +12,20 @@
 
 ## Generated script
 
-HOST: Welcome back to the Forest Park Civic Association News Podcast, I'm your host.
-COHOST: And I'm your cohost. Today, we're bringing you the community reports digest, covering the NCC development report, the monthly Outreach report, and security and supplemental items from the Forester.
-HOST: Let's start with the NCC development report. The Northland Community Council's Development Committee met on June 24th to discuss several zoning cases and variances. The first case involved an application for a graphics special permit to allow the installation of up to 4 banners on 2 light poles at Northland High School, deviating from the standard banner standards. The committee approved the application 12-0.
-COHOST: That's right. And similarly, the committee also approved another application for a graphics special permit to allow the installation of up to 4 banners on 2 light poles at Columbus International High School. Again, this was approved 12-0.
-HOST: The committee also considered an application for a graphics variance to permit a 354 square foot wall sign on the north elevation of a building at 2500 Corporate Exchange Drive, exceeding the allowed size. This application was also approved 12-0.
-COHOST: And finally, the committee approved an application for variances from the facade zone, transparency, setback, landscape requirements, and ground floor depth to permit the construction of a residential duplex on a 1.66 acre parcel in a CAC district. This application was approved 12-0 as well.
-HOST: Moving on to the Outreach report, the Bhutanese Community of Central Ohio will host a nutrition workshop during market day at the New Americans Garden and Farm Stand on July 17th. The workshop will be presented by the OSU Center for Community Outreach at the James Comprehensive Cancer Center.
-COHOST: That's a great event. And don't forget to mark your calendars for the annual National Night Out on August 4th, hosted by the North YMCA. This is a free community event that's a great opportunity to engage with police and community members, and enjoy food, games, and camaraderie.
-HOST: The Northland Unity Festival will also be held at the North YMCA on September 19th, featuring music, dance, food vendors, and local crafts. And the Forest Park Civic Association would like to welcome the new pastor at Epworth United Methodist Church, Norm Moxley, to our community.
-COHOST: Now, let's move on to the Forester security and supplemental items. Officer Hicks, our police liaison, reported that kids have been gathering for "teen takeovers," which can lead to fights and property damage. He advised residents to call the police non-emergency number if they see a large group of teens gathering.
-HOST: The City of Columbus has also established monitored Internet Purchase Exchange Zones at several police sub-stations, where residents can conduct online transactions safely. And don't forget to keep your garage doors and sheds closed to prevent thefts.
-COHOST: The Forest Park Civic Association is also reminding residents to be mindful of sidewalk safety, especially with more people out and about enjoying the nice weather. And if you're planning to travel, don't forget that supplemental security protection is included in your membership.
-HOST: That's all for today's community reports digest. If you're interested in getting involved or learning more about these initiatives, please visit our website or reach out to us directly. And don't forget to stay safe and enjoy the rest of your summer!
-COHOST: Thanks for tuning in, and we'll catch you on the next episode of the Forest Park Civic Association News Podcast.
+HOST: Hey everyone, welcome back to the Forest Park Civic Association News Podcast. I'm your host, and I'm here with my cohost. Today, we're discussing the latest community reports, covering everything from NCC development to outreach and security updates.
+COHOST: That's right. Let's start with the NCC development report. The Northland Community Council Development Committee met on June 24th, and they discussed several zoning cases and variances. One of the cases involved a special permit for the installation of up to four banners on two light poles at Northland High School.
+HOST: Yes, and the committee approved that motion unanimously, 12-0. The banners will be used to promote school events and activities. Another case involved a similar request for Columbus International High School, which was also approved 12-0.
+COHOST: Right, and there were a couple of other cases as well. One involved a variance for a wall sign at The Village Network, and another involved a residential duplex on Lauffer Ravines Drive. Both of those were also approved unanimously.
+HOST: That's correct. The committee is really working to make sure that our community is developed in a way that benefits everyone. And speaking of benefits, the NCC is also hosting a picnic on August 11th at Warner Woods Pavilion. Everyone is invited, and you can RSVP on the NCC website.
+COHOST: That sounds like a great event. And in other news, the Outreach Committee has been busy as well. They're hosting a nutrition workshop on July 17th at the New Americans Garden and Farm Stand, and they're also organizing the annual National Night Out event on August 4th.
+HOST: Yes, the National Night Out event is a great opportunity for neighbors to come together and get to know each other. And the nutrition workshop is a wonderful resource for our community, especially with the OSU Center for Community Outreach presenting.
+COHOST: Absolutely. The Outreach Committee is doing some fantastic work. And finally, let's talk about some security updates from the Forester. Officer Hicks recently reported that there have been some issues with "teen takeovers" in our area, where large groups of teens gather and cause problems.
+HOST: Yes, and he advised that if anyone sees a group of teens gathering, they should call the police non-emergency number to report it. He also reminded everyone to keep their garage doors closed and to be mindful of their surroundings to prevent thefts.
+COHOST: Right, and the city has also established some safe exchange zones for people to buy and sell items online. These zones are monitored by video surveillance cameras and are located at various police sub-stations around the city.
+HOST: That's a great initiative. And finally, the Forest Park Civic Association is encouraging everyone to participate in the National Night Out event on August 4th. We're also looking for volunteers to help with the event, so if you're interested, please reach out to us.
+COHOST: That's right. And if you're not already a member of the Forest Park Civic Association, we encourage you to join us. We're always looking for new members and volunteers to help make our community a better place.
+HOST: Well, that's all for today's episode. Thanks for tuning in, and we'll see you next time on the Forest Park Civic Association News Podcast.
+COHOST: And don't forget to get involved in your community. Attend a meeting, volunteer for an event, or just get to know your neighbors. Every little bit counts, and together, we can make Forest Park an even better place to live.
 
 ---
 
