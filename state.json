@@ -121,24 +121,42 @@
       "generated_at": "2026-07-04T11:49:18.566160+00:00"
     },
     {
-      "post_id": "https://www.fpcivic.org/?p=5561",
-      "title": "July 2026 Outreach Report",
-      "source_link": "https://www.fpcivic.org/july-2026-outreach-report/",
-      "filename": "july-2026-outreach-report.mp3",
-      "pub_date": "Wed, 15 Jul 2026 23:30:23 GMT",
-      "author": "Lou Bernard",
-      "file_size": 3860397,
-      "generated_at": "2026-07-16T14:55:21.615759+00:00"
-    },
-    {
       "post_id": "https://www.fpcivic.org/?p=5567",
-      "title": "FOREST PARK CIVIC ASSOCIATION MEETING July Meeting",
+      "title": "July 2026 Meeting Recap",
       "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/",
       "filename": "forest-park-civic-association-meeting-july-meeting.mp3",
       "pub_date": "Thu, 16 Jul 2026 00:02:10 GMT",
       "author": "Lou Bernard",
-      "file_size": 4273965,
-      "generated_at": "2026-07-16T15:00:48.394443+00:00"
+      "file_size": 3150765,
+      "generated_at": "2026-07-22T01:19:52.427965+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5567#digest",
+      "title": "July 2026 Community Reports",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/",
+      "filename": "july-2026-community-reports.mp3",
+      "pub_date": "Thu, 16 Jul 2026 00:02:10 GMT",
+      "author": "Lou Bernard",
+      "file_size": 3581229,
+      "generated_at": "2026-07-22T01:22:57.551968+00:00",
+      "digest_sources": [
+        {
+          "label": "NCC Report for June 2026 (summary)",
+          "url": "https://www.fpcivic.org/ncc-report-for-june-2026/"
+        },
+        {
+          "label": "NCC Development Committee Report \u2014 June 24, 2026 (zoning cases & votes)",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf"
+        },
+        {
+          "label": "July 2026 Outreach Report",
+          "url": "https://www.fpcivic.org/july-2026-outreach-report/"
+        },
+        {
+          "label": "July 2026 Forester \u2014 security & supplemental items",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"
+        }
+      ]
     }
   ]
 }
