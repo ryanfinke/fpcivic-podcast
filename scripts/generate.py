@@ -64,12 +64,20 @@ VOICE_COHOST = "en-US-AvaMultilingualNeural"
 
 HTTP_HEADERS = {"User-Agent": "FPCivicPodcastBot/1.0 (+https://www.fpcivic.org)"}
 
-# Input/output sizing (Llama 3.3 70B on Groq has a 128k context window)
-MEETING_MAX_CHARS = 15000
-DIGEST_PER_SOURCE_CHARS = 35000  # full Forester (~31k) fits without truncation
-DIGEST_MAX_CHARS = 60000
-MEETING_MAX_TOKENS = 3500
-DIGEST_MAX_TOKENS = 4500
+# Input/output sizing. NOTE: Groq's free tier caps at 12,000 tokens/minute and
+# counts input + max_tokens (reserved output) against EACH request. So every call
+# must keep (input + max_tokens) well under 12k, and the two episodes are spaced
+# ~65s apart (SPACING_SECONDS) so they fall in separate rate-limit windows.
+MEETING_MAX_CHARS = 12000
+DIGEST_PER_SOURCE_CHARS = 17000  # fits the full keyword-filtered Forester (~16.5k)
+DIGEST_MAX_CHARS = 24000
+MEETING_MAX_TOKENS = 3000
+DIGEST_MAX_TOKENS = 3500        # ~10.8k req tokens worst case, under the 12k/min cap
+SPACING_SECONDS = 65
+
+# Forester newsletters are mostly masthead/ads; keep only pages relevant to the
+# security/supplemental content we actually want in the digest.
+FORESTER_KEYWORDS = ["security", "patrol", "crime", "police", "safe", "911", "theft"]
 
 # Pinned sources for the July 2026 regeneration (deterministic first run).
 # Going forward, resolve_digest_sources() discovers these automatically.
@@ -225,13 +233,21 @@ def scrape_post_content(url: str) -> str:
     return "\n".join(p.get_text(strip=True) for p in soup.find_all("p") if p.get_text(strip=True))
 
 
-def extract_pdf_text(url: str) -> str:
+def extract_pdf_text(url: str, keywords: list[str] | None = None) -> str:
+    """Extract PDF text. If keywords are given, keep only pages that mention at
+    least one of them (used to strip Forester masthead/ads down to the security
+    content and stay under the token budget)."""
     resp = requests.get(url, timeout=60, headers=HTTP_HEADERS)
     resp.raise_for_status()
     parts = []
     with pdfplumber.open(io.BytesIO(resp.content)) as pdf:
         for page in pdf.pages:
-            parts.append(page.extract_text() or "")
+            txt = page.extract_text() or ""
+            if keywords:
+                low = txt.lower()
+                if not any(k in low for k in keywords):
+                    continue
+            parts.append(txt)
     return "\n".join(parts)
 
 
@@ -247,10 +263,10 @@ def find_pdf_link(page_url: str, name_regex: str) -> str | None:
     return None
 
 
-def fetch_source_text(url: str) -> str:
+def fetch_source_text(url: str, keywords: list[str] | None = None) -> str:
     """Extract readable text from a URL (PDF or HTML), by extension."""
     if url.lower().endswith(".pdf"):
-        return extract_pdf_text(url)
+        return extract_pdf_text(url, keywords)
     return scrape_post_content(url)
 
 
@@ -377,22 +393,45 @@ def generate_script(system_prompt: str, user_content: str, max_tokens: int) -> l
     return lines
 
 
-async def _synth(text: str, voice: str, path: str) -> None:
+async def _synth(text: str, voice: str, path: str) -> bool:
+    """Synthesize one line with retries. Returns True on success. A single line
+    that can't be synthesized is skipped rather than aborting the whole episode."""
     import edge_tts
-    await edge_tts.Communicate(text, voice).save(path)
+    for attempt in range(3):
+        try:
+            await edge_tts.Communicate(text, voice).save(path)
+            if os.path.exists(path) and os.path.getsize(path) > 0:
+                return True
+        except Exception as e:
+            if attempt == 2:
+                print(f"  WARN: TTS failed after retries: {e}", file=sys.stderr)
+        await asyncio.sleep(2)
+    return False
+
+
+def _speakable(text: str) -> bool:
+    return any(c.isalnum() for c in text)
 
 
 async def _build_audio(script: list[tuple[str, str]], out_path: Path) -> None:
     from pydub import AudioSegment
     combined = AudioSegment.empty()
     pause = AudioSegment.silent(duration=400)
+    rendered = 0
     with tempfile.TemporaryDirectory() as tmp:
         for i, (speaker, text) in enumerate(script):
+            if not _speakable(text):
+                continue  # skip empty/punctuation-only lines (edge-tts returns no audio)
             voice = VOICE_HOST if speaker == "host" else VOICE_COHOST
             f = os.path.join(tmp, f"line_{i:03d}.mp3")
             print(f"  TTS [{speaker}]: {text[:60]}...")
-            await _synth(text, voice, f)
-            combined += AudioSegment.from_mp3(f) + pause
+            if await _synth(text, voice, f):
+                combined += AudioSegment.from_mp3(f) + pause
+                rendered += 1
+            else:
+                print(f"  WARN: skipped line {i} (no audio)", file=sys.stderr)
+    if rendered == 0:
+        raise RuntimeError("no lines produced audio")
     combined.export(str(out_path), format="mp3", bitrate="128k")
 
 
@@ -519,7 +558,8 @@ def make_digest_episode(anchor: dict, source_urls: list[tuple[str, str]],
     resolved: list[tuple[str, str, str]] = []
     for label, url in source_urls:
         try:
-            text = fetch_source_text(url)
+            kw = FORESTER_KEYWORDS if "forester" in label.lower() else None
+            text = fetch_source_text(url, kw)
             if text and len(text) >= 50:
                 resolved.append((label, url, text[:DIGEST_PER_SOURCE_CHARS]))
                 print(f"  + {label}: {len(text)} chars")
@@ -643,6 +683,9 @@ def regenerate_july(state: dict, guide: str, dry_run: bool) -> None:
         JULY_MINUTES, state, guide, dry_run,
         slug="forest-park-civic-association-meeting-july-meeting",  # overwrite existing
         title="July 2026 Meeting Recap")
+    if not dry_run:
+        print(f"  (waiting {SPACING_SECONDS}s to stay under Groq's per-minute token limit)")
+        time.sleep(SPACING_SECONDS)
     make_digest_episode(
         JULY_MINUTES, JULY_DIGEST_SOURCES, state, guide, dry_run,
         title="July 2026 Community Reports",
@@ -668,6 +711,9 @@ def run_cron(state: dict, guide: str, dry_run: bool) -> None:
             make_meeting_episode(post, state, guide, dry_run)
             sources = resolve_digest_sources(post)
             if sources:
+                if not dry_run:
+                    print(f"  (waiting {SPACING_SECONDS}s for the token-rate window)")
+                    time.sleep(SPACING_SECONDS)
                 make_digest_episode(post, sources, state, guide, dry_run)
             else:
                 print("  No digest sources resolved for this cycle.")
@@ -694,6 +740,7 @@ def main() -> None:
         sys.exit(1)
 
     EPISODES_DIR.mkdir(exist_ok=True)
+    TRANSCRIPTS_DIR.mkdir(exist_ok=True)  # so the workflow's `git add transcripts/` never errors
     guide = load_guide()
     state = load_state()
 
