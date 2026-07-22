@@ -728,23 +728,27 @@ def build_feed(state: dict) -> None:
 # ---------------------------------------------------------------------------
 
 
-def regenerate_july(state: dict, guide: str, dry_run: bool) -> None:
-    print("=== Regenerating July 2026 episodes (pinned sources) ===")
-    make_meeting_episode(
-        JULY_MINUTES, state, guide, dry_run,
-        slug="forest-park-civic-association-meeting-july-meeting",  # overwrite existing
-        title="July 2026 Meeting Recap")
-    if not dry_run:
+def regenerate_july(state: dict, guide: str, dry_run: bool, part: str = "all") -> None:
+    print(f"=== Regenerating July 2026 episodes (pinned sources, part={part}) ===")
+    do_recap = part in ("all", "recap")
+    do_digest = part in ("all", "digest")
+    if do_recap:
+        make_meeting_episode(
+            JULY_MINUTES, state, guide, dry_run,
+            slug="forest-park-civic-association-meeting-july-meeting",  # overwrite existing
+            title="July 2026 Meeting Recap")
+    if do_recap and do_digest and not dry_run:
         print(f"  (waiting {SPACING_SECONDS}s to stay under Groq's per-minute token limit)")
         time.sleep(SPACING_SECONDS)
-    make_digest_episode(
-        JULY_MINUTES, JULY_DIGEST_SOURCES, state, guide, dry_run,
-        title="July 2026 Community Reports",
-        slug="july-2026-community-reports",
-        post_id="https://www.fpcivic.org/?p=5567#digest")
-    if not dry_run:
-        for pid in JULY_SUPERSEDES:
-            remove_episode(state, pid, reason="folded into July 2026 Community Reports")
+    if do_digest:
+        make_digest_episode(
+            JULY_MINUTES, JULY_DIGEST_SOURCES, state, guide, dry_run,
+            title="July 2026 Community Reports",
+            slug="july-2026-community-reports",
+            post_id="https://www.fpcivic.org/?p=5567#digest")
+        if not dry_run:
+            for pid in JULY_SUPERSEDES:
+                remove_episode(state, pid, reason="folded into July 2026 Community Reports")
 
 
 def run_cron(state: dict, guide: str, dry_run: bool) -> None:
@@ -780,7 +784,9 @@ def run_cron(state: dict, guide: str, dry_run: bool) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description="FP Civic Podcast generator")
     ap.add_argument("--regenerate-july", action="store_true",
-                    help="Regenerate both July 2026 episodes from pinned sources")
+                    help="Regenerate July 2026 episode(s) from pinned sources")
+    ap.add_argument("--part", choices=["all", "recap", "digest"], default="all",
+                    help="Which July episode to regenerate (default: all)")
     ap.add_argument("--dry-run", action="store_true",
                     help="Resolve/scrape/extract sources and write transcripts, but "
                          "skip all LLM and TTS calls (no API key needed)")
@@ -796,7 +802,7 @@ def main() -> None:
     state = load_state()
 
     if args.regenerate_july:
-        regenerate_july(state, guide, args.dry_run)
+        regenerate_july(state, guide, args.dry_run, args.part)
     else:
         run_cron(state, guide, args.dry_run)
 

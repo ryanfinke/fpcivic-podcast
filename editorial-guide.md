@@ -51,13 +51,18 @@ Each meeting cycle produces exactly two episodes:
 
 ## Community Reports (EP2) — structure
 
-- **Lead with the NCC development report** — zoning cases, variances, and votes.
-  State each case plainly (what's proposed, where, and how the committee voted).
-- **Outreach report** — cover in detail; this is community-facing and important.
-- **Forester security / supplemental** — pull the security patrol updates and any
-  items the minutes deferred to the Forester. IGNORE the Forester's masthead,
-  officer/representative directory, advertising rates, and ads — those are noise
-  from PDF extraction, not content.
+Do NOT summarize the set of reports — walk through EACH item individually and give
+it its own moment. Aim for at least 1,300 words.
+
+- **Lead with the NCC development report.** Go through EACH zoning case / variance
+  ONE AT A TIME: what's being proposed, the street address, the applicant, and how
+  the committee voted (e.g., "approved 12–0"). Do not lump the cases together.
+- **Outreach report** — cover EACH initiative/event separately and in detail; this
+  is community-facing and important.
+- **Forester security / supplemental** — cover EACH security/patrol update and any
+  items the minutes deferred to the Forester, one by one. IGNORE the Forester's
+  masthead, officer/representative directory, advertising rates, and ads — those
+  are noise from PDF extraction, not content.
 
 ---
 

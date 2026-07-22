@@ -10,6 +10,11 @@ on:
         description: "Regenerate the July 2026 episodes from pinned sources"
         type: boolean
         default: false
+      part:
+        description: "Which July episode to regenerate"
+        type: choice
+        options: ["all", "recap", "digest"]
+        default: "all"
 
 permissions:
   contents: write
@@ -40,7 +45,7 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           SITE_BASE_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-        run: python scripts/generate.py ${{ github.event.inputs.regenerate_july == 'true' && '--regenerate-july' || '' }}
+        run: python scripts/generate.py ${{ github.event.inputs.regenerate_july == 'true' && format('--regenerate-july --part {0}', github.event.inputs.part) || '' }}
 
       - name: Commit new episodes and updated feed
         run: |
