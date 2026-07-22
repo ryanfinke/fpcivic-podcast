@@ -145,12 +145,17 @@ def build_system_prompt(kind: str, guide: str, month_label: str = "") -> str:
         role = ("You are writing a standalone MEETING RECAP from the FPCA meeting "
                 "minutes. Apply the INCLUDE/SKIP rules in the editorial guide exactly.")
     elif kind == "combined_recap":
-        role = (f"You are writing the FIRST half of ONE combined episode titled "
-                f"'Forest Park Civic Association {month_label} News'. Open with a warm "
-                f"welcome that names the show, then cover the MEETING RECAP sections per "
-                f"the editorial guide's INCLUDE/SKIP and order rules. Do NOT sign off or "
-                f"say goodbye — at the very end, hand off to the next segment with a short "
-                f"transition like 'Now let's get into the community reports.'")
+        role = (f"You are writing the FIRST half of ONE combined episode of the 'Forest "
+                f"Park Civic Association News' podcast, covering {month_label}. Open in "
+                f"exactly this spirit: a warm greeting, welcome to the show, and today's "
+                f"update month — for example: \"Hey everybody, welcome to the Forest Park "
+                f"Civic Association News podcast. Today we're giving you an update for "
+                f"{month_label}.\" The hosts are UNNAMED narrators — never have them "
+                f"introduce themselves, use names, or say 'I'm your host' / 'I'm here with "
+                f"my co-host.' Then cover the MEETING RECAP sections per the editorial "
+                f"guide's INCLUDE/SKIP and order rules. Do NOT sign off — at the very end, "
+                f"hand off with a short transition like 'Now let's get into the community "
+                f"reports.'")
     elif kind == "combined_digest":
         role = ("You are writing the SECOND half of the SAME combined episode, continuing "
                 "the exact same conversation between the two hosts. Do NOT open with a new "
@@ -451,6 +456,8 @@ def normalize_for_speech(text: str) -> str:
     text = re.sub(r"\bapplication\s*#?\s*[A-Z]{2,3}\d{2}-\d{2,}\b", "", text, flags=re.I)
     text = re.sub(r"#?\b[A-Z]{2,3}\d{2}-\d{2,}\b", "", text)
     text = re.sub(r"\bPID\s*[\d-]+", "", text, flags=re.I)
+    # NOTE: "I'm your host"/self-intros are handled at the prompt level (the intro is
+    # written fresh each run) — a regex here would leave broken mid-sentence fragments.
     # tidy leftovers from a removed URL/email (e.g. "...on their website at ." )
     text = re.sub(r"\b(?:at|visit|via)\s*([.,;:])", r"\1", text, flags=re.I)
     text = re.sub(r"\(\s*\)", "", text)            # empty parens
@@ -660,8 +667,7 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         save_transcript(slug, title, "Combined News", all_sources, None)
         return
 
-    month = month_name(minutes_post)
-    recap_sys = build_system_prompt("combined_recap", guide, month_label=month)
+    recap_sys = build_system_prompt("combined_recap", guide, month_label=cycle_label(minutes_post))
     recap_user = (f"Meeting minutes title: {minutes_post['title']}\n\n"
                   f"Minutes content:\n{minutes[:MEETING_MAX_CHARS]}")
     combined_src = ""

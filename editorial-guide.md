@@ -82,6 +82,14 @@ it its own moment. Aim for at least 1,300 words.
 - No sound effects, music cues, stage directions, asterisks, or markdown.
 - End with a brief note on how residents can get involved or what's coming up.
 
+## Opening
+
+- Open with a simple welcome and the update month, e.g. "Hey everybody, welcome to
+  the Forest Park Civic Association News podcast. Today we're giving you an update
+  for [Month Year]."
+- The hosts are UNNAMED narrators. Never have them introduce themselves, use names,
+  or say "I'm your host" / "I'm here with my co-host" — they aren't real people.
+
 ## Conversational style (make it feel like a real chat, not a reading)
 
 - The hosts genuinely converse — they do NOT take turns reading blocks. Include
@@ -139,3 +147,6 @@ _Add dated entries as feedback comes in. The most recent guidance wins._
   cases as "case one/two," never read the reference codes; (2) COMBINE the meeting
   recap and community reports into ONE episode titled "Forest Park Civic
   Association [Month] News," now and going forward.
+- **2026-07-22:** Drop "I'm your host" and any host self-introduction/names — the
+  hosts are unnamed narrators. Open with a simple welcome + the update month (see
+  Opening section). Applies going forward; the July episode was NOT re-run.
