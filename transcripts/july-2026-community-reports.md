@@ -1,7 +1,7 @@
 # July 2026 Community Reports
 
 - Episode type: EP2 Community Reports
-- Generated: 2026-07-22T01:56:45.891531+00:00
+- Generated: 2026-07-22T02:24:12.749056+00:00
 - Sources:
   - NCC Report for June 2026 (summary) — https://www.fpcivic.org/ncc-report-for-june-2026/
   - NCC Development Committee Report — June 24, 2026 (zoning cases & votes) — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf
@@ -12,20 +12,20 @@
 
 ## Generated script
 
-HOST: Hey everyone, welcome back to the Forest Park Civic Association News Podcast. I'm your host, and I'm here with my cohost. Today, we're discussing the latest community reports, covering everything from NCC development to outreach and security updates.
-COHOST: That's right. Let's start with the NCC development report. The Northland Community Council Development Committee met on June 24th, and they discussed several zoning cases and variances. One of the cases involved a special permit for the installation of up to four banners on two light poles at Northland High School.
-HOST: Yes, and the committee approved that motion unanimously, 12-0. The banners will be used to promote school events and activities. Another case involved a similar request for Columbus International High School, which was also approved 12-0.
-COHOST: Right, and there were a couple of other cases as well. One involved a variance for a wall sign at The Village Network, and another involved a residential duplex on Lauffer Ravines Drive. Both of those were also approved unanimously.
-HOST: That's correct. The committee is really working to make sure that our community is developed in a way that benefits everyone. And speaking of benefits, the NCC is also hosting a picnic on August 11th at Warner Woods Pavilion. Everyone is invited, and you can RSVP on the NCC website.
-COHOST: That sounds like a great event. And in other news, the Outreach Committee has been busy as well. They're hosting a nutrition workshop on July 17th at the New Americans Garden and Farm Stand, and they're also organizing the annual National Night Out event on August 4th.
-HOST: Yes, the National Night Out event is a great opportunity for neighbors to come together and get to know each other. And the nutrition workshop is a wonderful resource for our community, especially with the OSU Center for Community Outreach presenting.
-COHOST: Absolutely. The Outreach Committee is doing some fantastic work. And finally, let's talk about some security updates from the Forester. Officer Hicks recently reported that there have been some issues with "teen takeovers" in our area, where large groups of teens gather and cause problems.
-HOST: Yes, and he advised that if anyone sees a group of teens gathering, they should call the police non-emergency number to report it. He also reminded everyone to keep their garage doors closed and to be mindful of their surroundings to prevent thefts.
-COHOST: Right, and the city has also established some safe exchange zones for people to buy and sell items online. These zones are monitored by video surveillance cameras and are located at various police sub-stations around the city.
-HOST: That's a great initiative. And finally, the Forest Park Civic Association is encouraging everyone to participate in the National Night Out event on August 4th. We're also looking for volunteers to help with the event, so if you're interested, please reach out to us.
-COHOST: That's right. And if you're not already a member of the Forest Park Civic Association, we encourage you to join us. We're always looking for new members and volunteers to help make our community a better place.
+HOST: Hey everyone, welcome back to the Forest Park Civic Association News Podcast. I'm your host, and I'm here with my cohost. Today, we're going to be discussing the latest community reports, covering everything from NCC development to outreach and security updates.
+COHOST: That's right. We've got a lot to cover, so let's jump right in. First up, we have the NCC development report. There were several zoning cases and votes at the last meeting. One of the cases involved a special permit for the installation of banners at Northland High School. The committee approved the application, recommending approval for the installation of up to four banners on two light poles.
+HOST: Right, and there was another similar case for Columbus International High School. The committee also approved that application, recommending approval for the installation of up to four banners on two light poles. It's great to see our local schools getting support for their events and activities.
+COHOST: Absolutely. And in other news, the NCC picnic is coming up on August 11th at the Warner Woods Pavilion. It's a great opportunity to meet your neighbors and get involved in the community. You can RSVP on the NCC website if you'd like to attend.
+HOST: That sounds like a lot of fun. And speaking of community events, the Outreach report had some exciting updates. The Bhutanese Community of Central Ohio is hosting a nutrition workshop at the New Americans Garden and Farm Stand on July 17th. It's open to everyone, and it's a great chance to learn about healthy eating and support local gardeners.
+COHOST: That's terrific. And don't forget about the National Night Out event on August 4th. It's a great way to connect with your neighbors and build a stronger sense of community. The North YMCA is hosting the event, and there will be food, games, and activities for all ages.
+HOST: That sounds like a wonderful event. And finally, we have some security updates from the Forester. Officer Hicks reminded us to keep our garage doors closed and to be mindful of our surroundings, especially when using online marketplaces to buy or sell items.
+COHOST: That's right. And the City of Columbus has established safe exchange zones at several police sub-stations. These zones have video surveillance cameras, so you can feel safe when buying or selling items in person.
+HOST: Great tip. And if you're a paid member of the Forest Park Civic Association, don't forget that you have access to supplemental security protection. Just fill out the form and return it to the security email or mail it to the address listed.
+COHOST: That's right. And finally, we want to remind everyone about the Forest Park Beautification Contest. You can nominate your neighbor or yourself for the contest, which recognizes beautiful front yards and thoughtful landscaping.
+HOST: That's a great way to show off your gardening skills and get involved in the community. And if you're interested in getting more involved, we have several volunteer opportunities available, including delivering the Forester to your neighbors.
+COHOST: That's right. We're always looking for people to help out, whether it's with the Forester, the Welcome Committee, or other community events. So if you're interested, just reach out to us and we'll get you connected.
 HOST: Well, that's all for today's episode. Thanks for tuning in, and we'll see you next time on the Forest Park Civic Association News Podcast.
-COHOST: And don't forget to get involved in your community. Attend a meeting, volunteer for an event, or just get to know your neighbors. Every little bit counts, and together, we can make Forest Park an even better place to live.
+COHOST: Don't forget to get involved in your community, and we'll catch you on the next episode.
 
 ---
 

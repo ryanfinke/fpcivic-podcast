@@ -1,7 +1,7 @@
 # July 2026 Meeting Recap
 
 - Episode type: EP1 Meeting Recap
-- Generated: 2026-07-22T01:53:06.925909+00:00
+- Generated: 2026-07-22T02:20:07.847782+00:00
 - Sources:
   - Meeting minutes — https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/
 
@@ -9,30 +9,30 @@
 
 ## Generated script
 
-HOST: Hey everyone, welcome back to the Forest Park Civic Association News Podcast! I'm your host, and I'm excited to be here with my cohost to discuss the latest updates from our community.
-COHOST: That's right, and we've got a lot to cover from the latest meeting. Let's start with the guest speakers. We had Hugo Barragan from the Franklin County Auditor's Office talking about the new Property Value Updates.
-HOST: That's right, and he had a slideshow and handouts to help explain the process. If you're interested in checking out the process for disputing your home value and potentially lowering your property taxes, you can visit the website https://audr-kyhv.franklincountyohio.gov/.
-COHOST: Exactly, and it's great that we had someone come in to explain the process in person. We also had Sherrie Johnson Dantzler, the YMCA Director, talking about some upcoming events, including Campfires across America at the North YMCA.
-HOST: That sounds like a great event, and it's happening on July 22nd from 6 to 8 pm. And the North YMCA is also hosting a National Night Out event on August 4th from 5 to 8 pm, which should be a lot of fun for the whole family.
-COHOST: Absolutely, and it's always great to see our community coming together like that. Moving on to the Public Relations Officer report, Mary Sguerra had some exciting news to share.
-HOST: That's right, our Forest Park 4th of July Parade Float won the Grand Marshal Award, which is a big deal. And a big thank you to everyone who helped out and volunteered to make it happen.
-COHOST: Definitely, and Mary also mentioned that the Fall Forest Park Community Garage Sale is coming up on September 12th, so mark your calendars for that. And if you can help pass out fliers from 9 to 10:30 am, that would be a big help.
-HOST: Now, let's talk about the Forester Editor report. Rita Woeste mentioned that the deadline for the August Forester is July 16th, so if you have any photos, ads, or articles you'd like to submit, now's the time to do it.
-COHOST: That's right, and Rita is also looking for volunteers to help with distributing the Forester around July 25th to 28th, since she'll be out of town. So if you can lend a hand, that would be great.
-HOST: Moving on to the Civic Action/311 Officer report, Ed Vanasdale clarified some questions people had about 311 issues, including cars parking on the street and blocking sidewalks.
-COHOST: Yeah, that's a big issue in our community, and it's great that Ed is working to address it. Now, let's talk about the Committee Reports. The Membership Coordinator, Mike Stone, had some updates to share.
-HOST: That's right, Mike mentioned that we're currently at 353 members, but our budget is based on 450, so we need to keep working to get more members. And we have some new members who aren't from the past two years, which is great to see.
-COHOST: Exactly, and Mike also encouraged Area Representatives to review the information he provided and see which memberships have been received. If you're an Area Rep, please take a look at that and let Mike know if you have any questions.
-HOST: Now, let's move on to the Old Business section. The Sign Team had an update to share about the city's response to their request for more signs at entrances to Forest Park.
-COHOST: That's right, unfortunately, the city refused their request. But the Sign Team is looking into getting quotes from a local company to install the signs themselves.
-HOST: Yeah, it's a shame that the city couldn't help out, but it's great that the Sign Team is taking initiative to get it done. And finally, let's talk about the New Business section. The Board expressed its appreciation to Scott Biggs for his dedicated service to the Forest Park Civic Association.
-COHOST: That's right, Scott is resigning from his positions as Area 5 Representative, Facebook Updates Coordinator, and Website Updates Coordinator. But we're grateful for all the time and effort he put into keeping our community informed and supporting the Association.
-HOST: Absolutely, and with Scott's resignation, those volunteer positions are now vacant. So if you're interested in serving the neighborhood, please consider stepping into one of those roles.
-COHOST: That's right, and if you're interested, just contact the FPCA to learn more. And that's all for today's episode, folks. Thanks for tuning in, and we'll see you next time.
-HOST: Before we go, just a reminder that the NCC Picnic is coming up on August 11th, and we'll be gathering at Gabby's on July 30th. So mark your calendars for those events, and we'll see you there.
-COHOST: And if you want to get involved or learn more about what's going on in our community, just visit our website or follow us on social media. We're always looking for new volunteers and members, so don't hesitate to reach out.
-HOST: That's right, and we're always happy to hear from you. So thanks again for listening, and we'll catch you next time on the Forest Park Civic Association News Podcast.
-COHOST: See you then!
+HOST: Hey everyone, welcome back to the Forest Park Civic Association News Podcast! I'm your host, and I'm excited to be here with my cohost to discuss the latest news and updates from our community.
+COHOST: That's right, and we have a lot to cover today. Our meeting recap episode is always packed with information, so let's jump right in. We had some great guest speakers at our last meeting, including Hugo Barragan from the Franklin County Auditor's Office, who came to talk to us about the new Property Value Updates.
+HOST: Yeah, that was really interesting. He had a slideshow and handouts, and he answered a lot of questions about how to dispute your home value in order to lower your property taxes. If you're interested in learning more, you can check out the process on the county auditor's website.
+COHOST: That's right. And we also had Sherrie Johnson Dantzler, the YMCA Director, who told us about some exciting events coming up, including Campfires across America at the North YMCA on Wednesday, July 22, from 6 to 8 pm. This is a national event, with over 1200 YMCAs participating, and it's a great opportunity to connect with your community.
+HOST: That sounds like a lot of fun. And I know the North YMCA is also hosting a National Night Out event on Tuesday, August 4, from 5 to 8 pm. This is a free community event with family fun, games, activities, food, and opportunities to connect with local first responders and community partners.
+COHOST: Absolutely. Now, let's move on to some of the other announcements and events that were discussed at the meeting. The Beautification Committee is looking for more nominations for their awards, and they need at least one more person to serve as a judge. The deadline for nominations is August 1, so if you're interested, be sure to get your nomination in on time.
+HOST: That's right. And don't forget that there will be no August FPCA meeting, because we'll all be attending the NCC Picnic on Tuesday, August 11, from 6 to 8 pm, at the new location, Warner Woods Pavilion, 4747 Central College Road, Columbus, OH 43081. The NCC will provide protein options, buns, and beverages, so please bring a dish to share.
+COHOST: Yeah, that sounds like a great event. And if you're looking for something to do a little sooner, don't forget about Gather at Gabby's on July 30, from 6:30 to 8:30 pm. This is a monthly event where you can hang out with your friends, FPCA officers, and committee chairs, and chat about what's going on in Forest Park.
+HOST: That's right. Now, let's talk about some of the other updates from the meeting. The Public Relations Officer, Mary Sguerra, had some great news to share. Our Forest Park 4th of July Parade Float won the Grand Marshal Award, which is a big deal. Congratulations to everyone who helped out and volunteered to make this happen.
+COHOST: Yeah, that's amazing. And a big thank you to Pat Kelly for driving his pick-up truck and pulling the float, to Katrina at the Dairy Queen for donating free cone coupons, and to Kenny Wiseman for lending us his trailer again. We really appreciate all of your support.
+HOST: Absolutely. And don't forget to save the date for the Fall Forest Park Community Garage Sale, which will be on September 12, from 9 am to 3 pm. If you can help pass out fliers on that day, please let Mary know.
+COHOST: That's right. Now, let's move on to the Forester Editor's report. Rita Woeste told us that the deadline for the August Forester is Thursday, July 16, so if you have any photos, ads, or articles you'd like to submit, please get them in on time. And if you can help with distributing the Foresters around July 25 to 28, that would be a big help.
+HOST: Yeah, that's a lot of work, and we appreciate Rita's efforts to keep our community informed. Now, let's talk about the Civic Action/three-one-one Officer's report. Ed Vanasdale clarified some questions people had about three-one-one issues, including cars parking on the street, blocking sidewalks, or parking the wrong way.
+COHOST: That's right. And if you have any concerns about these issues, you can reach out to Ed or call three-one-one to report them.
+HOST: Absolutely. Now, let's move on to the committee reports. The Business Representative, Sheridan Landon, has been making calls and waiting to hear back from some folks. And the Welcome Committee Chair, Latia VanDyke, is behind on the Welcome folders, but she's getting some help from Laura to catch up.
+COHOST: Yeah, that's great. And the Volunteer Coordinator position is still vacant, so if you're interested in helping out, please let us know. The Membership Coordinator, Mike Stone, had some great news to share. We now have 353 members, and our budget is based on 450, so we need another 97 members to reach our goal.
+HOST: That's right. And Mike thanked our outstanding Area Representatives for their time and effort in securing memberships. We really appreciate all that you do to support our community.
+COHOST: Absolutely. Now, let's talk about some of the old business that was discussed at the meeting. The Sign Team is still working on getting more signs installed at the entrances to Forest Park, but the city refused their request. They're going to get a quote from a local company to see how much it would cost to install the signs themselves.
+HOST: Yeah, that's a shame. But we're not giving up. We'll keep working on it and see what we can do.
+COHOST: That's right. And finally, let's talk about some of the new business that was discussed at the meeting. The Board expressed its sincere appreciation to Scott Biggs for his dedicated service to the Forest Park Civic Association. He's resigning from his positions as Area 5 Representative, Facebook Updates Coordinator, and Website Updates Coordinator.
+HOST: Yeah, we're going to miss Scott, but we're also excited to see who will step up to fill these roles. If you're interested in serving the neighborhood, please let us know.
+COHOST: Absolutely. Well, that's all for today's episode. We hope you found this recap of the meeting informative and helpful. If you have any questions or comments, please don't hesitate to reach out to us.
+HOST: Yeah, and don't forget to get involved in your community. Attend a meeting, volunteer for a committee, or just come out to one of our events. We're always happy to see new faces and meet new people.
+COHOST: That's right. Thanks for listening, and we'll see you next time on the Forest Park Civic Association News Podcast!
 
 ---
 
