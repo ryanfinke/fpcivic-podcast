@@ -423,6 +423,37 @@ def _speakable(text: str) -> bool:
     return any(c.isalnum() for c in text)
 
 
+# Also consume a lead-in preposition/verb ("...website at <url>") so removing the
+# address doesn't leave a dangling "at"/"to".
+_URL_RE = re.compile(r"(?:\b(?:at|on|via|visit|see|go to|to)\s+)?(?:https?://|www\.)\S+", re.I)
+_EMAIL_RE = re.compile(r"(?:\b(?:at|to|via|email)\s+)?[\w.+-]+@[\w-]+\.[\w.-]+", re.I)
+
+
+def normalize_for_speech(text: str) -> str:
+    """Make a line TTS-friendly: drop URLs/emails (unreadable aloud) and spell
+    civic service numbers like 311 as 'three-one-one'. Belt-and-suspenders with
+    the editorial guide, which also tells the model not to write these."""
+    text = _URL_RE.sub("", text)
+    text = _EMAIL_RE.sub("", text)
+    # tidy leftovers from a removed URL/email (e.g. "...on their website at ." )
+    text = re.sub(r"\b(?:at|visit|via)\s*([.,;:])", r"\1", text, flags=re.I)
+    text = re.sub(r"\(\s*\)", "", text)            # empty parens
+    text = re.sub(r"\s+([.,;:!?])", r"\1", text)   # space before punctuation
+    text = re.sub(r"\s{2,}", " ", text).strip()
+    text = re.sub(r"\b311\b", "three-one-one", text)
+    return text
+
+
+def clean_script(script: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    """Apply speech normalization and drop lines that end up empty/unspeakable."""
+    out = []
+    for speaker, text in script:
+        t = normalize_for_speech(text)
+        if t and _speakable(t):
+            out.append((speaker, t))
+    return out
+
+
 def _pause_after(text: str) -> int:
     """Vary the gap between turns so the exchange has natural rhythm: snappy after
     short reactions and questions, a longer beat after a full point."""
@@ -543,7 +574,7 @@ def make_meeting_episode(post: dict, state: dict, guide: str, dry_run: bool,
     system = build_system_prompt("meeting", guide)
     user = f"Meeting minutes title: {post['title']}\n\nMinutes content:\n{content[:MEETING_MAX_CHARS]}"
     try:
-        script = generate_script(system, user, MEETING_MAX_TOKENS)
+        script = clean_script(generate_script(system, user, MEETING_MAX_TOKENS))
     except Exception as e:
         print(f"  ERROR generating script: {e}", file=sys.stderr)
         return
@@ -606,7 +637,7 @@ def make_digest_episode(anchor: dict, source_urls: list[tuple[str, str]],
             "(lead with NCC development, then Outreach, then Forester security/"
             "supplemental; ignore Forester masthead/ads/directory noise).\n\n" + combined)
     try:
-        script = generate_script(system, user, DIGEST_MAX_TOKENS)
+        script = clean_script(generate_script(system, user, DIGEST_MAX_TOKENS))
     except Exception as e:
         print(f"  ERROR generating digest script: {e}", file=sys.stderr)
         return

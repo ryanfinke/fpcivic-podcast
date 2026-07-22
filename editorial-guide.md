@@ -21,7 +21,11 @@ Each meeting cycle produces exactly two episodes:
 ## Meeting Recap (EP1) — INCLUDE these sections
 
 - Guest speakers
-- Community Concerns / Announcements / Ideas
+- **Community Concerns / Announcements / Ideas — cover EVERY announcement and
+  event in full**, each with its date, time, and location. Spell out new venues
+  and full addresses (e.g. the NCC Picnic's new location and street address, the
+  monthly "Gather at Gabby's", and Beautification Committee deadlines / judge or
+  volunteer needs). Never reduce this to a single passing mention.
 - Public Relations Officer report
 - Forester Editor report
 - Civic Action / 311 Officer report
@@ -80,6 +84,16 @@ Each meeting cycle produces exactly two episodes:
 - Warm and human throughout — like two neighbors who genuinely care about Forest
   Park talking over coffee.
 
+## Order & spoken-word rules (for the audio)
+
+- Cover the included sections in the ORDER listed above. Do NOT save announcements
+  or events for the very end — Community Concerns/Announcements comes early, right
+  after guest speakers.
+- Never speak URLs or email addresses aloud. Refer to them naturally instead ("on
+  the county auditor's website," "reach out by email") — never read the address.
+- Write civic service numbers to be read digit-by-digit: 311 → "three-one-one".
+  Phone numbers and street addresses can be written normally.
+
 ## Depth & length (IMPORTANT — do not summarize)
 
 - Write a FULL episode: **at least 1,200 words** for the Meeting Recap and **at
@@ -101,3 +115,10 @@ _Add dated entries as feedback comes in. The most recent guidance wins._
   2–4 exchanges per section).
 - **2026-07-21:** The July recap dropped the Old Business "Sign Team" item. Old
   Business must ALWAYS be covered — emphasized in the INCLUDE list above.
+- **2026-07-21:** A host tried to read a full URL aloud (unlistenable) and said
+  "311" as "three hundred eleven." Added spoken-word rules: no URLs/emails aloud,
+  and 311 → "three-one-one" (also enforced in code via normalize_for_speech).
+- **2026-07-21:** Community Concerns/Announcements got dumped at the very end and
+  was incomplete (missed NCC Picnic new location/address, Gather at Gabby's,
+  Beautification deadline/judge). Added order rule (keep section order) and
+  required full coverage of every event with date/time/location.
