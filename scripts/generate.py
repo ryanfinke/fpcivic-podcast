@@ -75,11 +75,14 @@ HTTP_HEADERS = {"User-Agent": "FPCivicPodcastBot/1.0 (+https://www.fpcivic.org)"
 # counts input + max_tokens (reserved output) against EACH request. So every call
 # must keep (input + max_tokens) well under 12k, and the two episodes are spaced
 # ~65s apart (SPACING_SECONDS) so they fall in separate rate-limit windows.
+# Budget note: Groq free tier = 12,000 tokens/minute counted as (input + max_tokens)
+# per request. The editorial guide (~1,900 tok) is injected into every call, so the
+# digest caps below are sized to stay ~1,500 tokens under the limit with margin.
 MEETING_MAX_CHARS = 12000
 DIGEST_PER_SOURCE_CHARS = 17000  # fits the full keyword-filtered Forester (~16.5k)
-DIGEST_MAX_CHARS = 24000
-MEETING_MAX_TOKENS = 4096      # room for a full ~1,200+ word recap
-DIGEST_MAX_TOKENS = 4000       # ~11.3k req tokens worst case, under the 12k/min cap
+DIGEST_MAX_CHARS = 18000         # combined-source cap: ~4.5k tok + ~2.2k sys + 3.5k out
+MEETING_MAX_TOKENS = 4096        # room for a full ~1,200+ word recap
+DIGEST_MAX_TOKENS = 3500
 SPACING_SECONDS = 65
 
 # Forester newsletters are mostly masthead/ads; keep only pages relevant to the
@@ -645,27 +648,28 @@ def fetch_digest_sources(source_urls: list[tuple[str, str]]) -> list[tuple[str, 
 
 def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]],
                           state: dict, guide: str, dry_run: bool,
-                          title: str, slug: str, post_id: str) -> None:
+                          title: str, slug: str, post_id: str) -> bool:
     """One episode = meeting recap (part 1) + community reports (part 2), stitched
     into a single MP3. Two LLM calls (spaced for the rate limit): the first opens
     the show and hands off; the second continues straight into the reports and
-    wraps up. Keeps each half's proven depth while reading as one conversation."""
+    wraps up. Keeps each half's proven depth while reading as one conversation.
+    Returns True only if the episode was fully created (callers gate cleanup on it)."""
     print(f"\n[NEWS] {title}")
     try:
         minutes = scrape_post_content(minutes_post["link"])
     except Exception as e:
         print(f"  ERROR scraping minutes: {e}", file=sys.stderr)
-        return
+        return False
     if len(minutes) < 50:
         print("  SKIP: minutes content too short", file=sys.stderr)
-        return
+        return False
     print(f"  Scraped {len(minutes)} chars of minutes")
     digest = fetch_digest_sources(source_urls)
     all_sources = [("Meeting minutes", minutes_post["link"], minutes)] + digest
 
     if dry_run:
         save_transcript(slug, title, "Combined News", all_sources, None)
-        return
+        return True
 
     recap_sys = build_system_prompt("combined_recap", guide, month_label=cycle_label(minutes_post))
     recap_user = (f"Meeting minutes title: {minutes_post['title']}\n\n"
@@ -689,11 +693,11 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
             part2 = clean_script(generate_script(digest_sys, digest_user, DIGEST_MAX_TOKENS))
     except Exception as e:
         print(f"  ERROR generating script: {e}", file=sys.stderr)
-        return
+        return False
     script = part1 + part2
     if not script:
         print("  ERROR: empty script", file=sys.stderr)
-        return
+        return False
     dest = EPISODES_DIR / f"{slug}.mp3"
     try:
         asyncio.run(_build_audio(script, dest))
@@ -701,7 +705,7 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         print(f"  ERROR building audio: {e}", file=sys.stderr)
         if dest.exists():
             dest.unlink()
-        return
+        return False
     save_transcript(slug, title, "Combined News", all_sources, script_to_text(script))
     upsert_episode(state, {
         "post_id": post_id, "title": title, "source_link": minutes_post["link"],
@@ -712,6 +716,7 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         "digest_sources": [{"label": l, "url": u} for l, u, _ in digest],
     })
     print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB, {len(script)} lines)")
+    return True
 
 
 def make_standalone_episode(post: dict, state: dict, guide: str, dry_run: bool) -> None:
@@ -783,13 +788,16 @@ def build_feed(state: dict) -> None:
 
 def regenerate_july(state: dict, guide: str, dry_run: bool) -> None:
     print("=== Regenerating July 2026 combined episode (pinned sources) ===")
-    make_combined_episode(
+    ok = make_combined_episode(
         JULY_MINUTES, JULY_DIGEST_SOURCES, state, guide, dry_run,
         title="Forest Park Civic Association July News",
         slug="forest-park-civic-association-july-2026-news",
         post_id=JULY_MINUTES["id"])  # reuse the meeting post id -> replaces old recap entry
-    if not dry_run:
-        # Fold the earlier two-episode July artifacts into this one combined episode.
+    # Only fold in / drop the old artifacts if the combined episode actually built,
+    # so a failed run can't leave July with nothing.
+    if ok and not dry_run:
+        # The combined episode upserts on post_id 5567, replacing the old recap entry.
+        # Also drop the old standalone digest + outreach entries it now contains.
         remove_episode(state, "https://www.fpcivic.org/?p=5567#digest",
                        reason="merged into combined News episode")
         for pid in JULY_SUPERSEDES:
