@@ -122,13 +122,31 @@
     },
     {
       "post_id": "https://www.fpcivic.org/?p=5567",
-      "title": "July 2026 Meeting Recap",
+      "title": "Forest Park Civic Association July News",
       "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/",
-      "filename": "forest-park-civic-association-meeting-july-meeting.mp3",
+      "filename": "forest-park-civic-association-july-2026-news.mp3",
       "pub_date": "Thu, 16 Jul 2026 00:02:10 GMT",
       "author": "Lou Bernard",
-      "file_size": 6309549,
-      "generated_at": "2026-07-22T02:20:07.848044+00:00"
+      "file_size": 10743213,
+      "generated_at": "2026-07-22T12:06:37.401414+00:00",
+      "digest_sources": [
+        {
+          "label": "NCC Report for June 2026 (summary)",
+          "url": "https://www.fpcivic.org/ncc-report-for-june-2026/"
+        },
+        {
+          "label": "NCC Development Committee Report \u2014 June 24, 2026 (zoning cases & votes)",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf"
+        },
+        {
+          "label": "July 2026 Outreach Report",
+          "url": "https://www.fpcivic.org/july-2026-outreach-report/"
+        },
+        {
+          "label": "July 2026 Forester \u2014 security & supplemental items",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"
+        }
+      ]
     }
   ]
 }
