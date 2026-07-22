@@ -7,14 +7,19 @@ next generation will honor it. No code change needed to adjust editorial behavio
 
 ---
 
-## Episode types
+## Episode
 
-Each meeting cycle produces exactly two episodes:
+Each meeting cycle produces ONE episode titled **"Forest Park Civic Association
+[Month] News"** (e.g., "Forest Park Civic Association July News"). It has two
+parts, in this order:
 
-1. **Meeting Recap (EP1)** — built from the monthly FPCA meeting minutes.
-2. **Community Reports (EP2)** — a consolidated digest of the NCC development
-   report, the monthly Outreach report, and security/supplemental items from the
-   Forester. This replaces the old standalone outreach/NCC episodes.
+1. **Meeting Recap** — from the monthly FPCA meeting minutes (section rules below).
+2. **Community Reports** — the NCC development report, the monthly Outreach report,
+   and security/supplemental items from the Forester.
+
+One warm welcome at the very start and one wrap-up at the very end. Transition
+smoothly from the recap into the community reports — do NOT start a second intro
+partway through.
 
 ---
 
@@ -57,6 +62,9 @@ it its own moment. Aim for at least 1,300 words.
 - **Lead with the NCC development report.** Go through EACH zoning case / variance
   ONE AT A TIME: what's being proposed, the street address, the applicant, and how
   the committee voted (e.g., "approved 12–0"). Do not lump the cases together.
+  Refer to them sequentially as **"case one," "case two,"** etc. — do NOT read the
+  application/case reference codes (like #GC26-010 or #BZA26-057) or PID numbers
+  aloud; they're unlistenable.
 - **Outreach report** — cover EACH initiative/event separately and in detail; this
   is community-facing and important.
 - **Forester security / supplemental** — cover EACH security/patrol update and any
@@ -127,3 +135,7 @@ _Add dated entries as feedback comes in. The most recent guidance wins._
   was incomplete (missed NCC Picnic new location/address, Gather at Gabby's,
   Beautification deadline/judge). Added order rule (keep section order) and
   required full coverage of every event with date/time/location.
+- **2026-07-22:** Ryan loved both July episodes. Two changes: (1) refer to NCC
+  cases as "case one/two," never read the reference codes; (2) COMBINE the meeting
+  recap and community reports into ONE episode titled "Forest Park Civic
+  Association [Month] News," now and going forward.

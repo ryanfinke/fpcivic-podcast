@@ -140,14 +140,26 @@ def load_guide() -> str:
     return "(editorial guide file missing)"
 
 
-def build_system_prompt(kind: str, guide: str) -> str:
+def build_system_prompt(kind: str, guide: str, month_label: str = "") -> str:
     if kind == "meeting":
-        role = ("You are writing the MEETING RECAP (EP1) from the FPCA meeting "
+        role = ("You are writing a standalone MEETING RECAP from the FPCA meeting "
                 "minutes. Apply the INCLUDE/SKIP rules in the editorial guide exactly.")
-    else:
-        role = ("You are writing the COMMUNITY REPORTS digest (EP2), consolidating "
-                "several community reports into one cohesive conversation. Follow the "
-                "EP2 structure in the editorial guide.")
+    elif kind == "combined_recap":
+        role = (f"You are writing the FIRST half of ONE combined episode titled "
+                f"'Forest Park Civic Association {month_label} News'. Open with a warm "
+                f"welcome that names the show, then cover the MEETING RECAP sections per "
+                f"the editorial guide's INCLUDE/SKIP and order rules. Do NOT sign off or "
+                f"say goodbye — at the very end, hand off to the next segment with a short "
+                f"transition like 'Now let's get into the community reports.'")
+    elif kind == "combined_digest":
+        role = ("You are writing the SECOND half of the SAME combined episode, continuing "
+                "the exact same conversation between the two hosts. Do NOT open with a new "
+                "welcome or greeting — jump straight into the community reports. Follow the "
+                "EP2 (Community Reports) structure in the guide. End with a single wrap-up "
+                "for the whole episode and how residents can get involved.")
+    else:  # standalone digest (legacy)
+        role = ("You are writing the COMMUNITY REPORTS digest, consolidating several "
+                "community reports into one cohesive conversation. Follow the EP2 structure.")
     return (
         f"{ROLE_INTRO}\n\n{role}\n\n"
         f"===== EDITORIAL GUIDE (authoritative — follow exactly) =====\n{guide}\n\n"
@@ -435,6 +447,10 @@ def normalize_for_speech(text: str) -> str:
     the editorial guide, which also tells the model not to write these."""
     text = _URL_RE.sub("", text)
     text = _EMAIL_RE.sub("", text)
+    # strip NCC application/case reference codes and PIDs (unlistenable)
+    text = re.sub(r"\bapplication\s*#?\s*[A-Z]{2,3}\d{2}-\d{2,}\b", "", text, flags=re.I)
+    text = re.sub(r"#?\b[A-Z]{2,3}\d{2}-\d{2,}\b", "", text)
+    text = re.sub(r"\bPID\s*[\d-]+", "", text, flags=re.I)
     # tidy leftovers from a removed URL/email (e.g. "...on their website at ." )
     text = re.sub(r"\b(?:at|visit|via)\s*([.,;:])", r"\1", text, flags=re.I)
     text = re.sub(r"\(\s*\)", "", text)            # empty parens
@@ -532,6 +548,10 @@ def cycle_label(post: dict) -> str:
     return d.strftime("%B %Y")
 
 
+def month_name(post: dict) -> str:
+    return anchor_date(post).strftime("%B")
+
+
 def rfc2822_now() -> str:
     return formatdate(timeval=None, localtime=False, usegmt=True)
 
@@ -597,16 +617,11 @@ def make_meeting_episode(post: dict, state: dict, guide: str, dry_run: bool,
     print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB)")
 
 
-def make_digest_episode(anchor: dict, source_urls: list[tuple[str, str]],
-                        state: dict, guide: str, dry_run: bool,
-                        title: str | None = None, slug: str | None = None,
-                        post_id: str | None = None) -> None:
-    title = title or f"{cycle_label(anchor)} Community Reports"
-    slug = slug or slugify(title)
-    post_id = post_id or f"{anchor['id']}#digest"
-    print(f"\n[EP2] Community Reports digest: {title}")
-
-    resolved: list[tuple[str, str, str]] = []
+def fetch_digest_sources(source_urls: list[tuple[str, str]]) -> list[tuple[str, str, str]]:
+    """Fetch each (label, url) community-report source. Forester sources are
+    keyword-filtered to their security content. Returns (label, url, text[:cap]);
+    sources that fail or are empty are skipped with a log line, not fatal."""
+    resolved = []
     for label, url in source_urls:
         try:
             kw = FORESTER_KEYWORDS if "forester" in label.lower() else None
@@ -618,47 +633,79 @@ def make_digest_episode(anchor: dict, source_urls: list[tuple[str, str]],
                 print(f"  - {label}: too short/empty — skipped ({url})")
         except Exception as e:
             print(f"  - {label}: fetch failed — skipped ({e})")
+    return resolved
 
-    if not resolved:
-        print("  SKIP: no digest sources resolved", file=sys.stderr)
+
+def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]],
+                          state: dict, guide: str, dry_run: bool,
+                          title: str, slug: str, post_id: str) -> None:
+    """One episode = meeting recap (part 1) + community reports (part 2), stitched
+    into a single MP3. Two LLM calls (spaced for the rate limit): the first opens
+    the show and hands off; the second continues straight into the reports and
+    wraps up. Keeps each half's proven depth while reading as one conversation."""
+    print(f"\n[NEWS] {title}")
+    try:
+        minutes = scrape_post_content(minutes_post["link"])
+    except Exception as e:
+        print(f"  ERROR scraping minutes: {e}", file=sys.stderr)
         return
+    if len(minutes) < 50:
+        print("  SKIP: minutes content too short", file=sys.stderr)
+        return
+    print(f"  Scraped {len(minutes)} chars of minutes")
+    digest = fetch_digest_sources(source_urls)
+    all_sources = [("Meeting minutes", minutes_post["link"], minutes)] + digest
 
     if dry_run:
-        save_transcript(slug, title, "EP2 Community Reports", resolved, None)
+        save_transcript(slug, title, "Combined News", all_sources, None)
         return
 
-    combined = ""
-    for label, _, text in resolved:
-        combined += f"===== SOURCE: {label} =====\n{text}\n\n"
-    combined = combined[:DIGEST_MAX_CHARS]
-    system = build_system_prompt("digest", guide)
-    user = ("Consolidate the following community report sources into ONE cohesive "
-            "two-host digest, following the editorial guide's EP2 structure "
-            "(lead with NCC development, then Outreach, then Forester security/"
-            "supplemental; ignore Forester masthead/ads/directory noise).\n\n" + combined)
+    month = month_name(minutes_post)
+    recap_sys = build_system_prompt("combined_recap", guide, month_label=month)
+    recap_user = (f"Meeting minutes title: {minutes_post['title']}\n\n"
+                  f"Minutes content:\n{minutes[:MEETING_MAX_CHARS]}")
+    combined_src = ""
+    for label, _, text in digest:
+        combined_src += f"===== SOURCE: {label} =====\n{text}\n\n"
+    combined_src = combined_src[:DIGEST_MAX_CHARS]
+    digest_sys = build_system_prompt("combined_digest", guide)
+    digest_user = ("Continue the same episode with the community reports. Lead with the "
+                   "NCC development report — go through each case ONE AT A TIME, referring "
+                   "to them as 'case one', 'case two', etc. (never read the reference "
+                   "codes) — then Outreach, then Forester security/supplemental. Ignore "
+                   "the Forester masthead/ads/directory.\n\n" + combined_src)
     try:
-        script = clean_script(generate_script(system, user, DIGEST_MAX_TOKENS))
+        part1 = clean_script(generate_script(recap_sys, recap_user, MEETING_MAX_TOKENS))
+        part2 = []
+        if digest:
+            print(f"  (waiting {SPACING_SECONDS}s for the token-rate window)")
+            time.sleep(SPACING_SECONDS)
+            part2 = clean_script(generate_script(digest_sys, digest_user, DIGEST_MAX_TOKENS))
     except Exception as e:
-        print(f"  ERROR generating digest script: {e}", file=sys.stderr)
+        print(f"  ERROR generating script: {e}", file=sys.stderr)
+        return
+    script = part1 + part2
+    if not script:
+        print("  ERROR: empty script", file=sys.stderr)
         return
     dest = EPISODES_DIR / f"{slug}.mp3"
     try:
         asyncio.run(_build_audio(script, dest))
     except Exception as e:
-        print(f"  ERROR building digest audio: {e}", file=sys.stderr)
+        print(f"  ERROR building audio: {e}", file=sys.stderr)
         if dest.exists():
             dest.unlink()
         return
-    save_transcript(slug, title, "EP2 Community Reports", resolved, script_to_text(script))
+    save_transcript(slug, title, "Combined News", all_sources, script_to_text(script))
     upsert_episode(state, {
-        "post_id": post_id, "title": title, "source_link": anchor["link"],
-        "filename": dest.name, "pub_date": post_pub_date(anchor),
-        "author": anchor.get("author", "Forest Park Civic Association"),
+        "post_id": post_id, "title": title, "source_link": minutes_post["link"],
+        "filename": dest.name, "pub_date": post_pub_date(minutes_post),
+        "author": minutes_post.get("author", "Forest Park Civic Association"),
         "file_size": dest.stat().st_size,
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "digest_sources": [{"label": l, "url": u} for l, u, _ in resolved],
+        "digest_sources": [{"label": l, "url": u} for l, u, _ in digest],
     })
-    print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB)")
+    print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB, {len(script)} lines)")
 
 
 def make_standalone_episode(post: dict, state: dict, guide: str, dry_run: bool) -> None:
@@ -728,27 +775,19 @@ def build_feed(state: dict) -> None:
 # ---------------------------------------------------------------------------
 
 
-def regenerate_july(state: dict, guide: str, dry_run: bool, part: str = "all") -> None:
-    print(f"=== Regenerating July 2026 episodes (pinned sources, part={part}) ===")
-    do_recap = part in ("all", "recap")
-    do_digest = part in ("all", "digest")
-    if do_recap:
-        make_meeting_episode(
-            JULY_MINUTES, state, guide, dry_run,
-            slug="forest-park-civic-association-meeting-july-meeting",  # overwrite existing
-            title="July 2026 Meeting Recap")
-    if do_recap and do_digest and not dry_run:
-        print(f"  (waiting {SPACING_SECONDS}s to stay under Groq's per-minute token limit)")
-        time.sleep(SPACING_SECONDS)
-    if do_digest:
-        make_digest_episode(
-            JULY_MINUTES, JULY_DIGEST_SOURCES, state, guide, dry_run,
-            title="July 2026 Community Reports",
-            slug="july-2026-community-reports",
-            post_id="https://www.fpcivic.org/?p=5567#digest")
-        if not dry_run:
-            for pid in JULY_SUPERSEDES:
-                remove_episode(state, pid, reason="folded into July 2026 Community Reports")
+def regenerate_july(state: dict, guide: str, dry_run: bool) -> None:
+    print("=== Regenerating July 2026 combined episode (pinned sources) ===")
+    make_combined_episode(
+        JULY_MINUTES, JULY_DIGEST_SOURCES, state, guide, dry_run,
+        title="Forest Park Civic Association July News",
+        slug="forest-park-civic-association-july-2026-news",
+        post_id=JULY_MINUTES["id"])  # reuse the meeting post id -> replaces old recap entry
+    if not dry_run:
+        # Fold the earlier two-episode July artifacts into this one combined episode.
+        remove_episode(state, "https://www.fpcivic.org/?p=5567#digest",
+                       reason="merged into combined News episode")
+        for pid in JULY_SUPERSEDES:
+            remove_episode(state, pid, reason="merged into combined News episode")
 
 
 def run_cron(state: dict, guide: str, dry_run: bool) -> None:
@@ -763,17 +802,14 @@ def run_cron(state: dict, guide: str, dry_run: bool) -> None:
         kind = classify(post["title"])
         print(f"\n> {post['title']}  [{kind}]")
         if kind == "minutes":
-            make_meeting_episode(post, state, guide, dry_run)
             sources = resolve_digest_sources(post)
-            if sources:
-                if not dry_run:
-                    print(f"  (waiting {SPACING_SECONDS}s for the token-rate window)")
-                    time.sleep(SPACING_SECONDS)
-                make_digest_episode(post, sources, state, guide, dry_run)
-            else:
-                print("  No digest sources resolved for this cycle.")
+            make_combined_episode(
+                post, sources, state, guide, dry_run,
+                title=f"Forest Park Civic Association {month_name(post)} News",
+                slug=slugify(f"forest-park-civic-association-{cycle_label(post)}-news"),
+                post_id=post["id"])
         elif kind in ("outreach", "ncc", "forester"):
-            print(f"  Ingredient ({kind}) — folded into the digest, no standalone episode.")
+            print(f"  Ingredient ({kind}) — folded into the combined episode, no standalone.")
         else:
             make_standalone_episode(post, state, guide, dry_run)
         if not dry_run:
@@ -784,9 +820,7 @@ def run_cron(state: dict, guide: str, dry_run: bool) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description="FP Civic Podcast generator")
     ap.add_argument("--regenerate-july", action="store_true",
-                    help="Regenerate July 2026 episode(s) from pinned sources")
-    ap.add_argument("--part", choices=["all", "recap", "digest"], default="all",
-                    help="Which July episode to regenerate (default: all)")
+                    help="Regenerate the combined July 2026 episode from pinned sources")
     ap.add_argument("--dry-run", action="store_true",
                     help="Resolve/scrape/extract sources and write transcripts, but "
                          "skip all LLM and TTS calls (no API key needed)")
@@ -802,7 +836,7 @@ def main() -> None:
     state = load_state()
 
     if args.regenerate_july:
-        regenerate_july(state, guide, args.dry_run, args.part)
+        regenerate_july(state, guide, args.dry_run)
     else:
         run_cron(state, guide, args.dry_run)
 
