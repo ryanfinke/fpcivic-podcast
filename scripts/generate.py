@@ -507,6 +507,30 @@ def generate_script(system_prompt: str, user_content: str, max_tokens: int) -> l
     return lines
 
 
+SUMMARY_SYSTEM = (
+    "Summarize this community-news podcast transcript as ONE line of comma-separated "
+    "SPECIFIC topics and events actually discussed. Name the real content (e.g. 'dog "
+    "licensing, May 16 garage sale, cars stolen while left running') — NOT section names "
+    "like 'NCC update', 'outreach report', or 'new business'. Max 200 characters, no "
+    "trailing period. Output only the summary line.")
+
+
+def generate_summary(script_text: str) -> str:
+    """A one-line, <=200-char, content-focused summary for the website. Best-effort:
+    returns '' if the LLM call fails (e.g. rate limit) so it never blocks an episode."""
+    try:
+        from groq import Groq
+        resp = Groq(api_key=GROQ_API_KEY).chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "system", "content": SUMMARY_SYSTEM},
+                      {"role": "user", "content": script_text[:8000]}],
+            temperature=0.3, max_tokens=120)
+        return resp.choices[0].message.content.strip().strip('"')[:200]
+    except Exception as e:
+        print(f"  WARN: summary generation failed: {e}", file=sys.stderr)
+        return ""
+
+
 async def _synth(text: str, speaker: str, path: str) -> bool:
     """Synthesize one line with per-host prosody and retries. Returns True on
     success. A single line that can't be synthesized is skipped rather than
@@ -843,9 +867,12 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         if dest.exists():
             dest.unlink()
         return False
-    save_transcript(slug, title, "Combined News", all_sources, script_to_text(script))
+    script_text = script_to_text(script)
+    save_transcript(slug, title, "Combined News", all_sources, script_text)
     upsert_episode(state, {
         "post_id": post_id, "title": title, "source_link": minutes_post["link"],
+        "web_title": f"{cycle_label(minutes_post)} FPCA News",
+        "summary": generate_summary(script_text),
         "filename": dest.name, "pub_date": post_pub_date(minutes_post),
         "author": minutes_post.get("author", "Forest Park Civic Association"),
         "file_size": dest.stat().st_size,

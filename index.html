@@ -82,6 +82,12 @@
 
     .episode h2 a:hover { text-decoration: underline; }
 
+    .summary {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
     .meta {
       font-size: 0.8rem;
       color: #777;
@@ -144,6 +150,11 @@
     );
   }
 
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
   fetch('state.json')
     .then(r => r.json())
     .then(data => {
@@ -159,8 +170,11 @@
       episodes.forEach(ep => {
         const div = document.createElement('div');
         div.className = 'episode';
+        const displayTitle = ep.web_title || titleCase(ep.title);
+        const summaryHtml = ep.summary ? `<div class="summary">${escapeHtml(ep.summary)}</div>` : '';
         div.innerHTML = `
-          <h2><a href="${ep.source_link}" target="_blank" rel="noopener">${titleCase(ep.title)}</a></h2>
+          <h2><a href="${ep.source_link}" target="_blank" rel="noopener">${escapeHtml(displayTitle)}</a></h2>
+          ${summaryHtml}
           <div class="meta">${formatDate(ep.pub_date)} &middot; ${ep.author} &middot; ${formatSize(ep.file_size)}</div>
           <audio controls preload="none" src="episodes/${ep.filename}"></audio>
         `;
