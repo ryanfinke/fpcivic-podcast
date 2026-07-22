@@ -923,10 +923,12 @@ def build_feed(state: dict) -> None:
     atom.set("type", "application/rss+xml")
 
     for ep in reversed(episodes):
+        disp_title = ep.get("web_title") or ep["title"]
+        summary = ep.get("summary") or f"AI-generated conversational recap of: {disp_title}"
         item = ET.SubElement(channel, "item")
-        ET.SubElement(item, "title").text = ep["title"]
+        ET.SubElement(item, "title").text = disp_title
         ET.SubElement(item, "link").text = ep["source_link"]
-        ET.SubElement(item, "description").text = f"AI-generated podcast of: {ep['title']}"
+        ET.SubElement(item, "description").text = summary
         ET.SubElement(item, "pubDate").text = ep["pub_date"]
         ET.SubElement(item, "guid", isPermaLink="false").text = ep["post_id"]
         enc = ET.SubElement(item, "enclosure")
@@ -935,8 +937,7 @@ def build_feed(state: dict) -> None:
         enc.set("type", "audio/mpeg")
         ET.SubElement(item, "{http://www.itunes.com/dtds/podcast-1.0.dtd}author").text = (
             ep.get("author", "Forest Park Civic Association"))
-        ET.SubElement(item, "{http://www.itunes.com/dtds/podcast-1.0.dtd}summary").text = (
-            f"AI-generated conversational recap of: {ep['title']}")
+        ET.SubElement(item, "{http://www.itunes.com/dtds/podcast-1.0.dtd}summary").text = summary
 
     tree = ET.ElementTree(rss)
     ET.indent(tree, space="  ")

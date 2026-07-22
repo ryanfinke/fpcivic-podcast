@@ -1,11 +1,11 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:ns0="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:ns1="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Forest Park Civic Association News Podcast</title>
     <link>https://www.fpcivic.org</link>
     <description>Automated conversational podcast of Forest Park Civic Association meeting recaps and community reports. Powered by AI.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Jul 2026 22:29:36 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 22:49:35 GMT</lastBuildDate>
     <generator>fpcivic-podcast (Groq + Edge TTS)</generator>
     <ns0:author>Forest Park Civic Association</ns0:author>
     <ns0:summary>AI-generated conversational recaps of Forest Park Civic Association meetings.</ns0:summary>
@@ -13,49 +13,49 @@
     <ns0:explicit>no</ns0:explicit>
     <ns1:link href="https://ryanfinke.github.io/fpcivic-podcast/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Forest Park Civic Association July News</title>
+      <title>July 2026 FPCA News</title>
       <link>https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/</link>
-      <description>AI-generated podcast of: Forest Park Civic Association July News</description>
+      <description>Property-value disputes, YMCA Campfires and National Night Out, the July 4th float's Grand Marshal award, no August meeting (NCC picnic instead), and school banner permits</description>
       <pubDate>Thu, 16 Jul 2026 00:02:10 GMT</pubDate>
       <guid isPermaLink="false">https://www.fpcivic.org/?p=5567</guid>
       <enclosure url="https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-july-2026-news.mp3" length="10743213" type="audio/mpeg" />
       <ns0:author>Lou Bernard</ns0:author>
-      <ns0:summary>AI-generated conversational recap of: Forest Park Civic Association July News</ns0:summary>
+      <ns0:summary>Property-value disputes, YMCA Campfires and National Night Out, the July 4th float's Grand Marshal award, no August meeting (NCC picnic instead), and school banner permits</ns0:summary>
     </item>
     <item>
-      <title>Forest Park Civic Association June News</title>
+      <title>June 2026 FPCA News</title>
       <link>https://www.fpcivic.org/forest-park-civic-association-meeting-june-meeting/</link>
-      <description>AI-generated podcast of: Forest Park Civic Association June News</description>
+      <description>Police crime-stats update, Horizon Science Academy's June 30 summer event, July 4th parade prep and Bikes-n-Trikes judges wanted, and Forester delivery help needed</description>
       <pubDate>Thu, 11 Jun 2026 13:38:43 GMT</pubDate>
       <guid isPermaLink="false">https://www.fpcivic.org/?p=5527</guid>
       <enclosure url="https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-june-2026-news.mp3" length="8333997" type="audio/mpeg" />
       <ns0:author>Lou Bernard</ns0:author>
-      <ns0:summary>AI-generated conversational recap of: Forest Park Civic Association June News</ns0:summary>
+      <ns0:summary>Police crime-stats update, Horizon Science Academy's June 30 summer event, July 4th parade prep and Bikes-n-Trikes judges wanted, and Forester delivery help needed</ns0:summary>
     </item>
     <item>
-      <title>Forest Park Civic Association May News</title>
+      <title>May 2026 FPCA News</title>
       <link>https://www.fpcivic.org/forest-park-civic-association-meeting-may-minutes/</link>
-      <description>AI-generated podcast of: Forest Park Civic Association May News</description>
+      <description>Columbia Gas pipeline approved, a mini-mart and gas station proposal rejected, Forest Park Night at Gabby's June 6, the garage sale, and July 4th 'America 250' float volunteers</description>
       <pubDate>Sun, 17 May 2026 14:57:24 GMT</pubDate>
       <guid isPermaLink="false">https://www.fpcivic.org/?p=5501</guid>
       <enclosure url="https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-may-2026-news.mp3" length="10546221" type="audio/mpeg" />
       <ns0:author>Lou Bernard</ns0:author>
-      <ns0:summary>AI-generated conversational recap of: Forest Park Civic Association May News</ns0:summary>
+      <ns0:summary>Columbia Gas pipeline approved, a mini-mart and gas station proposal rejected, Forest Park Night at Gabby's June 6, the garage sale, and July 4th 'America 250' float volunteers</ns0:summary>
     </item>
     <item>
-      <title>Forest Park Civic Association April News</title>
+      <title>April 2026 FPCA News</title>
       <link>https://www.fpcivic.org/forest-park-civic-association-meeting-april-minutes/</link>
-      <description>AI-generated podcast of: Forest Park Civic Association April News</description>
+      <description>Volunteers honored at the NCC banquet, dues now payable by PayPal, monthly Route 161 cleanups, cars being stolen while left running, and help wanted for the July 4th float</description>
       <pubDate>Sun, 19 Apr 2026 16:36:26 GMT</pubDate>
       <guid isPermaLink="false">https://www.fpcivic.org/?p=5463</guid>
       <enclosure url="https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-april-2026-news.mp3" length="9701037" type="audio/mpeg" />
       <ns0:author>Lou Bernard</ns0:author>
-      <ns0:summary>AI-generated conversational recap of: Forest Park Civic Association April News</ns0:summary>
+      <ns0:summary>Volunteers honored at the NCC banquet, dues now payable by PayPal, monthly Route 161 cleanups, cars being stolen while left running, and help wanted for the July 4th float</ns0:summary>
     </item>
     <item>
       <title>2026 Mulch Sale Update</title>
       <link>https://www.fpcivic.org/2026-mulch-sale-update/</link>
-      <description>AI-generated podcast of: 2026 Mulch Sale Update</description>
+      <description>AI-generated conversational recap of: 2026 Mulch Sale Update</description>
       <pubDate>Mon, 30 Mar 2026 23:15:31 GMT</pubDate>
       <guid isPermaLink="false">https://www.fpcivic.org/?p=5429</guid>
       <enclosure url="https://ryanfinke.github.io/fpcivic-podcast/episodes/2026-mulch-sale-update.mp3" length="3978285" type="audio/mpeg" />
@@ -63,14 +63,14 @@
       <ns0:summary>AI-generated conversational recap of: 2026 Mulch Sale Update</ns0:summary>
     </item>
     <item>
-      <title>Forest Park Civic Association March News</title>
+      <title>March 2026 FPCA News</title>
       <link>https://www.fpcivic.org/forest-park-civic-association-march-meeting/</link>
-      <description>AI-generated podcast of: Forest Park Civic Association March News</description>
+      <description>Dog licensing, property-tax appeals and homestead exemptions, the May 16 garage sale, the newsletter moving to Canva and needing delivery drivers, and a new police liaison officer</description>
       <pubDate>Wed, 18 Mar 2026 19:21:27 GMT</pubDate>
       <guid isPermaLink="false">https://www.fpcivic.org/?p=5402</guid>
       <enclosure url="https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-march-2026-news.mp3" length="7718445" type="audio/mpeg" />
       <ns0:author>Lou Bernard</ns0:author>
-      <ns0:summary>AI-generated conversational recap of: Forest Park Civic Association March News</ns0:summary>
+      <ns0:summary>Dog licensing, property-tax appeals and homestead exemptions, the May 16 garage sale, the newsletter moving to Canva and needing delivery drivers, and a new police liaison officer</ns0:summary>
     </item>
   </channel>
 </rss>
