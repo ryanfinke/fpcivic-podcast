@@ -23,15 +23,18 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import html
 import io
 import json
 import os
 import re
+import smtplib
 import sys
 import tempfile
 import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from email.message import EmailMessage
 from email.utils import formatdate, parsedate_to_datetime
 from pathlib import Path
 
@@ -624,6 +627,55 @@ def save_transcript(slug: str, title: str, kind: str,
     print(f"  Transcript: transcripts/{slug}.md")
 
 
+def send_notification_email(title: str, sources: list[tuple[str, str]],
+                            transcript_text: str) -> None:
+    """Email Ryan when an episode is generated: a link to the site, a bulleted list
+    of source links, and the full transcript (for admin awareness + QA). Requires
+    SMTP_USER / SMTP_PASS env (GitHub secrets); skips gracefully if unset."""
+    to_addr = os.environ.get("NOTIFY_EMAIL_TO", "ryan.finke@gmail.com")
+    smtp_user = os.environ.get("SMTP_USER", "")
+    smtp_pass = os.environ.get("SMTP_PASS", "")
+    smtp_host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+    smtp_port = int(os.environ.get("SMTP_PORT", "587"))
+    from_addr = os.environ.get("NOTIFY_EMAIL_FROM", smtp_user)
+    if not (smtp_user and smtp_pass):
+        print("  Email not sent: SMTP_USER/SMTP_PASS not configured.")
+        return
+
+    site = SITE_BASE_URL.rstrip("/") + "/index.html"
+    src_txt = "\n".join(f"- {label}: {url}" for label, url in sources) or "- (none)"
+    src_html = "\n".join(
+        f'<li><a href="{html.escape(url)}">{html.escape(label)}</a></li>'
+        for label, url in sources) or "<li>(none)</li>"
+
+    text_body = (f"A new episode was generated: {title}\n\n"
+                 f"Listen / all episodes:\n{site}\n\n"
+                 f"Sources used to produce it:\n{src_txt}\n\n"
+                 f"--- Full transcript ---\n\n{transcript_text}\n")
+    html_body = (f"<html><body>"
+                 f"<p>A new episode was generated: <strong>{html.escape(title)}</strong></p>"
+                 f'<p><a href="{html.escape(site)}">Listen / all episodes</a></p>'
+                 f"<p><strong>Sources used to produce it:</strong></p><ul>{src_html}</ul>"
+                 f"<hr><p><strong>Full transcript</strong></p>"
+                 f'<pre style="white-space:pre-wrap;font-family:inherit">'
+                 f"{html.escape(transcript_text)}</pre></body></html>")
+
+    msg = EmailMessage()
+    msg["Subject"] = f"New FPCA podcast episode: {title}"
+    msg["From"] = from_addr
+    msg["To"] = to_addr
+    msg.set_content(text_body)
+    msg.add_alternative(html_body, subtype="html")
+    try:
+        with smtplib.SMTP(smtp_host, smtp_port, timeout=30) as s:
+            s.starttls()
+            s.login(smtp_user, smtp_pass)
+            s.send_message(msg)
+        print(f"  Notification email sent to {to_addr}")
+    except Exception as e:
+        print(f"  WARN: notification email failed: {e}", file=sys.stderr)
+
+
 # ---------------------------------------------------------------------------
 # Slug / date helpers
 # ---------------------------------------------------------------------------
@@ -709,6 +761,7 @@ def make_meeting_episode(post: dict, state: dict, guide: str, dry_run: bool,
         "generated_at": datetime.now(timezone.utc).isoformat(),
     })
     print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB)")
+    send_notification_email(title, [(l, u) for l, u, _ in sources], script_to_text(script))
 
 
 def fetch_digest_sources(source_urls: list[tuple[str, str]]) -> list[tuple[str, str, str]]:
@@ -800,6 +853,7 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         "digest_sources": [{"label": l, "url": u} for l, u, _ in digest],
     })
     print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB, {len(script)} lines)")
+    send_notification_email(title, [(l, u) for l, u, _ in all_sources], script_to_text(script))
     return True
 
 
