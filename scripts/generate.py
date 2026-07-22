@@ -666,7 +666,7 @@ def send_notification_email(title: str, sources: list[tuple[str, str]],
     smtp_port = int(os.environ.get("SMTP_PORT", "587"))
     from_addr = os.environ.get("NOTIFY_EMAIL_FROM", smtp_user)
     if not (smtp_user and smtp_pass):
-        print("  Email not sent: SMTP_USER/SMTP_PASS not configured.")
+        print(">>> EMAIL NOTIFICATION: skipped (SMTP_USER/SMTP_PASS not configured)")
         return
 
     site = SITE_BASE_URL.rstrip("/") + "/index.html"
@@ -698,9 +698,9 @@ def send_notification_email(title: str, sources: list[tuple[str, str]],
             s.starttls()
             s.login(smtp_user, smtp_pass)
             s.send_message(msg)
-        print(f"  Notification email sent to {to_addr}")
+        print(f">>> EMAIL NOTIFICATION: sent to {to_addr}")
     except Exception as e:
-        print(f"  WARN: notification email failed: {e}", file=sys.stderr)
+        print(f">>> EMAIL NOTIFICATION: FAILED — {e}", file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------
