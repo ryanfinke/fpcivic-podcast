@@ -81,44 +81,48 @@
       "generated_at": "2026-07-04T11:44:28.372082+00:00"
     },
     {
-      "post_id": "https://www.fpcivic.org/?p=5488",
-      "title": "May 2026 Outreach Report",
-      "source_link": "https://www.fpcivic.org/may-2026-outreach-report/",
-      "filename": "may-2026-outreach-report.mp3",
-      "pub_date": "Thu, 14 May 2026 16:16:26 GMT",
-      "author": "Lou Bernard",
-      "file_size": 3522477,
-      "generated_at": "2026-07-04T11:45:34.316992+00:00"
-    },
-    {
-      "post_id": "https://www.fpcivic.org/?p=5490",
-      "title": "May 2026 NCC Report",
-      "source_link": "https://www.fpcivic.org/may-2026-ncc-report/",
-      "filename": "may-2026-ncc-report.mp3",
-      "pub_date": "Thu, 14 May 2026 16:26:54 GMT",
-      "author": "Lou Bernard",
-      "file_size": 4894125,
-      "generated_at": "2026-07-04T11:46:56.036052+00:00"
-    },
-    {
       "post_id": "https://www.fpcivic.org/?p=5501",
-      "title": "FOREST PARK CIVIC ASSOCIATION MEETING May Minutes",
+      "title": "Forest Park Civic Association May News",
       "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-may-minutes/",
-      "filename": "forest-park-civic-association-meeting-may-minutes.mp3",
+      "filename": "forest-park-civic-association-may-2026-news.mp3",
       "pub_date": "Sun, 17 May 2026 14:57:24 GMT",
       "author": "Lou Bernard",
-      "file_size": 3870381,
-      "generated_at": "2026-07-04T11:47:57.346253+00:00"
+      "file_size": 10546221,
+      "generated_at": "2026-07-22T21:51:12.162709+00:00",
+      "digest_sources": [
+        {
+          "label": "NCC Development Committee Report \u2014 April 29, 2026 (zoning cases & votes)",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/05/NCC_Development_Report_20260429.pdf"
+        },
+        {
+          "label": "May 2026 Outreach Report",
+          "url": "https://www.fpcivic.org/may-2026-outreach-report/"
+        },
+        {
+          "label": "May 2026 Forester \u2014 security & supplemental items",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/05-MAY-Forester-2026-HI-RES.pdf"
+        }
+      ]
     },
     {
       "post_id": "https://www.fpcivic.org/?p=5527",
-      "title": "FOREST PARK CIVIC ASSOCIATION MEETING    June Meeting",
+      "title": "Forest Park Civic Association June News",
       "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-june-meeting/",
-      "filename": "forest-park-civic-association-meeting-june-meeting.mp3",
+      "filename": "forest-park-civic-association-june-2026-news.mp3",
       "pub_date": "Thu, 11 Jun 2026 13:38:43 GMT",
       "author": "Lou Bernard",
-      "file_size": 4526253,
-      "generated_at": "2026-07-04T11:49:18.566160+00:00"
+      "file_size": 8333997,
+      "generated_at": "2026-07-22T21:59:49.893901+00:00",
+      "digest_sources": [
+        {
+          "label": "NCC Development Committee Report \u2014 May 27, 2026 (zoning cases & votes)",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260527_reva.pdf"
+        },
+        {
+          "label": "June 2026 Forester \u2014 security & supplemental items",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/06-JUNE-Forester-2026.pdf"
+        }
+      ]
     },
     {
       "post_id": "https://www.fpcivic.org/?p=5567",
