@@ -62,6 +62,13 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 VOICE_HOST = "en-US-AndrewMultilingualNeural"
 VOICE_COHOST = "en-US-AvaMultilingualNeural"
 
+# Per-host prosody so the two hosts feel like distinct people (free, via edge-tts
+# rate/pitch). Host is a touch slower/warmer; cohost slightly brighter and quicker.
+VOICE_PROSODY = {
+    "host":   {"voice": VOICE_HOST,   "rate": "-4%", "pitch": "-2Hz"},
+    "cohost": {"voice": VOICE_COHOST, "rate": "+3%", "pitch": "+3Hz"},
+}
+
 HTTP_HEADERS = {"User-Agent": "FPCivicPodcastBot/1.0 (+https://www.fpcivic.org)"}
 
 # Input/output sizing. NOTE: Groq's free tier caps at 12,000 tokens/minute and
@@ -393,13 +400,16 @@ def generate_script(system_prompt: str, user_content: str, max_tokens: int) -> l
     return lines
 
 
-async def _synth(text: str, voice: str, path: str) -> bool:
-    """Synthesize one line with retries. Returns True on success. A single line
-    that can't be synthesized is skipped rather than aborting the whole episode."""
+async def _synth(text: str, speaker: str, path: str) -> bool:
+    """Synthesize one line with per-host prosody and retries. Returns True on
+    success. A single line that can't be synthesized is skipped rather than
+    aborting the whole episode."""
     import edge_tts
+    p = VOICE_PROSODY[speaker]
     for attempt in range(3):
         try:
-            await edge_tts.Communicate(text, voice).save(path)
+            await edge_tts.Communicate(
+                text, p["voice"], rate=p["rate"], pitch=p["pitch"]).save(path)
             if os.path.exists(path) and os.path.getsize(path) > 0:
                 return True
         except Exception as e:
@@ -413,20 +423,30 @@ def _speakable(text: str) -> bool:
     return any(c.isalnum() for c in text)
 
 
+def _pause_after(text: str) -> int:
+    """Vary the gap between turns so the exchange has natural rhythm: snappy after
+    short reactions and questions, a longer beat after a full point."""
+    words = len(text.split())
+    if text.rstrip().endswith("?") or words <= 7:
+        return 220   # quick back-and-forth
+    if words >= 45:
+        return 520   # a beat to let a big point land
+    return 380
+
+
 async def _build_audio(script: list[tuple[str, str]], out_path: Path) -> None:
     from pydub import AudioSegment
     combined = AudioSegment.empty()
-    pause = AudioSegment.silent(duration=400)
     rendered = 0
     with tempfile.TemporaryDirectory() as tmp:
         for i, (speaker, text) in enumerate(script):
             if not _speakable(text):
                 continue  # skip empty/punctuation-only lines (edge-tts returns no audio)
-            voice = VOICE_HOST if speaker == "host" else VOICE_COHOST
             f = os.path.join(tmp, f"line_{i:03d}.mp3")
             print(f"  TTS [{speaker}]: {text[:60]}...")
-            if await _synth(text, voice, f):
-                combined += AudioSegment.from_mp3(f) + pause
+            if await _synth(text, speaker, f):
+                combined += AudioSegment.from_mp3(f) + AudioSegment.silent(
+                    duration=_pause_after(text))
                 rendered += 1
             else:
                 print(f"  WARN: skipped line {i} (no audio)", file=sys.stderr)

@@ -65,6 +65,21 @@ Each meeting cycle produces exactly two episodes:
 - No sound effects, music cues, stage directions, asterisks, or markdown.
 - End with a brief note on how residents can get involved or what's coming up.
 
+## Conversational style (make it feel like a real chat, not a reading)
+
+- The hosts genuinely converse — they do NOT take turns reading blocks. Include
+  real reactions ("Oh interesting," "Right, and here's what matters…"), short
+  follow-up questions, and moments where one builds on or gently pushes back on
+  the other.
+- Vary the rhythm: mix quick one- or two-line exchanges with longer explanations.
+  A punchy reaction line right after a big point makes it feel alive.
+- Use natural discourse markers (well, so, actually, you know, honestly) —
+  sparingly and naturally, not in every line.
+- Hand topics off smoothly ("That reminds me…", "Speaking of which…") instead of
+  announcing each section like an agenda item.
+- Warm and human throughout — like two neighbors who genuinely care about Forest
+  Park talking over coffee.
+
 ## Depth & length (IMPORTANT — do not summarize)
 
 - Write a FULL episode: **at least 1,200 words** for the Meeting Recap and **at
