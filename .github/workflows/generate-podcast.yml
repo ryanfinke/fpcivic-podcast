@@ -4,9 +4,6 @@ on:
   schedule:
     # Check for new posts daily at 9am ET (1pm UTC)
     - cron: "0 13 * * *"
-    # TEMP one-time: 2026-07-23 14:00 UTC (10am ET) — regenerate April (folds in the
-    # mulch sale + confirms the email notification). Remove after it fires.
-    - cron: "0 14 23 7 *"
   workflow_dispatch: # Allow manual runs
     inputs:
       regenerate_months:
@@ -46,7 +43,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           NOTIFY_EMAIL_TO: "ryan.finke@gmail.com"
-        run: python scripts/generate.py ${{ github.event.schedule == '0 14 23 7 *' && '--regenerate-months april' || (github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '') }}
+        run: python scripts/generate.py ${{ github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '' }}
 
       - name: Commit new episodes and updated feed
         run: |
