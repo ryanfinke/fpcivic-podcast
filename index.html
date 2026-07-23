@@ -114,6 +114,39 @@
       padding: 60px 0;
       color: #999;
     }
+
+    .feedback-cta { text-align: center; margin: 8px 0 24px; }
+    .feedback-btn {
+      background: #2e7d32; color: #fff; border: none;
+      padding: 10px 22px; border-radius: 20px; font-size: 0.9rem; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .feedback-btn:hover { background: #256428; }
+
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.5); padding: 16px;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff; border-radius: 12px; width: 100%; max-width: 440px;
+      padding: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+    .modal h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .modal .sub { font-size: 0.85rem; color: #666; margin-bottom: 14px; }
+    .modal textarea {
+      width: 100%; min-height: 120px; border: 1px solid #ccc; border-radius: 8px;
+      padding: 10px; font-family: inherit; font-size: 0.9rem; resize: vertical;
+    }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .human-check { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #444; margin-top: 12px; }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+    .modal-actions button { padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.9rem; }
+    .btn-cancel { background: #eee; color: #333; }
+    .btn-send { background: #2e7d32; color: #fff; }
+    .btn-send:disabled { opacity: 0.5; cursor: not-allowed; }
+    .modal .status { font-size: 0.85rem; margin-top: 10px; min-height: 1.1em; }
   </style>
 </head>
 <body>
@@ -128,7 +161,28 @@
 <main>
   <div id="loading">Loading episodes...</div>
   <div id="episodes"></div>
+  <div class="feedback-cta">
+    <button class="feedback-btn" id="fb-open" type="button">💬 Share feedback</button>
+  </div>
 </main>
+
+<div class="modal-overlay" id="fb-overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="fb-title">
+    <h3 id="fb-title">Share feedback</h3>
+    <p class="sub">What do you think of the podcast — what's helpful, what could be better? No contact info needed; comments are anonymous.</p>
+    <form id="fb-form">
+      <textarea id="fb-message" placeholder="Your comments…" required></textarea>
+      <!-- Honeypot: hidden from people, bots tend to fill it. Submissions with it set are dropped. -->
+      <input type="text" id="fb-hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="human-check"><input type="checkbox" id="fb-human"> I'm a human, not a bot</label>
+      <div class="status" id="fb-status"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" id="fb-cancel">Cancel</button>
+        <button type="submit" class="btn-send" id="fb-send" disabled>Send</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <script>
   function formatDate(rfc2822) {
@@ -188,6 +242,66 @@
     .catch(() => {
       document.getElementById('loading').textContent = 'Failed to load episodes.';
     });
+</script>
+
+<script>
+  (function () {
+    // Paste your free access key from https://web3forms.com (safe to expose publicly).
+    // Feedback is emailed to whatever address that key is registered to.
+    const WEB3FORMS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+
+    const overlay = document.getElementById('fb-overlay');
+    const form = document.getElementById('fb-form');
+    const msg = document.getElementById('fb-message');
+    const human = document.getElementById('fb-human');
+    const hp = document.getElementById('fb-hp');
+    const sendBtn = document.getElementById('fb-send');
+    const status = document.getElementById('fb-status');
+
+    const refresh = () => { sendBtn.disabled = !(human.checked && msg.value.trim()); };
+    const open = () => { overlay.classList.add('open'); status.textContent = ''; setTimeout(() => msg.focus(), 50); };
+    const close = () => overlay.classList.remove('open');
+
+    document.getElementById('fb-open').addEventListener('click', open);
+    document.getElementById('fb-cancel').addEventListener('click', close);
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    msg.addEventListener('input', refresh);
+    human.addEventListener('change', refresh);
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (hp.value) { close(); return; }  // honeypot filled -> silently drop (bot)
+      sendBtn.disabled = true; status.style.color = '#666'; status.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'FPCA Podcast — Website Feedback',
+            from_name: 'FPCA Podcast site',
+            botcheck: false,
+            message: msg.value.trim()
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          status.style.color = '#2e7d32';
+          status.textContent = 'Thanks! Your feedback was sent.';
+          msg.value = ''; human.checked = false;
+          setTimeout(close, 1500);
+        } else {
+          status.style.color = '#c00';
+          status.textContent = 'Sorry, something went wrong — please try again later.';
+        }
+      } catch (err) {
+        status.style.color = '#c00';
+        status.textContent = 'Network error — please try again later.';
+      }
+      refresh();
+    });
+  })();
 </script>
 
 </body>

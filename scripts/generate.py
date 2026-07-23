@@ -387,6 +387,42 @@ def fetch_source_text(url: str, keywords: list[str] | None = None) -> str:
     return scrape_post_content(url)
 
 
+def source_posted_date(url: str) -> str:
+    """Friendly posted date (e.g. 'Apr 19, 2026') for a fpcivic.org page, from its
+    <time datetime> or article:published_time meta. Returns '' when unavailable
+    (e.g. direct PDF links, which have no page date)."""
+    if url.lower().endswith(".pdf"):
+        return ""
+    try:
+        resp = requests.get(url, timeout=30, headers=HTTP_HEADERS)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+        raw = None
+        t = soup.find("time")
+        if t and t.get("datetime"):
+            raw = t["datetime"]
+        else:
+            meta = soup.find("meta", attrs={"property": "article:published_time"})
+            if meta and meta.get("content"):
+                raw = meta["content"]
+        if raw:
+            m = re.match(r"(\d{4})-(\d{2})-(\d{2})", raw)
+            if m:
+                from datetime import date as _date
+                return _date(int(m.group(1)), int(m.group(2)), int(m.group(3))).strftime("%b %d, %Y")
+    except Exception:
+        pass
+    return ""
+
+
+def rfc_to_friendly(s: str) -> str:
+    """Format an RFC-2822 date (from RSS) as 'Jul 16, 2026'; '' on failure."""
+    try:
+        return parsedate_to_datetime(s).strftime("%b %d, %Y")
+    except Exception:
+        return ""
+
+
 # ---------------------------------------------------------------------------
 # Date helpers & the recency resolver (for future automated cycles)
 # ---------------------------------------------------------------------------
@@ -654,7 +690,7 @@ def save_transcript(slug: str, title: str, kind: str,
     print(f"  Transcript: transcripts/{slug}.md")
 
 
-def send_notification_email(title: str, sources: list[tuple[str, str]],
+def send_notification_email(title: str, sources: list[tuple[str, str, str]],
                             transcript_text: str) -> None:
     """Email Ryan when an episode is generated: a link to the site, a bulleted list
     of source links, and the full transcript (for admin awareness + QA). Requires
@@ -670,10 +706,16 @@ def send_notification_email(title: str, sources: list[tuple[str, str]],
         return
 
     site = SITE_BASE_URL.rstrip("/") + "/index.html"
-    src_txt = "\n".join(f"- {label}: {url}" for label, url in sources) or "- (none)"
-    src_html = "\n".join(
-        f'<li><a href="{html.escape(url)}">{html.escape(label)}</a></li>'
-        for label, url in sources) or "<li>(none)</li>"
+
+    def _txt(label, url, date):
+        return f"- {label}: {url}" + (f" (posted {date})" if date else "")
+
+    def _html(label, url, date):
+        suffix = f" (posted {html.escape(date)})" if date else ""
+        return f'<li><a href="{html.escape(url)}">{html.escape(label)}</a>{suffix}</li>'
+
+    src_txt = "\n".join(_txt(*s) for s in sources) or "- (none)"
+    src_html = "\n".join(_html(*s) for s in sources) or "<li>(none)</li>"
 
     text_body = (f"A new episode was generated: {title}\n\n"
                  f"Listen / all episodes:\n{site}\n\n"
@@ -788,7 +830,9 @@ def make_meeting_episode(post: dict, state: dict, guide: str, dry_run: bool,
         "generated_at": datetime.now(timezone.utc).isoformat(),
     })
     print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB)")
-    send_notification_email(title, [(l, u) for l, u, _ in sources], script_to_text(script))
+    send_notification_email(
+        title, [(l, u, rfc_to_friendly(post.get("published", ""))) for l, u, _ in sources],
+        script_to_text(script))
 
 
 def fetch_digest_sources(source_urls: list[tuple[str, str]]) -> list[tuple[str, str, str]]:
@@ -884,7 +928,10 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         "digest_sources": [{"label": l, "url": u} for l, u, _ in digest],
     })
     print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB, {len(script)} lines)")
-    send_notification_email(title, [(l, u) for l, u, _ in all_sources], script_to_text(script))
+    email_sources = [("Meeting minutes", minutes_post["link"],
+                      rfc_to_friendly(minutes_post.get("published", "")))]
+    email_sources += [(l, u, source_posted_date(u)) for l, u, _ in digest]
+    send_notification_email(title, email_sources, script_text)
     return True
 
 
