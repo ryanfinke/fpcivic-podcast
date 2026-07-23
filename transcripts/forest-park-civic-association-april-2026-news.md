@@ -1,11 +1,12 @@
 # Forest Park Civic Association April News
 
 - Episode type: Combined News
-- Generated: 2026-07-22T22:27:18.368202+00:00
+- Generated: 2026-07-23T14:39:59.077297+00:00
 - Sources:
   - Meeting minutes — https://www.fpcivic.org/forest-park-civic-association-meeting-april-minutes/
   - NCC Development Committee Report — March 25, 2026 (zoning cases & votes) — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/04/NCC_Development_Report_20260325.pdf
   - April 2026 Outreach Report — https://www.fpcivic.org/april-2026-outreach-report/
+  - 2026 Mulch Sale — spring fundraiser announcement — https://www.fpcivic.org/2026-mulch-sale-update/
   - April 2026 Forester — security & supplemental items — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/04-APRIL-Forester-2026-hi-res.pdf
 
 ---
@@ -13,46 +14,68 @@
 ## Generated script
 
 HOST: Hey everybody, welcome to the Forest Park Civic Association News podcast. Today we're giving you an update for April 2026.
-COHOST: That's right, and we've got a lot to cover from the latest meeting, so let's jump right in. The meeting started with some great news, as the FPCA members and volunteers who were honored at the NCC banquet were recognized.
-HOST: That's right, and it's always great to see our community members being recognized for their hard work. The Volunteer of the Year Recipients were Katie Van Mercetta and Michael Cote, and Ed Vanasdale was recognized as a Dedicated Civic Volunteer Service Recipient.
-COHOST: And Dave Paul, who is the chair of the NCC Development Committee, was recognized for his 15 years of work dedication on the NCC Development Committee and as chairman of the committee. It's amazing to see people so committed to our community.
-HOST: Absolutely. The president also gave a special thank you to everyone who helped with the membership envelope stuffing, and reminded everyone that this year you can pay by check or via PayPal. They also included a survey in the membership envelopes to get more feedback from the community.
-COHOST: That's a great idea, and it's always important to get feedback from the community. Now, let's move on to the Community Concerns/Announcements/Ideas section. There were a few announcements, including the 161 Neighborhood Clean-up, which is held the 2nd Saturday of the month through October.
-HOST: Right, and people can meet behind the Jiffy Lube from 9:00-9:30 AM to receive supplies. The clean-up is from 9 AM until Noon, and for more information, people can visit Naba161TaskForce.org.
-COHOST: There was also an announcement about the Columbus Dog Policy, which requires leashes in public, with strict poop-scoop rules and voice control in designated areas. People can find more information on the city's website.
-HOST: The Public Relations Officer, Mary Sguerra, also announced that the Community Garage Sale will be on May 16th, and the sign-up form will be in this month's Forester. She's also looking for people to work with her on the 4th of July Float.
-COHOST: The Forester Editor, Rita Woeste, reminded everyone that June Forester articles must be sent to her by May 21st, and she's also looking for Forester delivery people in FP East. If anyone is interested, they can contact Lou or Rita.
-HOST: The Supplemental Security Officer, Daryl Van Mercetta, gave an update on the 18th precinct for the last 90 days. Officer Hicks pointed out that there are still a significant number of vehicles getting stolen, especially in the morning when people start their cars up and leave them unattended.
-COHOST: Many cars are also getting broken into, with vandals looking for guns. The Baymont Hotel on Morse is being shut down and boarded up for being a nuisance and many code violations. People can see the full report in the Forester.
-HOST: The Civic Action/three-one-one Officer, Ed Vanasdale, reported on two main issues for our area. People want to put in a mini-mart and gas station at the corner of Sandalwood and the access road, and Columbia Gas wants to put a refilling station by Northland Plaza on Cleveland Ave.
-COHOST: The committee is trying to get both groups to attend the May FPCA meeting to field concerns and questions. They'll keep everyone posted as more information comes in.
-HOST: Now, let's talk about the committee reports. The Membership Coordinator, Mike Stone, reported that the membership mailing is done, but the USPS has enacted more fees, making the new mailing fee just below $3000.
-COHOST: The NCC Representatives reported that there was no regular meeting of the Northland Community Council in April, but instead, the 2025 Awards Banquet was held at Villa Milano. Katie Van Mercetta and Michael Cote were honored as Forest Park's Volunteers of the Year.
-HOST: The NCC Development Representative, Ed Vanasdale, reported that the full report is on the website, and parade meetings are taking place at the YMCA at 7 pm on the 3rd Wednesday of every month.
-COHOST: Now, let's move on to the Old Business section. The National Night Out event is being proposed to shift from a YMCA-hosted event to neighborhood-focused front yard parties. The board will explore grants to provide small stipends for local hosts.
-HOST: The board will be meeting to create guidelines for residents who are interested in participating. The Family Picnic event is also being reinstated, and the board will begin recruiting a coordinator.
-COHOST: The Beautification Committee is currently on hold, but the Association is actively seeking a volunteer Chair to manage the program and oversee the award process.
-HOST: The New Business/Announcements/Ideas section included the cancellation of the Mulch Sale this year due to a lack of volunteers to help distribute the mulch to homes.
-COHOST: Leah Lewis from Columbia Gas will be back at the May meeting to explain the new project on Cleveland Ave. Now, let's get into the community reports.
-HOST: Now, let's move on to the community reports. We'll start with the NCC development report. There were several cases presented at the Northland Community Council Development Committee meeting. Let's go through them one by one. Case one is a zoning variance to permit commercial development in a C-2 district for food service, including a drive-through, and healthcare uses on Cleveland Avenue.
-COHOST: That's right. The committee approved this application 15-0, with one abstention. The variance reduces the required setback line from 60 feet to 33.68 feet. This is for a property located at 4873 Cleveland Avenue.
-HOST: Case two is a bit more complex. It's a variance to permit a 1090 square foot addition to an existing structure, which doesn't conform to the Title 34 CAC district regulations. This is for a property on Cleveland Avenue as well, at 6125 Cleveland Avenue.
-COHOST: The committee approved this application with four conditions. The conditions include installing and maintaining landscape and screening improvements, amending the variance to comply with certain landscaping requirements, constructing a pedestrian access sidewalk, and realigning or removing non-compliant lighting fixtures.
-HOST: Case three is a council variance to permit the use of a site zoned CPD, which currently only allows an automobile car wash facility, to be used as an automotive sales lot. This is for a property on Spring Run Drive, at 5799 Spring Run Drive.
-COHOST: The committee recommended disapproval of this application, citing concerns about the saturation of auto-oriented uses in the area and the potential impact on adjacent residential uses.
-HOST: Case four is a council variance to permit residential uses on the first floor of a building in a CPD district, along with a new site plan and building elevations. This is for a property on North Hamilton Road, at 5785 North Hamilton Road.
-COHOST: The committee recommended disapproval of this application as well, citing concerns about the lack of green space and outdoor amenities proposed for the development.
-HOST: Case five is a council variance to permit a residential care facility, with a building height of 50 feet and reduced parking requirements. This is for a property on East Dublin Granville Road, at 4991 East Dublin Granville Road.
-COHOST: The committee approved this application, with one member voting against it. This variance will allow for the development of a residential care facility, which could provide important services for our community.
-HOST: Now, let's move on to the Outreach report. There are several events and initiatives happening in our community that we want to highlight. The Friends of Woodward Park are hosting a community event on April 25th, with a cleanup event and opportunities to learn about the group's efforts to enhance and sustain the beauty of Woodward Park.
-COHOST: That's right. The North YMCA is also hosting a cultural event on May 1st, with international food, music, and live performances. And Northland High School is hosting its inaugural Northland Market on May 9th, with local vendors, food trucks, and music.
-HOST: The Forest Park Civic Association will have a table at the Northland Market, and we're looking for volunteers to help staff the table and promote our organization. If you're interested in getting involved, please let us know.
-COHOST: Now, let's move on to the Forester security and supplemental report. The Forester is our community newsletter, and it's a great way to stay informed about what's happening in our neighborhood.
-HOST: The Forester is published monthly, and it's available online or in print. The latest issue includes articles about the NCC development committee, the Forest Park Civic Association's membership drive, and upcoming events in our community.
-COHOST: The Forest Park Civic Association is also seeking volunteers to help with various initiatives, including the Welcome Committee and the Social Activities Committee. If you're interested in getting involved, please contact us.
-HOST: Finally, we want to remind everyone that the Forest Park Civic Association is here to support our community. We're a volunteer-driven organization, and we rely on the support of our members to make our community a better place to live.
-COHOST: If you're not already a member, please consider joining us. Membership is just $30 per year, and it's a great way to get involved and make a difference in our community.
-HOST: Thanks for listening to this episode of the Forest Park Civic Association News podcast. We'll be back next month with more updates and information about our community. In the meantime, if you have any questions or comments, please don't hesitate to reach out to us. You can find us online at fpcivic.org, or email us Thanks again, and we'll see you next time!
+COHOST: We've got a lot to cover, so let's jump right in. First off, there were no guest speakers at the April meeting, but we do want to recognize some of the FPCA members and volunteers who were honored at the NCC banquet.
+HOST: That's right. Katie Van Mercetta and Michael Cote were honored as Forest Park's Volunteers of the Year, and Ed Vanasdale was recognized for his dedicated civic volunteer service.
+COHOST: And Dave Paul was recognized for his 15 years of work on the NCC Development Committee. We're really proud of all the hard work our volunteers do in the community.
+HOST: Now, let's move on to Community Concerns and Announcements. The 161 Neighborhood Clean-up has started, and it's held on the second Saturday of every month through October.
+COHOST: If you're interested in participating, you can meet behind the Jiffy Lube on Dublin-Granville Road from 9 to 9:30 AM to receive supplies, and then the clean-up is from 9 AM to noon.
+HOST: Also, don't forget about the Columbus Dog Policy, which requires leashes in public areas, strict poop-scoop rules, and voice control in designated areas. You can find more information on the city's website.
+COHOST: The Community Garage Sale is coming up on May 16th, and the sign-up form will be in this month's Forester.
+HOST: And if you're interested in working on the 4th of July Float, Mary Sguerra is looking for people to help out, so be sure to contact her if you're interested.
+COHOST: Now, let's talk about the Forester. The editor, Rita Woeste, is looking for articles for the June issue, and they need to be sent in by May 21st.
+HOST: They're also looking for new delivery people, especially in the FP East area, so if you're interested, you can contact Lou or Rita.
+COHOST: Moving on to the Public Relations Officer report, Mary Sguerra mentioned that the Community Garage Sale is a great opportunity for residents to get involved and clean out their homes.
+HOST: The Forester Editor report also highlighted the new bags for delivery, which have been well-received by the stuffers and delivery people.
+COHOST: And Rita is excited to start using Canva as the new platform for creating the newsletter.
+HOST: Now, let's talk about the Supplemental Security Officer report. Officer Hicks gave an update on the 18th precinct, and there are still a significant number of vehicles getting stolen, especially in the morning when people start their cars and leave them unattended.
+COHOST: Many cars are also getting broken into, with vandals looking for guns. And the Baymont Hotel on Morse is being shut down and boarded up due to nuisance and code violations.
+HOST: The Civic Action/three-one-one Officer report highlighted two main issues for our area: a proposed mini-mart and gas station at the corner of Sandalwood and the access road, and a refilling station by Northland Plaza on Cleveland Avenue.
+COHOST: The committee is trying to get both groups to attend the May FPCA meeting to field concerns and questions.
+HOST: The hotel next to the old Chase Bank site is being leased by the homeless shelter board as transitional housing, and there have been no incidents reported from that property.
+COHOST: Now, let's move on to the Committee Reports. The Welcome Committee Chair, Latia VanDyke, brought welcome folders for new residents to the meeting, which will be distributed by the area representatives.
+HOST: The Membership Coordinator, Mike Stone, reported that the membership mailing is done, but the USPS has enacted new fees, increasing the mailing cost to just below $3000.
+COHOST: Thanks to resident Andy Hunt for providing the use of his truck to help get the membership envelopes to the post office.
+HOST: Signs for the Board, Chairs, and Area Reps will be delivered in the next week or so.
+COHOST: The NCC Representatives reported that there was no regular meeting in April, but the 2025 Awards Banquet was held at Villa Milano, where our own Ed Vanasdale was honored for his dedicated civic volunteer service.
+HOST: The NCC Development Representative, Ed Vanasdale, mentioned that the full report is available on the website, and parade meetings are taking place at the YMCA on the 3rd Wednesday of every month.
+COHOST: Now, let's talk about Old Business. The National Night Out event is being proposed to shift from a YMCA-hosted event to neighborhood-focused front yard parties.
+HOST: The Board will explore grants to provide small stipends for local hosts, and they'll be meeting to create guidelines for residents who are interested in participating.
+COHOST: The Family Picnic event is also being considered, and the Board will begin recruiting a coordinator.
+HOST: The Beautification Committee is currently on hold, but the Association is actively seeking a volunteer Chair to manage the program and oversee the award process.
+COHOST: And finally, the Mulch Sale has been cancelled this year due to a lack of volunteers to help distribute the mulch.
+HOST: The Board will work on building a volunteer base and hopes to bring it back next year.
+COHOST: Now, let's get into the community reports.
+HOST: Now that we've covered the meeting recap, let's move on to the community reports. First up, we have the NCC development report. There were several cases presented at the last meeting, so let's go through them one by one. Case one is an application for a BZA variance to reduce the required setback line from 60 feet to 33.68 feet to permit commercial development in a C-2 district. This is for a property located at 4873 Cleveland Avenue. The committee approved this application 15-0, with one abstention.
+COHOST: That's interesting. It sounds like the committee was in favor of this proposal. What's the plan for the property, exactly?
+HOST: According to the report, the applicant, Shirwa Farhiya, is planning to use the property for food service, including a drive-through, and healthcare uses. The committee's approval is a recommendation, of course, and the final decision will be made by the city.
+COHOST: Got it. And what about case two? What's the story there?
+HOST: Case two is an application for a BZA variance to permit a 1090 square foot addition to an existing structure in a C-2 district. This is for a property located at 6125 Cleveland Avenue. The committee approved this application 16-0, with four conditions attached.
+COHOST: Conditions? What kind of conditions?
+HOST: The conditions include requirements for landscaping and screening improvements, as well as changes to the variance from the original proposal. The committee wanted to make sure that the applicant, Buckeye State Auto Sales Co., would comply with certain standards and regulations.
+COHOST: That makes sense. It's good to see the committee taking a close look at these proposals and making sure they meet the necessary standards. What about case three?
+HOST: Case three is a council use variance to permit the use of a site zoned CPD for an automotive sales lot. This is for a property located at 5799 Spring Run Drive. The committee approved a motion to recommend disapproval of this application, 15-1.
+COHOST: Disapproval? What were the concerns about this proposal?
+HOST: The committee noted that there's already a saturation of auto-oriented uses in the area, and they didn't think it was a good idea to add another one. They also mentioned that the proposed use would be a higher intensity use than what's currently allowed under the CPD zoning.
+COHOST: I can see why they would be concerned about that. What about case four?
+HOST: Case four is a council variance to permit residential uses on the first floor of a building in a CPD district. This is for a property located at 5785 North Hamilton Road. The committee approved a motion to recommend disapproval of this application, 9-7.
+COHOST: Another disapproval. What were the concerns about this proposal?
+HOST: The committee was troubled by the lack of green space or outdoor amenities proposed for the site, especially since the applicant is planning to build a "55+ community" with deed-restricted housing.
+COHOST: That's a good point. Green space is important for any community, especially one that's designed for older adults.
+HOST: Absolutely. And finally, we have case five, which is an application for a council variance to permit a residential care facility in a CPD district. This is for a property located at 4991 East Dublin Granville Road. The committee approved a motion to recommend approval of this application, 15-1.
+COHOST: Approval? What's the plan for this facility?
+HOST: According to the report, the applicant, Evergreen Real Estate Group, is planning to build a residential care facility with a maximum height of 50 feet and 70 parking spaces. The committee's approval is a recommendation, of course, and the final decision will be made by the city.
+COHOST: Okay, I think that covers all the NCC development cases. Let's move on to the Outreach report. What's new and exciting in the world of outreach?
+HOST: Well, the Friends of Woodward Park are hosting a community event on April 25 to kick off Earth Day. They're looking for volunteers to help with a park cleanup, and Keep Columbus Beautiful will be providing the necessary equipment.
+COHOST: That sounds like a great opportunity for people to get involved and make a difference in their community. What else is happening in outreach?
+HOST: The North YMCA is hosting a cultural event on May 1, featuring international food, music, and performances. And Northland High School is hosting a market on May 9, with local vendors, food trucks, and music.
+COHOST: Those sound like fun events. I'm sure our listeners will be interested in attending. Are there any other community announcements or fundraisers that we should mention?
+HOST: Actually, yes. The Forest Park Civic Association is pausing its annual mulch sale this year due to staffing concerns. But there are still plenty of ways for people to get involved and support the community, such as joining or renewing their membership, attending monthly meetings, or volunteering for small tasks.
+COHOST: That's a shame about the mulch sale, but it's great that the civic association is still finding ways to engage with the community. What about security and supplemental items from the Forester? Are there any updates or concerns that we should mention?
+HOST: Yes, the Forester has a few security updates, including the introduction of a new police liaison, Officer Duane Hicks. He's replacing Officer Yandrich, who has moved to the mounted patrol unit. Officer Hicks can be reached or 614-645-1418, but he prefers to have questions routed through a single person.
+COHOST: That's good to know. It's always important to have a point of contact for security concerns. Are there any other supplemental items that we should mention?
+HOST: The Forester also has some information about the city's Block by Block community safety meeting, which was held on March 11. And there's a notice about the upcoming work on 161, which will likely demolish and remove the garden boxes along the road. If people want to save any of that material, they should do it after the bulbs bloom.
+COHOST: Okay, I think that covers everything. Thanks for summarizing all the community reports and updates for us today.
+HOST: No problem. It's always a lot to cover, but we want to make sure our listeners are informed and up-to-date on what's happening in the community. If you're interested in getting involved or learning more about any of these topics, be sure to check out the Forest Park Civic Association's website or attend one of our monthly meetings. We'd love to have you join us!
 
 ---
 
@@ -333,6 +356,27 @@ Northland High School will be hosting its Inaugural Northland Market on Saturday
 May 9, 2026 10 am – 1:00 pm
 . The faculty and students of NHS have organized a fun-filled community event with music, games, local vendors, and food trucks. A table and chairs have been reserved for the Forest Park Civic Association. This is a prime opportunity to meet members and friends of the NHS community and introduce them to what our civic association does for the Forest Park community. We’ll need volunteers to dress up our booth and table with the FPCA banner and welcome flags. We’ll also need copies of the FPCA “brag sheet” and membership forms to distribute and sign up new members.
 Let’s work together to keep Woodward Park and our neighborhoods beautiful and green!
+```
+
+### 2026 Mulch Sale — spring fundraiser announcement
+<https://www.fpcivic.org/2026-mulch-sale-update/>
+
+```
+Hi neighbors,
+I wanted to share an update about the Forest Park Civic Association’s annual Mulch Sale. After a lot of thought, I’ve decided to pause the sale for this year.
+Over the past few years, the mulch sale has grown into a huge success—last year alone, we delivered more than 1,200 bags across Forest Park East and West! That kind of support from our community has been incredible, and we’re truly grateful to everyone who has ordered mulch.
+The challenge, though, has been staffing the event on delivery day. Delivering 25,000 pounds of mulch takes a strong team of volunteers, and in recent years we’ve had a very small group—mostly the same dedicated FPCA officers, family members, and a few generous neighbors—carrying the load. With some of our regular helpers unavailable this year and others dealing with physical limitations (most of us are AARP-eligible), I simply don’t expect to have enough hands to make the event safe and successful. I was always hopeful that we’d have more volunteers join in, but we weren’t able to grow the team as much as we needed.
+Rather than stretch our volunteers too thin, I felt it was best to take a year off and regroup. If we can build a larger volunteer base, we’d love to bring the mulch sale back in the future—it’s a great fundraiser and a service many neighbors enjoy.
+In the meantime, there are still plenty of ways to support the FPCA:
+• Join or renew your membership during our April membership drive—just $30/year helps fund neighborhood initiatives and services.
+• Attend a monthly meeting and share your ideas—we’d love to hear from you. Meet our new co-presidents, mingle with your neighbors, and learn about the many things happening here.
+• Volunteer in small ways—we have plenty of opportunities that fit into busy schedules and don’t require heavy lifting.
+Keep an eye out for your membership packet in the mail this month, and please consider getting involved. The FPCA is entirely a volunteer-run non-profit community organization, and everything we do is powered by neighbors like you.
+Thank you again for your support, and I hope to see you at a meeting soon!
+Scott Biggs
+Mulchmaster
+Area 5 Representative
+Forest Park Civic Association
 ```
 
 ### April 2026 Forester — security & supplemental items
