@@ -64,7 +64,9 @@ it its own moment. Aim for at least 1,300 words.
   the committee voted (e.g., "approved 12–0"). Do not lump the cases together.
   Refer to them sequentially as **"case one," "case two,"** etc. — do NOT read the
   application/case reference codes (like #GC26-010 or #BZA26-057) or PID numbers
-  aloud; they're unlistenable.
+  aloud; they're unlistenable. State each property's street address only ONCE —
+  don't repeat the street name (say "4127 East Dublin-Granville Road" once, not
+  the road name again separately).
 - **Outreach report** — cover EACH initiative/event separately and in detail; this
   is community-facing and important.
 - **Forester security / supplemental** — cover EACH security/patrol update and any
@@ -112,8 +114,15 @@ it its own moment. Aim for at least 1,300 words.
   after guest speakers.
 - Never speak URLs or email addresses aloud. Refer to them naturally instead ("on
   the county auditor's website," "reach out by email") — never read the address.
-- Write civic service numbers to be read digit-by-digit: 311 → "three-one-one".
-  Phone numbers and street addresses can be written normally.
+- Transition into the community reports ONLY ONCE. The meeting-recap segment ends
+  by handing off (e.g., "Now let's get into the community reports"); the reports
+  segment then starts DIRECTLY with the first report. Do NOT have the second host
+  also announce "community reports" — no redundant double-intro.
+- Pronunciation & wording (also enforced in code, but write it this way):
+  - "311" → "three-one-one"; "614" → "six-one-four" (digit-by-digit, never "hundred").
+  - "161" → "one-sixty-one" (smooth, no pause); "RT 161" / "Route 161" → "route one-sixty-one".
+  - "BZA variance" → "zoning variance"; "C-2 district" → "commercial district".
+  - "security and supplemental items" → "supplemental security items".
 
 ## Depth & length (IMPORTANT — do not summarize)
 
@@ -150,3 +159,9 @@ _Add dated entries as feedback comes in. The most recent guidance wins._
 - **2026-07-22:** Drop "I'm your host" and any host self-introduction/names — the
   hosts are unnamed narrators. Open with a simple welcome + the update month (see
   Opening section). Applies going forward; the July episode was NOT re-run.
+- **2026-07-24:** Batch of pronunciation/wording fixes (see Order & spoken-word
+  rules) — 161→"one-sixty-one", RT 161→"route one-sixty-one", 614→"six-one-four",
+  BZA variance→"zoning variance", C-2 district→"commercial district", "security
+  and supplemental items"→"supplemental security items"; plus: don't double-
+  announce the community-reports transition, and don't repeat a property's street
+  name in the NCC section.

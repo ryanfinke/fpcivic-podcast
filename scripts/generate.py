@@ -252,9 +252,12 @@ def build_system_prompt(kind: str, guide: str, month_label: str = "") -> str:
     elif kind == "combined_digest":
         role = ("You are writing the SECOND half of the SAME combined episode, continuing "
                 "the exact same conversation between the two hosts. Do NOT open with a new "
-                "welcome or greeting — jump straight into the community reports. Follow the "
-                "EP2 (Community Reports) structure in the guide. End with a single wrap-up "
-                "for the whole episode and how residents can get involved.")
+                "welcome, greeting, OR a transition line — the previous segment ALREADY "
+                "handed off to the community reports, so do NOT re-announce it (no second "
+                "'now let's move to the community reports' / 'now that we've covered the "
+                "recap' line). Begin DIRECTLY with the first NCC development case. Follow "
+                "the EP2 (Community Reports) structure in the guide. End with a single "
+                "wrap-up for the whole episode and how residents can get involved.")
     else:  # standalone digest (legacy)
         role = ("You are writing the COMMUNITY REPORTS digest, consolidating several "
                 "community reports into one cohesive conversation. Follow the EP2 structure.")
@@ -616,7 +619,14 @@ def normalize_for_speech(text: str) -> str:
     text = re.sub(r"\(\s*\)", "", text)            # empty parens
     text = re.sub(r"\s+([.,;:!?])", r"\1", text)   # space before punctuation
     text = re.sub(r"\s{2,}", " ", text).strip()
+    # Numbers & wording for natural narration (documented in the editorial guide):
     text = re.sub(r"\b311\b", "three-one-one", text)
+    text = re.sub(r"\b614\b", "six-one-four", text)                 # Columbus area code
+    text = re.sub(r"\b(?:R[Tt]|Route|Rte)\.?\s*161\b", "Route one-sixty-one", text, flags=re.I)
+    text = re.sub(r"\b161\b", "one-sixty-one", text)                # SR-161 (smooth, no pause)
+    text = re.sub(r"\bBZA\s+(variances?)\b", r"zoning \1", text, flags=re.I)
+    text = re.sub(r"\bC-?2\s+district\b", "commercial district", text, flags=re.I)
+    text = re.sub(r"security and supplemental", "supplemental security", text, flags=re.I)
     return text
 
 
