@@ -10,6 +10,10 @@ on:
         description: "Months to regenerate as combined episodes, comma-separated (e.g. may,june,july). Blank = normal cron."
         type: string
         default: ""
+      reaudio:
+        description: "Months to re-render AUDIO ONLY from the existing transcript (no LLM), comma-separated."
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -43,7 +47,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           NOTIFY_EMAIL_TO: "ryan.finke@gmail.com"
-        run: python scripts/generate.py ${{ github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '' }}
+        run: python scripts/generate.py ${{ github.event.inputs.reaudio != '' && format('--reaudio {0}', github.event.inputs.reaudio) || (github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '') }}
 
       - name: Commit new episodes and updated feed
         run: |

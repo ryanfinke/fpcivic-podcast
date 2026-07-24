@@ -700,6 +700,23 @@ def save_transcript(slug: str, title: str, kind: str,
     print(f"  Transcript: transcripts/{slug}.md")
 
 
+def parse_script_from_transcript(slug: str) -> list[tuple[str, str]]:
+    """Recover (speaker, text) lines from a saved transcript's '## Generated script'
+    section — used to re-render audio from an existing script without an LLM call."""
+    path = TRANSCRIPTS_DIR / f"{slug}.md"
+    if not path.exists() or "## Generated script" not in path.read_text():
+        return []
+    block = path.read_text().split("## Generated script", 1)[1].split("## Source input", 1)[0]
+    lines = []
+    for line in block.splitlines():
+        line = line.strip()
+        if line.startswith("HOST:"):
+            lines.append(("host", line[5:].strip()))
+        elif line.startswith("COHOST:"):
+            lines.append(("cohost", line[7:].strip()))
+    return lines
+
+
 def send_notification_email(title: str, sources: list[tuple[str, str, str]],
                             transcript_text: str) -> None:
     """Email Ryan when an episode is generated: a link to the site, a bulleted list
@@ -1033,6 +1050,39 @@ def regenerate_months(keys: list[str], state: dict, guide: str, dry_run: bool) -
                 remove_episode(state, pid, reason="merged into combined News episode")
 
 
+def reaudio_months(keys: list[str], state: dict, dry_run: bool) -> None:
+    """Re-render an episode's AUDIO from its existing transcript script — applies the
+    current speech normalizations (pronunciation/wording), no LLM call, no email. The
+    transcript/script CONTENT is unchanged, so script-level issues (e.g. a redundant
+    transition or a repeated street name) are NOT fixed here — only a full regen does."""
+    for key in keys:
+        cfg = REGEN_CONFIGS.get(key)
+        if not cfg:
+            print(f"Unknown month '{key}' — choices: {', '.join(REGEN_CONFIGS)}", file=sys.stderr)
+            continue
+        slug = cfg["slug"]
+        script = clean_script(parse_script_from_transcript(slug))
+        if not script:
+            print(f"  No transcript script found for {slug} — skipping.", file=sys.stderr)
+            continue
+        print(f"\n[REAUDIO] {cfg['title']} — {len(script)} lines from existing transcript "
+              f"(applying current speech normalizations; no LLM)")
+        if dry_run:
+            continue
+        dest = EPISODES_DIR / f"{slug}.mp3"
+        try:
+            asyncio.run(_build_audio(script, dest))
+        except Exception as e:
+            print(f"  ERROR building audio: {e}", file=sys.stderr)
+            continue
+        for ep in state["episodes"]:
+            if ep["post_id"] == cfg["minutes"]["id"] or ep.get("filename") == f"{slug}.mp3":
+                ep["file_size"] = dest.stat().st_size
+                ep["generated_at"] = datetime.now(timezone.utc).isoformat()
+                break
+        print(f"  Re-rendered: {dest.name} ({dest.stat().st_size/1024:.0f} KB)")
+
+
 def run_cron(state: dict, guide: str, dry_run: bool) -> None:
     new_posts = fetch_new_posts(state)
     if not new_posts:
@@ -1065,12 +1115,15 @@ def main() -> None:
     ap.add_argument("--regenerate-months", default="",
                     help="Comma-separated months to regenerate as combined episodes from "
                          "pinned sources (e.g. 'may,june,july')")
+    ap.add_argument("--reaudio", default="",
+                    help="Comma-separated months to re-render AUDIO ONLY from the existing "
+                         "transcript (applies current speech normalizations; no LLM, no email)")
     ap.add_argument("--dry-run", action="store_true",
                     help="Resolve/scrape/extract sources and write transcripts, but "
                          "skip all LLM and TTS calls (no API key needed)")
     args = ap.parse_args()
 
-    if not args.dry_run and not GROQ_API_KEY:
+    if not args.dry_run and not args.reaudio and not GROQ_API_KEY:
         print("ERROR: GROQ_API_KEY is required (or use --dry-run)", file=sys.stderr)
         sys.exit(1)
 
@@ -1079,7 +1132,10 @@ def main() -> None:
     guide = load_guide()
     state = load_state()
 
-    if args.regenerate_months:
+    if args.reaudio:
+        reaudio_months([m.strip().lower() for m in args.reaudio.split(",") if m.strip()],
+                       state, args.dry_run)
+    elif args.regenerate_months:
         keys = [m.strip().lower() for m in args.regenerate_months.split(",") if m.strip()]
         regenerate_months(keys, state, guide, args.dry_run)
     else:
