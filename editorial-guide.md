@@ -21,6 +21,13 @@ One warm welcome at the very start and one wrap-up at the very end. Transition
 smoothly from the recap into the community reports — do NOT start a second intro
 partway through.
 
+**Say each item only ONCE across the whole episode.** Some announcements/events
+appear in BOTH the meeting minutes and a community report (e.g. the Beautification
+Contest, a garage sale, an event). Announce it a single time — in its first
+natural spot (usually the recap's Community Concerns) — and do NOT repeat it in the
+community-reports half. Only bring it up again if a report adds genuinely new,
+substantive detail.
+
 ---
 
 ## Meeting Recap (EP1) — INCLUDE these sections
@@ -159,6 +166,11 @@ _Add dated entries as feedback comes in. The most recent guidance wins._
 - **2026-07-22:** Drop "I'm your host" and any host self-introduction/names — the
   hosts are unnamed narrators. Open with a simple welcome + the update month (see
   Opening section). Applies going forward; the July episode was NOT re-run.
+- **2026-07-30:** Don't announce the same item twice across the episode. The July
+  episode announced the Beautification Contest in the recap AND again in the
+  community reports. Fix: the recap is now fed into the reports-half prompt as
+  "already covered — do not repeat," and the rule is documented in Episode above.
+  (July was NOT regenerated.)
 - **2026-07-24:** Batch of pronunciation/wording fixes (see Order & spoken-word
   rules) — 161→"one-sixty-one", RT 161→"route one-sixty-one", 614→"six-one-four",
   BZA variance→"zoning variance", C-2 district→"commercial district", "security

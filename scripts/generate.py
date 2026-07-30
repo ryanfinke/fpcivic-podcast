@@ -88,9 +88,10 @@ HTTP_HEADERS = {"User-Agent": "FPCivicPodcastBot/1.0 (+https://www.fpcivic.org)"
 # digest caps below are sized to stay ~1,500 tokens under the limit with margin.
 MEETING_MAX_CHARS = 12000
 DIGEST_PER_SOURCE_CHARS = 17000  # fits the full keyword-filtered Forester (~16.5k)
-DIGEST_MAX_CHARS = 18000         # combined-source cap: ~4.5k tok + ~2.2k sys + 3.5k out
+DIGEST_MAX_CHARS = 14000         # trimmed to leave room for the recap-dedup context below
+RECAP_CONTEXT_CHARS = 6000       # of the recap fed into the digest call so it won't repeat items
 MEETING_MAX_TOKENS = 4096        # room for a full ~1,200+ word recap
-DIGEST_MAX_TOKENS = 3500
+DIGEST_MAX_TOKENS = 2800         # digest half is short (~800 words); keeps req under 12k/min
 SPACING_SECONDS = 65
 
 # Forester newsletters are mostly masthead/ads; keep only pages relevant to the
@@ -261,8 +262,10 @@ def build_system_prompt(kind: str, guide: str, month_label: str = "") -> str:
                 "handed off to the community reports, so do NOT re-announce it (no second "
                 "'now let's move to the community reports' / 'now that we've covered the "
                 "recap' line). Begin DIRECTLY with the first NCC development case. Follow "
-                "the EP2 (Community Reports) structure in the guide. End with a single "
-                "wrap-up for the whole episode and how residents can get involved.")
+                "the EP2 (Community Reports) structure in the guide. Do NOT re-announce any "
+                "event or item the recap already covered (you'll be shown what it covered) "
+                "— each announcement is said only once across the whole episode. End with a "
+                "single wrap-up for the whole episode and how residents can get involved.")
     else:  # standalone digest (legacy)
         role = ("You are writing the COMMUNITY REPORTS digest, consolidating several "
                 "community reports into one cohesive conversation. Follow the EP2 structure.")
@@ -919,16 +922,27 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         combined_src += f"===== SOURCE: {label} =====\n{text}\n\n"
     combined_src = combined_src[:DIGEST_MAX_CHARS]
     digest_sys = build_system_prompt("combined_digest", guide)
-    digest_user = ("Continue the same episode with the community reports. Lead with the "
-                   "NCC development report — go through each case ONE AT A TIME, referring "
-                   "to them as 'case one', 'case two', etc. (never read the reference "
-                   "codes) — then Outreach, then any community announcements included below "
-                   "(e.g. fundraisers/sales), then Forester security/supplemental. Ignore "
-                   "the Forester masthead/ads/directory.\n\n" + combined_src)
     try:
         part1 = clean_script(generate_script(recap_sys, recap_user, MEETING_MAX_TOKENS))
         part2 = []
         if digest:
+            # Feed the recap into the digest call so it doesn't re-announce items that
+            # already appeared in the meeting recap (e.g. the Beautification Contest,
+            # garage sales, events that show up in both the minutes and a report).
+            recap_text = script_to_text(part1)[:RECAP_CONTEXT_CHARS]
+            digest_user = (
+                "Continue the same episode with the community reports. Lead with the "
+                "NCC development report — go through each case ONE AT A TIME, referring "
+                "to them as 'case one', 'case two', etc. (never read the reference codes) "
+                "— then Outreach, then any community announcements in the sources (e.g. "
+                "fundraisers/sales), then Forester supplemental security. Ignore the "
+                "Forester masthead/ads/directory.\n\n"
+                "CRITICAL: the meeting-recap half (shown below) ALREADY announced some "
+                "items. Do NOT announce any of them a second time — say each event/"
+                "announcement only ONCE across the whole episode. Only mention a "
+                "recap item again if a report adds genuinely new, substantive detail.\n\n"
+                "===== ALREADY COVERED IN THE RECAP (do not repeat) =====\n" + recap_text +
+                "\n\n===== COMMUNITY REPORT SOURCES =====\n" + combined_src)
             print(f"  (waiting {SPACING_SECONDS}s for the token-rate window)")
             time.sleep(SPACING_SECONDS)
             part2 = clean_script(generate_script(digest_sys, digest_user, DIGEST_MAX_TOKENS))
