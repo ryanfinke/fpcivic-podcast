@@ -209,6 +209,43 @@
       ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
+  // --- Private, cookieless listen analytics (website player only) ---
+  // Paste your Apps Script Web App URL after deploying analytics/Analytics.gs.
+  const ANALYTICS_ENDPOINT = "";
+  // Anonymous per-page-load session id (no cookie, no personal data).
+  const SID = Math.random().toString(36).slice(2) + Date.now().toString(36);
+
+  function sendEvent(ep, ev) {
+    if (!ANALYTICS_ENDPOINT) return;
+    try {
+      const body = JSON.stringify({ ep: ep, ev: ev, sid: SID, t: Date.now() });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(ANALYTICS_ENDPOINT, new Blob([body], { type: 'text/plain' }));
+      } else {
+        fetch(ANALYTICS_ENDPOINT, { method: 'POST', body: body, keepalive: true });
+      }
+    } catch (e) { /* analytics must never break playback */ }
+  }
+
+  // Fire once per session per episode: play, 10s, 25%, 50%, 75%, complete.
+  function instrumentAudio(audio, ep) {
+    if (!audio) return;
+    const fired = new Set();
+    const fire = ev => { if (!fired.has(ev)) { fired.add(ev); sendEvent(ep, ev); } };
+    audio.addEventListener('play', () => fire('play'));
+    audio.addEventListener('timeupdate', () => {
+      if (audio.currentTime >= 10) fire('10s');
+      const d = audio.duration;
+      if (d && isFinite(d)) {
+        const p = audio.currentTime / d;
+        if (p >= 0.25) fire('25');
+        if (p >= 0.50) fire('50');
+        if (p >= 0.75) fire('75');
+      }
+    });
+    audio.addEventListener('ended', () => fire('complete'));
+  }
+
   fetch('state.json')
     .then(r => r.json())
     .then(data => {
@@ -233,6 +270,7 @@
           <audio controls preload="none" src="episodes/${ep.filename}"></audio>
         `;
         container.appendChild(div);
+        instrumentAudio(div.querySelector('audio'), ep.web_title || ep.title);
       });
 
       container.insertAdjacentHTML('beforeend',

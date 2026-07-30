@@ -62,6 +62,11 @@ GUIDE_FILE = PROJECT_ROOT / "editorial-guide.md"
 SITE_BASE_URL = os.environ.get("SITE_BASE_URL", "https://OWNER.github.io/fpcivic-podcast")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
+# Prefix RSS enclosure URLs with OP3 (free, open-source podcast download analytics).
+# Only affects the feed apps use; the website plays the raw file (tracked separately).
+USE_OP3 = True
+OP3_PREFIX = "https://op3.dev/e/"
+
 VOICE_HOST = "en-US-AndrewMultilingualNeural"
 VOICE_COHOST = "en-US-AvaMultilingualNeural"
 
@@ -1010,7 +1015,8 @@ def build_feed(state: dict) -> None:
         ET.SubElement(item, "pubDate").text = ep["pub_date"]
         ET.SubElement(item, "guid", isPermaLink="false").text = ep["post_id"]
         enc = ET.SubElement(item, "enclosure")
-        enc.set("url", f"{SITE_BASE_URL}/episodes/{ep['filename']}")
+        mp3_url = f"{SITE_BASE_URL}/episodes/{ep['filename']}"
+        enc.set("url", (OP3_PREFIX + mp3_url) if USE_OP3 else mp3_url)
         enc.set("length", str(ep.get("file_size", 0)))
         enc.set("type", "audio/mpeg")
         ET.SubElement(item, "{http://www.itunes.com/dtds/podcast-1.0.dtd}author").text = (
