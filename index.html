@@ -218,12 +218,12 @@
   function sendEvent(ep, ev) {
     if (!ANALYTICS_ENDPOINT) return;
     try {
-      const body = JSON.stringify({ ep: ep, ev: ev, sid: SID, t: Date.now() });
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(ANALYTICS_ENDPOINT, new Blob([body], { type: 'text/plain' }));
-      } else {
-        fetch(ANALYTICS_ENDPOINT, { method: 'POST', body: body, keepalive: true });
-      }
+      // Use fetch (follows the Apps Script 302 redirect); sendBeacon doesn't.
+      fetch(ANALYTICS_ENDPOINT, {
+        method: 'POST',
+        body: JSON.stringify({ ep: ep, ev: ev, sid: SID, t: Date.now() }),
+        keepalive: true,
+      });
     } catch (e) { /* analytics must never break playback */ }
   }
 
