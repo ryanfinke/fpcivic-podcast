@@ -1,11 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <rss xmlns:ns0="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:ns1="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Forest Park Civic Association News Podcast</title>
     <link>https://www.fpcivic.org</link>
     <description>Automated conversational podcast of Forest Park Civic Association meeting recaps and community reports. Powered by AI.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jul 2026 22:36:19 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 22:37:18 GMT</lastBuildDate>
     <generator>fpcivic-podcast (Groq + Edge TTS)</generator>
     <ns0:author>Forest Park Civic Association</ns0:author>
     <ns0:summary>AI-generated conversational recaps of Forest Park Civic Association meetings.</ns0:summary>
