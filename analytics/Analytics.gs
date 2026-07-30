@@ -53,13 +53,19 @@ function setup() {
   const props = PropertiesService.getScriptProperties();
   let id = props.getProperty('SHEET_ID');
   if (!id) {
-    const ss = SpreadsheetApp.create('FPCA Podcast Analytics (private)');
-    const sh = ss.getActiveSheet();
-    sh.setName(SHEET_NAME);
-    sh.appendRow(['Timestamp', 'Episode', 'Milestone', 'SessionId']);
+    // Use the spreadsheet this script is bound to (the one you created manually).
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sh = ss.getSheetByName(SHEET_NAME);
+    if (!sh) {
+      sh = ss.getActiveSheet();
+      sh.setName(SHEET_NAME);
+    }
+    if (sh.getLastRow() === 0) {
+      sh.appendRow(['Timestamp', 'Episode', 'Milestone', 'SessionId']);
+    }
     id = ss.getId();
     props.setProperty('SHEET_ID', id);
-    Logger.log('Created analytics spreadsheet: ' + ss.getUrl());
+    Logger.log('Using existing spreadsheet: ' + ss.getUrl());
   } else {
     Logger.log('Using existing spreadsheet id: ' + id);
   }
@@ -133,7 +139,47 @@ function sheet_() {
   return SpreadsheetApp.openById(id).getSheetByName(SHEET_NAME);
 }
 
-/** Optional: run manually to preview this-month-so-far without waiting for the trigger. */
+/** Optional: run manually to send the standard report for the PREVIOUS month. */
 function emailReportNow() {
   emailMonthlyReport();
+}
+
+/** Test helper: emails the funnel for the CURRENT month-so-far (includes today's
+ * rows), so you can verify formatting/delivery without waiting for month-end. */
+function emailThisMonthNow() {
+  const rows = sheet_().getDataRange().getValues();
+  const now = new Date();
+  const start = new Date(now.getFullYear(), now.getMonth(), 1);
+  const end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  const data = {};
+  for (let i = 1; i < rows.length; i++) {
+    const ts = new Date(rows[i][0]);
+    if (ts < start || ts >= end) continue;
+    const ep = rows[i][1], ms = rows[i][2], sid = rows[i][3];
+    if (!data[ep]) { data[ep] = {}; MILESTONES.forEach(m => (data[ep][m] = {})); }
+    if (data[ep][ms]) data[ep][ms][sid] = true;
+  }
+  const size = o => Object.keys(o).length;
+  const month = Utilities.formatDate(start, Session.getScriptTimeZone(), 'MMMM yyyy');
+  let body = 'TEST PREVIEW — this is a manual test of the podcast analytics email.\n' +
+    'It shows website listens for ' + month + ' so far (the real report is sent ' +
+    'automatically on the 1st of each month for the full prior month).\n\n' +
+    'FPCA Podcast — website listen funnel, ' + month + ' (month-to-date)\n\n';
+  const eps = Object.keys(data).sort();
+  if (eps.length === 0) body += '(No website plays recorded yet.)\n';
+  eps.forEach(ep => {
+    const plays = Math.max(size(data[ep]['play']), size(data[ep]['10s']), size(data[ep]['25']),
+      size(data[ep]['50']), size(data[ep]['75']), size(data[ep]['complete']));
+    body += ep + '\n  Plays: ' + plays + '\n';
+    ['10s', '25', '50', '75', 'complete'].forEach(m => {
+      const n = size(data[ep][m]); const pct = plays ? Math.round((100 * n) / plays) : 0;
+      body += '    ' + MILESTONE_LABEL[m] + ': ' + n + '  (' + pct + '% of plays)\n';
+    });
+    body += '\n';
+  });
+  MailApp.sendEmail({
+    to: NOTIFY_EMAIL,
+    subject: 'FPCA Podcast analytics — TEST preview (' + month + ' month-to-date)',
+    body: body,
+  });
 }
