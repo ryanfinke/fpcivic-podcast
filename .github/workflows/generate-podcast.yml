@@ -14,6 +14,10 @@ on:
         description: "Months to re-render AUDIO ONLY from the existing transcript (no LLM), comma-separated."
         type: string
         default: ""
+      make_videos:
+        description: "Months to (re)build the Facebook MP4 from existing audio (no LLM), comma-separated."
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -34,8 +38,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Install ffmpeg + fonts
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
 
       - name: Install Python dependencies
         run: pip install -r scripts/requirements.txt
@@ -47,13 +51,13 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           NOTIFY_EMAIL_TO: "ryan.finke@gmail.com"
-        run: python scripts/generate.py ${{ github.event.inputs.reaudio != '' && format('--reaudio {0}', github.event.inputs.reaudio) || (github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '') }}
+        run: python scripts/generate.py ${{ github.event.inputs.make_videos != '' && format('--make-videos {0}', github.event.inputs.make_videos) || (github.event.inputs.reaudio != '' && format('--reaudio {0}', github.event.inputs.reaudio) || (github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '')) }}
 
       - name: Commit new episodes and updated feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add episodes/ transcripts/ feed.xml state.json
+          git add episodes/ transcripts/ videos/ feed.xml state.json
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

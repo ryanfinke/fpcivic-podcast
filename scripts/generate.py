@@ -29,6 +29,7 @@ import json
 import os
 import re
 import smtplib
+import subprocess
 import sys
 import tempfile
 import time
@@ -55,9 +56,13 @@ DEV_REPORTS_URL = "https://www.fpcivic.org/development-reports/"
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 EPISODES_DIR = PROJECT_ROOT / "episodes"
 TRANSCRIPTS_DIR = PROJECT_ROOT / "transcripts"
+VIDEOS_DIR = PROJECT_ROOT / "videos"
 FEED_FILE = PROJECT_ROOT / "feed.xml"
 STATE_FILE = PROJECT_ROOT / "state.json"
 GUIDE_FILE = PROJECT_ROOT / "editorial-guide.md"
+LOGO_PATH = PROJECT_ROOT / "assets" / "fpca-logo.png"  # optional; text-only card if absent
+VIDEO_FONT = os.environ.get(
+    "VIDEO_FONT", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")
 
 SITE_BASE_URL = os.environ.get("SITE_BASE_URL", "https://OWNER.github.io/fpcivic-podcast")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
@@ -685,6 +690,67 @@ def script_to_text(script: list[tuple[str, str]]) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Facebook video (audiogram) + caption
+# ---------------------------------------------------------------------------
+
+
+def _dt_escape(text: str) -> str:
+    """Escape a string for use inside an ffmpeg drawtext text='...' value."""
+    return (text.replace("\\", "\\\\").replace(":", "\\:")
+                .replace("'", "’").replace("%", "\\%"))
+
+
+def make_video(mp3_path: Path, out_path: Path, month_label: str) -> None:
+    """Render a 1280x720 MP4 for Facebook: the FPCA logo (if present) or a text
+    title card, the month/year, and an animated waveform driven by the audio."""
+    W, H = 1280, 720
+    bg, accent = "0x123f2a", "0x8BC34A"  # dark FPCA green + light green
+    has_logo = LOGO_PATH.exists()
+    fc = [f"color=c={bg}:s={W}x{H}:r=25[bg]"]
+    inputs = ["-i", str(mp3_path)]
+
+    if has_logo:
+        inputs += ["-i", str(LOGO_PATH)]
+        fc.append("[1:v]scale=760:-1[lg]")
+        fc.append("[bg][lg]overlay=x=(W-w)/2:y=90[base]")
+        base, subtitle_y = "base", 360   # logo already shows the org name
+        text_lines = [("News Podcast", 52, "white", subtitle_y),
+                      (month_label, 44, accent, subtitle_y + 78)]
+    else:
+        base, title_y = "bg", 200
+        text_lines = [("Forest Park Civic Association", 54, "white", title_y),
+                      ("News Podcast", 54, "white", title_y + 68),
+                      (month_label, 44, accent, title_y + 150)]
+
+    fc.append(f"[0:a]showwaves=s=1120x180:mode=cline:rate=25:colors={accent}[wv]")
+    fc.append(f"[{base}][wv]overlay=x=(W-w)/2:y=500:shortest=1[bw]")
+    draw = ",".join(
+        f"drawtext=fontfile={VIDEO_FONT}:text='{_dt_escape(t)}':fontcolor={c}"
+        f":fontsize={sz}:x=(w-text_w)/2:y={y}"
+        for (t, sz, c, y) in text_lines)
+    fc.append(f"[bw]{draw}[v]")
+
+    cmd = (["ffmpeg", "-y"] + inputs +
+           ["-filter_complex", ";".join(fc), "-map", "[v]", "-map", "0:a",
+            "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "25",
+            "-c:a", "aac", "-b:a", "192k", "-shortest", str(out_path)])
+    try:
+        subprocess.run(cmd, check=True, capture_output=True)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError("ffmpeg: " + e.stderr.decode("utf-8", "ignore")[-600:])
+
+
+def facebook_caption(month_label: str, summary: str, site_url: str) -> str:
+    cap = f"\U0001F399️ The {month_label} Forest Park Civic Association News podcast is out!"
+    s = (summary or "").strip().rstrip(".")
+    if s:
+        cap += f"\n\nThis month: {s}."
+    cap += f"\n\n\U0001F3A7 Listen to every episode: {site_url}"
+    cap += "\n\n#ForestPark #Columbus"
+    return cap
+
+
+# ---------------------------------------------------------------------------
 # Transcripts
 # ---------------------------------------------------------------------------
 
@@ -726,9 +792,11 @@ def parse_script_from_transcript(slug: str) -> list[tuple[str, str]]:
 
 
 def send_notification_email(title: str, sources: list[tuple[str, str, str]],
-                            transcript_text: str) -> None:
+                            transcript_text: str, video_url: str | None = None,
+                            fb_caption: str | None = None) -> None:
     """Email Ryan when an episode is generated: a link to the site, a bulleted list
-    of source links, and the full transcript (for admin awareness + QA). Requires
+    of source links, the full transcript (for admin awareness + QA), and — when
+    provided — the Facebook video download link + a ready-to-paste caption. Requires
     SMTP_USER / SMTP_PASS env (GitHub secrets); skips gracefully if unset."""
     to_addr = os.environ.get("NOTIFY_EMAIL_TO", "ryan.finke@gmail.com")
     smtp_user = os.environ.get("SMTP_USER", "")
@@ -752,14 +820,34 @@ def send_notification_email(title: str, sources: list[tuple[str, str, str]],
     src_txt = "\n".join(_txt(*s) for s in sources) or "- (none)"
     src_html = "\n".join(_html(*s) for s in sources) or "<li>(none)</li>"
 
+    fb_txt = ""
+    fb_html = ""
+    if video_url or fb_caption:
+        fb_txt = "\n=== Post to Facebook ===\n"
+        if video_url:
+            fb_txt += f"Download the video: {video_url}\n"
+        if fb_caption:
+            fb_txt += f"\nCaption (copy-paste):\n{fb_caption}\n"
+        fb_txt += "\n"
+        fb_html = "<hr><p><strong>Post to Facebook</strong></p>"
+        if video_url:
+            fb_html += (f'<p><a href="{html.escape(video_url)}">Download the video (.mp4)</a></p>')
+        if fb_caption:
+            fb_html += ('<p>Caption (copy-paste):</p>'
+                        f'<pre style="white-space:pre-wrap;font-family:inherit;'
+                        f'background:#f5f5f5;padding:10px;border-radius:6px">'
+                        f'{html.escape(fb_caption)}</pre>')
+
     text_body = (f"A new episode was generated: {title}\n\n"
                  f"Listen / all episodes:\n{site}\n\n"
-                 f"Sources used to produce it:\n{src_txt}\n\n"
-                 f"--- Full transcript ---\n\n{transcript_text}\n")
+                 f"Sources used to produce it:\n{src_txt}\n"
+                 f"{fb_txt}"
+                 f"\n--- Full transcript ---\n\n{transcript_text}\n")
     html_body = (f"<html><body>"
                  f"<p>A new episode was generated: <strong>{html.escape(title)}</strong></p>"
                  f'<p><a href="{html.escape(site)}">Listen / all episodes</a></p>'
                  f"<p><strong>Sources used to produce it:</strong></p><ul>{src_html}</ul>"
+                 f"{fb_html}"
                  f"<hr><p><strong>Full transcript</strong></p>"
                  f'<pre style="white-space:pre-wrap;font-family:inherit">'
                  f"{html.escape(transcript_text)}</pre></body></html>")
@@ -963,10 +1051,12 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         return False
     script_text = script_to_text(script)
     save_transcript(slug, title, "Combined News", all_sources, script_text)
+    summary = generate_summary(script_text)
+    month_label = cycle_label(minutes_post)
     upsert_episode(state, {
         "post_id": post_id, "title": title, "source_link": minutes_post["link"],
-        "web_title": f"{cycle_label(minutes_post)} FPCA News",
-        "summary": generate_summary(script_text),
+        "web_title": f"{month_label} FPCA News",
+        "summary": summary,
         "filename": dest.name, "pub_date": post_pub_date(minutes_post),
         "author": minutes_post.get("author", "Forest Park Civic Association"),
         "file_size": dest.stat().st_size,
@@ -974,10 +1064,24 @@ def make_combined_episode(minutes_post: dict, source_urls: list[tuple[str, str]]
         "digest_sources": [{"label": l, "url": u} for l, u, _ in digest],
     })
     print(f"  Saved: {dest.name} ({dest.stat().st_size/1024:.0f} KB, {len(script)} lines)")
+
+    # Facebook video (audiogram) + ready-to-post caption
+    video_url = None
+    try:
+        VIDEOS_DIR.mkdir(exist_ok=True)
+        video_dest = VIDEOS_DIR / f"{slug}.mp4"
+        make_video(dest, video_dest, month_label)
+        video_url = f"{SITE_BASE_URL}/videos/{video_dest.name}"
+        print(f"  Video: {video_dest.name} ({video_dest.stat().st_size/1024/1024:.1f} MB)")
+    except Exception as e:
+        print(f"  WARN: video generation failed: {e}", file=sys.stderr)
+    fb_caption = facebook_caption(month_label, summary, SITE_BASE_URL.rstrip("/") + "/index.html")
+
     email_sources = [("Meeting minutes", minutes_post["link"],
                       rfc_to_friendly(minutes_post.get("published", "")))]
     email_sources += [(l, u, source_posted_date(u)) for l, u, _ in digest]
-    send_notification_email(title, email_sources, script_text)
+    send_notification_email(title, email_sources, script_text,
+                            video_url=video_url, fb_caption=fb_caption)
     return True
 
 
@@ -1103,6 +1207,37 @@ def reaudio_months(keys: list[str], state: dict, dry_run: bool) -> None:
         print(f"  Re-rendered: {dest.name} ({dest.stat().st_size/1024:.0f} KB)")
 
 
+def make_videos_for(keys: list[str], state: dict) -> None:
+    """Backfill: render the Facebook MP4 (title card + waveform) from each month's
+    EXISTING audio — no audio change, no LLM. Logs a ready-to-post caption too."""
+    VIDEOS_DIR.mkdir(exist_ok=True)
+    by_slug = {e.get("filename", "").rsplit(".", 1)[0]: e for e in state.get("episodes", [])}
+    site = SITE_BASE_URL.rstrip("/") + "/index.html"
+    for key in keys:
+        cfg = REGEN_CONFIGS.get(key)
+        if not cfg:
+            print(f"Unknown month '{key}' — choices: {', '.join(REGEN_CONFIGS)}", file=sys.stderr)
+            continue
+        slug = cfg["slug"]
+        mp3 = EPISODES_DIR / f"{slug}.mp3"
+        if not mp3.exists():
+            print(f"  No audio for {slug} — skipping.", file=sys.stderr)
+            continue
+        month_label = cycle_label(cfg["minutes"])
+        out = VIDEOS_DIR / f"{slug}.mp4"
+        print(f"\n[VIDEO] {cfg['title']} -> {out.name}")
+        try:
+            make_video(mp3, out, month_label)
+            print(f"  Saved: {out.name} ({out.stat().st_size/1024/1024:.1f} MB)")
+        except Exception as e:
+            print(f"  ERROR: video generation failed: {e}", file=sys.stderr)
+            continue
+        cap = facebook_caption(month_label, by_slug.get(slug, {}).get("summary", ""), site)
+        print("  --- Facebook caption ---")
+        for line in cap.splitlines():
+            print("   | " + line)
+
+
 def run_cron(state: dict, guide: str, dry_run: bool) -> None:
     new_posts = fetch_new_posts(state)
     if not new_posts:
@@ -1138,12 +1273,15 @@ def main() -> None:
     ap.add_argument("--reaudio", default="",
                     help="Comma-separated months to re-render AUDIO ONLY from the existing "
                          "transcript (applies current speech normalizations; no LLM, no email)")
+    ap.add_argument("--make-videos", default="",
+                    help="Comma-separated months to (re)build the Facebook MP4 from existing "
+                         "audio (no LLM); e.g. 'march,april,may,june,july'")
     ap.add_argument("--dry-run", action="store_true",
                     help="Resolve/scrape/extract sources and write transcripts, but "
                          "skip all LLM and TTS calls (no API key needed)")
     args = ap.parse_args()
 
-    if not args.dry_run and not args.reaudio and not GROQ_API_KEY:
+    if not args.dry_run and not args.reaudio and not args.make_videos and not GROQ_API_KEY:
         print("ERROR: GROQ_API_KEY is required (or use --dry-run)", file=sys.stderr)
         sys.exit(1)
 
@@ -1152,7 +1290,10 @@ def main() -> None:
     guide = load_guide()
     state = load_state()
 
-    if args.reaudio:
+    if args.make_videos:
+        make_videos_for([m.strip().lower() for m in args.make_videos.split(",") if m.strip()],
+                        state)
+    elif args.reaudio:
         reaudio_months([m.strip().lower() for m in args.reaudio.split(",") if m.strip()],
                        state, args.dry_run)
     elif args.regenerate_months:
