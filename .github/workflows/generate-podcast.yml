@@ -18,6 +18,10 @@ on:
         description: "Months to (re)build the Facebook MP4 from existing audio (no LLM), comma-separated."
         type: string
         default: ""
+      send_email:
+        description: "Months to re-send the notification email (video link + caption + transcript), comma-separated."
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -51,7 +55,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           NOTIFY_EMAIL_TO: "ryan.finke@gmail.com"
-        run: python scripts/generate.py ${{ github.event.inputs.make_videos != '' && format('--make-videos {0}', github.event.inputs.make_videos) || (github.event.inputs.reaudio != '' && format('--reaudio {0}', github.event.inputs.reaudio) || (github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || '')) }}
+        run: python scripts/generate.py ${{ github.event.inputs.send_email != '' && format('--send-email {0}', github.event.inputs.send_email) || (github.event.inputs.make_videos != '' && format('--make-videos {0}', github.event.inputs.make_videos) || (github.event.inputs.reaudio != '' && format('--reaudio {0}', github.event.inputs.reaudio) || (github.event.inputs.regenerate_months != '' && format('--regenerate-months {0}', github.event.inputs.regenerate_months) || ''))) }}
 
       - name: Commit new episodes and updated feed
         run: |

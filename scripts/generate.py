@@ -1238,6 +1238,36 @@ def make_videos_for(keys: list[str], state: dict) -> None:
             print("   | " + line)
 
 
+def send_email_for(keys: list[str], state: dict) -> None:
+    """Re-send the notification email for existing episode(s) — the site link, source
+    list (with posted dates), the Facebook video link + caption, and the transcript.
+    No LLM/TTS; useful to preview the video/post content."""
+    by_slug = {e.get("filename", "").rsplit(".", 1)[0]: e for e in state.get("episodes", [])}
+    site = SITE_BASE_URL.rstrip("/") + "/index.html"
+    for key in keys:
+        cfg = REGEN_CONFIGS.get(key)
+        if not cfg:
+            print(f"Unknown month '{key}' — choices: {', '.join(REGEN_CONFIGS)}", file=sys.stderr)
+            continue
+        slug = cfg["slug"]
+        ep = by_slug.get(slug)
+        if not ep:
+            print(f"  No episode in state for {slug} — skipping.", file=sys.stderr)
+            continue
+        month_label = cycle_label(cfg["minutes"])
+        email_sources = [("Meeting minutes", cfg["minutes"]["link"],
+                          rfc_to_friendly(cfg["minutes"].get("published", "")))]
+        for ds in ep.get("digest_sources", []):
+            email_sources.append((ds["label"], ds["url"], source_posted_date(ds["url"])))
+        script_text = script_to_text(parse_script_from_transcript(slug))
+        video_url = (f"{SITE_BASE_URL}/videos/{slug}.mp4"
+                     if (VIDEOS_DIR / f"{slug}.mp4").exists() else None)
+        fb_caption = facebook_caption(month_label, ep.get("summary", ""), site)
+        print(f"\n[EMAIL] Re-sending notification for {ep.get('title', slug)}")
+        send_notification_email(ep.get("title", cfg["title"]), email_sources, script_text,
+                                video_url=video_url, fb_caption=fb_caption)
+
+
 def run_cron(state: dict, guide: str, dry_run: bool) -> None:
     new_posts = fetch_new_posts(state)
     if not new_posts:
@@ -1276,12 +1306,16 @@ def main() -> None:
     ap.add_argument("--make-videos", default="",
                     help="Comma-separated months to (re)build the Facebook MP4 from existing "
                          "audio (no LLM); e.g. 'march,april,may,june,july'")
+    ap.add_argument("--send-email", default="",
+                    help="Comma-separated months to re-send the notification email (video link "
+                         "+ caption + sources + transcript) for existing episodes")
     ap.add_argument("--dry-run", action="store_true",
                     help="Resolve/scrape/extract sources and write transcripts, but "
                          "skip all LLM and TTS calls (no API key needed)")
     args = ap.parse_args()
 
-    if not args.dry_run and not args.reaudio and not args.make_videos and not GROQ_API_KEY:
+    if (not args.dry_run and not args.reaudio and not args.make_videos
+            and not args.send_email and not GROQ_API_KEY):
         print("ERROR: GROQ_API_KEY is required (or use --dry-run)", file=sys.stderr)
         sys.exit(1)
 
@@ -1290,7 +1324,10 @@ def main() -> None:
     guide = load_guide()
     state = load_state()
 
-    if args.make_videos:
+    if args.send_email:
+        send_email_for([m.strip().lower() for m in args.send_email.split(",") if m.strip()],
+                       state)
+    elif args.make_videos:
         make_videos_for([m.strip().lower() for m in args.make_videos.split(",") if m.strip()],
                         state)
     elif args.reaudio:
