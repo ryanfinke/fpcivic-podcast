@@ -1,0 +1,26 @@
+name: Auto-rerun on transient failure
+
+# Fires whenever the Generate Podcast Episodes workflow completes.
+# If it failed on attempt 1, automatically reruns it once.
+# Only a persistent 2nd failure sends a notification — meaning something
+# actually needs fixing, not just a GitHub infrastructure blip.
+
+on:
+  workflow_run:
+    workflows: ["Generate Podcast Episodes"]
+    types: [completed]
+
+permissions:
+  actions: write
+
+jobs:
+  rerun-if-failed:
+    if: >
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.run_attempt == 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Re-run failed workflow (attempt 2)
+        run: gh run rerun ${{ github.event.workflow_run.id }} --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
