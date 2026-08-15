@@ -5,7 +5,7 @@
     <link>https://www.fpcivic.org</link>
     <description>Automated conversational podcast of Forest Park Civic Association meeting recaps and community reports. Powered by AI.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Aug 2026 10:03:29 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 10:15:20 GMT</lastBuildDate>
     <generator>fpcivic-podcast (Groq + Edge TTS)</generator>
     <ns0:author>Forest Park Civic Association</ns0:author>
     <ns0:summary>AI-generated conversational recaps of Forest Park Civic Association meetings.</ns0:summary>
@@ -18,7 +18,7 @@
       <description>AI-generated conversational recap of: July 2026 FPCA News</description>
       <pubDate>Thu, 16 Jul 2026 00:02:10 GMT</pubDate>
       <guid isPermaLink="false">https://www.fpcivic.org/?p=5567</guid>
-      <enclosure url="https://op3.dev/e/https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-july-2026-news.mp3" length="15628845" type="audio/mpeg" />
+      <enclosure url="https://op3.dev/e/https://ryanfinke.github.io/fpcivic-podcast/episodes/forest-park-civic-association-july-2026-news.mp3" length="7866285" type="audio/mpeg" />
       <ns0:author>Lou Bernard</ns0:author>
       <ns0:summary>AI-generated conversational recap of: July 2026 FPCA News</ns0:summary>
     </item>
