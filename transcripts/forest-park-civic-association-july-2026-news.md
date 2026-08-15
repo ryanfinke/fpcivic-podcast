@@ -1,7 +1,7 @@
 # Forest Park Civic Association July News
 
 - Episode type: Combined News
-- Generated: 2026-08-15T10:24:17.915954+00:00
+- Generated: 2026-08-15T10:34:21.017636+00:00
 - Sources:
   - Meeting minutes — https://www.fpcivic.org/forest-park-civic-association-meeting-july-meeting/
   - NCC Report for June 2026 (summary) — https://www.fpcivic.org/ncc-report-for-june-2026/
@@ -14,40 +14,44 @@
 ## Generated script
 
 HOST: Hey everybody, welcome to the Forest Park Civic Association News podcast. Today we're giving you an update for July 2026.
-COHOST: Great to have you with us. Let’s dive right into what happened at the July meeting at Epworth United Methodist Church.
-HOST: First up, we had two guest speakers. Hugo Barragán from the Franklin County Auditor’s Office walked us through the 2026 Property Value Updates. He showed a slideshow, handed out flyers, and explained how residents can dispute their home’s assessed value if they think the tax bill is too high. He reminded everyone to check the county auditor’s website for the step‑by‑step dispute process.
-COHOST: And then Sherrie Johnson Dantzler, the YMCA Director, shared two exciting community events. The first is the national “Campfires Across America” happening at the North YMCA on Wednesday, July 22 from six to eight p.m. More than 1,200 YMCAs will host a symbolic campfire to bring people together for reflection and connection.
-HOST: She also highlighted the North YMCA’s National Night Out on Tuesday, August 4, from five to eight p.m. That’s a free family‑friendly evening with games, food, and the chance to meet local first responders and community partners.
-COHOST: Those sound like perfect ways to get out and meet neighbors. Moving on, we have the Community Concerns, Announcements, and Ideas section, which is always packed.
-HOST: The Beautification Committee, led by Eileen Kunkler, is still looking for nominations. So far they’ve only received one, and the deadline to submit more ideas is August 1. They also need at least one additional judge to help evaluate the entries.
-COHOST: On the meeting schedule, there will be **no** FPCA meeting in August, so we’ll all be meeting at the NCC Picnic instead. That’s set for Tuesday, August 11, from six to eight p.m. at the new location—the Warner Woods Pavilion, 4747 Central College Road, Columbus, Ohio 43081. The Neighborhood Conservation Committee will provide protein options, buns, and beverages, and they’re asking everyone to bring a dish to share.
-HOST: And don’t forget the monthly “Gather at Gabby’s.” This month it’s Thursday, July 30, from six‑thirty to eight‑thirty p.m. It’s the last Thursday of each month, a relaxed hangout with friends, officers, and committee chairs to chat about what’s happening in Forest Park.
-COHOST: Looking ahead, we’ve got a big date in September—the Fall Forest Park Community Garage Sale on September 12, from nine a.m. to three p.m. They’re asking volunteers to help pass out flyers on the morning of the sale, between nine and ten‑thirty a.m. If you can lend a hand, just let Mary know.
-HOST: The Forester also has a deadline coming up. All photos, ads, and articles for the August issue need to be submitted by Thursday, July 16. They’re especially looking for parade photos and event summaries.
-COHOST: And there’s a call for volunteers to help distribute the August Forester. Since Rita Woeste will be out of town starting July 24, they need folks to collect, count, bag, and deliver the copies from Saturday, July 25 through Tuesday, July 28.
-HOST: In addition, the Forester needs a delivery volunteer for Blue Ash Road in the Forest Park Estates (FPE) for August, plus two more volunteers for other FPE areas. If you have a vehicle or can spare a few hours, they’d love your help.
-COHOST: Shifting to the Public Relations Officer report—big congratulations are in order. Our Forest Park Fourth of July Parade float won the Grand Marshal Award! A huge thank you went out to Pat Kelly for driving the pickup that hauled the float, Katrina at the Dairy Queen on Schrock Road for donating free cone coupons for the Bikes & Trikes portion, and Kenny Wiseman for loaning his trailer again.
-HOST: And let’s not forget the volunteers who helped with the Bikes & Trikes—Matt Stone, Kate Stone, and their friends served as judges and assistants. Even though the weather was hot and turnout was smaller than hoped, the kids who did attend had a great time.
-COHOST: On the Forester editorial side, Rita Woeste reminded us that the August deadline is July 16 for submissions. She also mentioned the distribution volunteer need we just covered, and the delivery volunteer for Blue Ash Road. She thanked Matt and Kate Stone again for their work on the Bikes & Trikes judging.
-HOST: The Civic Action and three‑one‑one Officer, Ed Vanasdale, fielded a lot of questions about street parking. Residents were concerned about abandoned cars, vehicles blocking sidewalks, and cars parked the wrong way. He clarified the proper way to report these issues through three‑one‑one and what the city’s response process looks like.
-COHOST: Now onto the Committee Reports. The Business Representative, Sheridan Landon, has been making phone calls and is still waiting to hear back from several contacts.
-HOST: The Welcome Committee Chair, Latia VanDyke, admitted they’re behind on the Welcome folders. She’s updating outdated information, and Laura is stepping in to help get the backlog caught up.
-COHOST: The Volunteer Coordinator position is currently vacant, so we’re still looking for someone to step into that role.
-HOST: Membership Coordinator Mike Stone gave us a thorough update. Thanks to the Area Representatives, we now have 353 members, but our goal is 450, so we still need 97 more. There are 46 new members who haven’t been counted in the past two years, and 255 households that haven’t renewed yet. The membership drive will continue through Labor Day weekend, and Area Reps have been given folders with lists of longtime supporters to target. If you missed the June meeting, you can pick up a folder at the July 14 meeting, and Mike will also have blank household information sheets available.
-COHOST: The Social Activities Committee is currently vacant, so any ideas for community events or volunteers to lead that committee are welcome.
-HOST: The NCC Representatives—Mark Bell, Latia VanDyke, and Ken Gilbert—have a full report online and
-HOST: Let’s jump right into the development front. Case one – the Northland High School at 1919 Northcliff Drive has applied for a graphics special permit to add up to four banners on two light poles, extending the display time indefinitely and increasing the total banner area to 48 square feet.
-COHOST: That application was brought forward by Carissa Izzo representing the Columbus Board of Education, and the committee moved to recommend approval.
-HOST: The vote was unanimous – twelve‑zero – with the motion introduced by the Forest Park Civic Association and seconded by the Albany Park group.
-COHOST: Case two follows a similar request, this time for Columbus International High School at 4077 Karl Road. Again, it’s a graphics special permit for four banners on two poles, same duration and size parameters.
-HOST: Carissa Izzo is the applicant again on behalf of the Board of Education, and the committee again voted twelve‑zero to recommend approval.
-COHOST: Moving on to case three – a wall sign variance at 2500 Corporate Exchange Drive. The applicant, Kirk Paul Magee of LetterGraphics Inc., is seeking permission for a 354‑square‑foot sign on the north elevation, which exceeds the standard allowance by a significant margin.
-HOST: The committee reviewed the proposal from The Village Network and, just like the previous cases, approved it unanimously, twelve‑zero, recommending the variance.
-COHOST: Finally, case four concerns a residential duplex on a 1.66‑acre parcel at 2580 Lauffer Ravines Drive, located in a CAC district. Carly Maggio of SJM Studio LLC, representing John Wang of six-one-four Rentals, applied for multiple variances – façade, transparency, setbacks, landscaping, and ground‑floor depth.
-HOST: The Development Committee again voted twelve‑zero, recommending approval of all the requested variances.
-COHOST: That wraps up the zoning updates for this cycle. Let’s shift gears to the outreach calendar.
-HOST: First up, the Bhutanese Community of Central Ohio is hosting a nutrition workshop on July 17, from ten a.m. to noon, during market day at the New Americans Garden and Farm Stand. The stand sits right in front of the North YMCA at the corner of Karl Road and Sandalwood Boulevard, 1640 Sandalwood Pl.
-COHOST: The workshop is presented by the Ohio State University Center for Community Outreach in partnership with the James
+COHOST: Great to have you with us—let’s dive right into what happened at the July meeting.
+HOST: First up, we had two guest speakers. Hugo Barragan from the Franklin County Auditor’s Office walked us through the 2026 Property Value Updates.
+COHOST: He showed a slideshow, handed out flyers, and explained how anyone can dispute their home’s assessed value to potentially lower their property taxes. He pointed folks to the county auditor’s website for the step‑by‑step process.
+HOST: The second speaker was Sherrie Johnson Dantzler, the YMCA Director. She promoted the national “Campfires Across America” event at the North YMCA on Wednesday, July 22, from six to eight p.m.
+COHOST: And she reminded us that the North YMCA will also host the National Night Out on Tuesday, August 4, from five to eight p.m.—a free family‑friendly evening with games, food, and a chance to meet first responders.
+HOST: Moving into Community Concerns, announcements, and ideas—there’s a lot to cover.
+COHOST: The Beautification Committee, led by Eileen Kunkler, is still looking for nominations. They’ve only received one so far, and the deadline is August 1. They also need at least one additional judge for the upcoming contest.
+HOST: The board confirmed there will be **no** August FPCA meeting, so mark your calendars accordingly.
+COHOST: Instead, we’re all headed to the NCC Picnic on Tuesday, August 11, from six to eight p.m. The new location is Warner Woods Pavilion, 4747 Central College Road, Columbus, Ohio 43081. NCC will provide protein options, buns, and beverages—just bring a dish to share.
+HOST: And don’t forget our regular “Gather at Gabby’s” on the last Thursday of each month. This month it’s Thursday, July 30, from six‑thirty to eight‑thirty p.m. It’s a relaxed evening to chat with neighbors, officers, and committee chairs.
+HOST: Over to the Public Relations Officer report. Mary Sguerra shared some exciting news: our Forest Park Fourth of July Parade float won the Grand Marshal Award.
+COHOST: A big shout‑out went to Pat Kelly for hauling the float, Katrina at the Dairy Queen on Schrock Road for donating free cone coupons for the Bikes & Trikes segment, and Kenny Wiseman for lending his trailer again.
+HOST: Mary also gave a heads‑up about the Fall Community Garage Sale on Monday, September 12, from nine a.m. to three p.m. She’s looking for volunteers to hand out flyers between nine and ten‑thirty a.m. that day.
+COHOST: Next, the Forester Editor, Rita Woeste, reminded us that the deadline for the August Forester is Thursday, July 16. She’s asking for photos, ads, and short event summaries—especially from the parade and any neighborhood happenings.
+HOST: Rita will be out of town starting July 24, so she needs volunteers to collect, count, bag, and distribute the Foresters from Saturday, July 25 through Tuesday, July 28.
+COHOST: She also needs a delivery person for Blue Ash Road in the Forest Park Estates for August, plus two more volunteers for two other areas in the Estates. She thanked Matt Stone, Kate Stone, and their friends for judging the Bikes & Trikes event, noting the hot weather kept turnout low but the kids who did attend had a great time.
+HOST: On the Civic Action and three-one-one front, Ed Vanasdale fielded a lot of questions about street parking—issues like abandoned cars, vehicles blocking sidewalks, and cars parked the wrong way. He clarified the proper procedures for reporting these concerns through three‑one‑one.
+COHOST: Now onto the Committee Reports. Starting with the Business Representative, Sheridan Landon reported that he’s made several outreach calls and is still awaiting responses from a few contacts.
+HOST: The Welcome Committee, chaired by Latia VanDyke, is behind on assembling Welcome folders. She’s updating outdated information, and Laura — who’s also on the committee—will help catch up.
+COHOST: The Volunteer Coordinator position is currently vacant, so we still need a resident to step in there.
+HOST: Membership Coordinator Mike Stone gave a thorough update. Thanks to the Area Representatives, we’ve added 353 members, but our goal is 450, so we still need 97 more. An additional 46 new members joined who weren’t from the past two years, yet 255 longtime households haven’t renewed. The membership drive will continue through Labor Day weekend, and Area Reps can pick up fresh household lists at the July 14 meeting.
+COHOST: The Social Activities Committee is also vacant at the moment.
+HOST: For the NCC Representatives, Mark Bell, Lat
+HOST: Alright, let’s dive into the NCC Development Committee report. First up, case one – a graphics special permit for Northland High School.
+COHOST: That’s right, the applicant is Carissa Izzo representing the Columbus Board of Education. They want to add up to four banners on two light poles at 1919 Northcliff Drive, extending the display time from 30 days to indefinitely and increasing the total banner area to 48 square feet.
+HOST: The committee voted unanimously, twelve‑zero, to recommend approval. So those banners should be up pretty soon.
+COHOST: Case two follows a similar request, this time for Columbus International High School. Same applicant, Carissa Izzo, same four‑banner setup, but the address is 4077 Karl Road.
+HOST: Again, the committee went twelve‑zero in favor of recommending approval. Looks like the board is standardizing its signage across the district.
+COHOST: Moving on to case three – a graphics variance for a wall sign. This one’s a bit different: LetterGraphics Inc., represented by Kirk Paul Magee, is asking for a 354‑square‑foot wall sign on the north elevation of 2500 Corporate Exchange Drive.
+HOST: That sign would exceed the usual allowance by about 126 percent, but the committee still voted unanimously, twelve‑zero, to recommend approval. The Village Network will get that larger sign.
+COHOST: Finally, case four – a zoning variance for a residential duplex. The applicant is SJM Studio LLC, represented by Carly Maggio, on behalf of John Wang of six-one-four Rentals. The parcel is 2580 Lauffer Ravines Drive, a 1.66‑acre lot in a CAC district.
+HOST: They’re seeking variances for façade, transparency, setback, landscape, and ground‑floor depth to make the duplex possible. The committee again went twelve‑zero to recommend approval, with the Karmel/Woodward Park Committee leading the motion. All set for that new housing.
+COHOST: That wraps up the development cases. Shifting gears, let’s talk about the outreach initiatives coming up this month.
+HOST: The Bhutanese Community of Central Ohio is hosting a nutrition workshop on market day, Friday, July 17, from 10 a.m. to noon. It’ll be at the New Americans Garden and Farm Stand, right in front of the North YMCA at 1640 Sandalwood Place.
+COHOST: The workshop is being presented by the OSU Center for Community Outreach in partnership with the James Comprehensive Cancer Center. It’s all about reducing cancer risk through good nutrition, and you can shop the fresh produce while you’re there. Plus, the farm stand stays open every Friday, 10 a.m. to noon, throughout the growing season.
+HOST: The outreach report also adds a few details to the National Night Out we heard about earlier. Families can now register at the North YMCA to receive free school supplies, and the event is part of a long‑standing national crime‑prevention program that started back in 1984. It’s a great chance to meet police, fire, and community volunteers.
+COHOST: Looking ahead, the Northland Unity Festival is scheduled for Monday, September 19, from 3 p.m. to 7 p.m., again at the North YMCA. It’ll showcase music, dance, food vendors, local crafts, and resources from businesses and nonprofits serving our area. A perfect way to celebrate the cultural diversity that makes Northland a gateway to Columbus.
+HOST: In other community news, the National Association of Black Accountants (NABA) is holding its annual golf outing on Thursday, August 27, at the Delaware Golf Club. Registration
 
 ---
 
