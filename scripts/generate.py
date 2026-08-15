@@ -88,19 +88,19 @@ VOICE_PROSODY = {
 
 HTTP_HEADERS = {"User-Agent": "FPCivicPodcastBot/1.0 (+https://www.fpcivic.org)"}
 
-# Input/output sizing. NOTE: Groq's free tier caps at 12,000 tokens/minute and
-# counts input + max_tokens (reserved output) against EACH request. So every call
-# must keep (input + max_tokens) well under 12k, and the two episodes are spaced
-# ~65s apart (SPACING_SECONDS) so they fall in separate rate-limit windows.
-# Budget note: Groq free tier = 12,000 tokens/minute counted as (input + max_tokens)
-# per request. The editorial guide (~1,900 tok) is injected into every call, so the
-# digest caps below are sized to stay ~1,500 tokens under the limit with margin.
-MEETING_MAX_CHARS = 12000
-DIGEST_PER_SOURCE_CHARS = 17000  # fits the full keyword-filtered Forester (~16.5k)
-DIGEST_MAX_CHARS = 14000         # trimmed to leave room for the recap-dedup context below
-RECAP_CONTEXT_CHARS = 6000       # of the recap fed into the digest call so it won't repeat items
-MEETING_MAX_TOKENS = 4096        # room for a full ~1,200+ word recap
-DIGEST_MAX_TOKENS = 2800         # digest half is short (~800 words); keeps req under 12k/min
+# Input/output sizing. NOTE: on GPT-OSS-120B, Groq's free tier caps at 8,000
+# tokens/minute (lower than the old llama model's 12k), counted as (input +
+# max_tokens) against EACH request. So every single call must keep (input +
+# max_tokens) safely under 8k (target ~6.5-7k for tokenizer variance); the two
+# episode halves are spaced ~65s apart (SPACING_SECONDS) so each gets its own
+# per-minute window. The editorial guide's rules (~1.8k tok, feedback log stripped)
+# are injected into every call, plus the fixed role/format text.
+MEETING_MAX_CHARS = 9000         # full monthly minutes are ~9k chars
+DIGEST_PER_SOURCE_CHARS = 12000  # per-source cap before the combined DIGEST_MAX_CHARS cap
+DIGEST_MAX_CHARS = 7500          # combined community-report sources fed to the digest call
+RECAP_CONTEXT_CHARS = 2500       # of the recap fed into the digest call so it won't repeat items
+MEETING_MAX_TOKENS = 2300        # ~1,200-word recap (~1,600 tok) with headroom
+DIGEST_MAX_TOKENS = 2000         # digest half ~800-1,300 words
 SPACING_SECONDS = 65
 
 # Forester newsletters are mostly masthead/ads; keep only pages relevant to the
@@ -278,9 +278,12 @@ def build_system_prompt(kind: str, guide: str, month_label: str = "") -> str:
     else:  # standalone digest (legacy)
         role = ("You are writing the COMMUNITY REPORTS digest, consolidating several "
                 "community reports into one cohesive conversation. Follow the EP2 structure.")
+    # Drop the human-only "## Feedback log" (dated notes) before injecting — it's not
+    # a generation rule and it grows over time, wasting tokens against the rate limit.
+    guide_rules = guide.split("## Feedback log", 1)[0].rstrip()
     return (
         f"{ROLE_INTRO}\n\n{role}\n\n"
-        f"===== EDITORIAL GUIDE (authoritative — follow exactly) =====\n{guide}\n\n"
+        f"===== EDITORIAL GUIDE (authoritative — follow exactly) =====\n{guide_rules}\n\n"
         f"===== FORMAT RULES =====\n{FORMAT_RULES}"
     )
 
