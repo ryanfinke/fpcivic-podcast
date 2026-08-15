@@ -582,12 +582,20 @@ def generate_summary(script_text: str) -> str:
     returns '' if the LLM call fails (e.g. rate limit) so it never blocks an episode."""
     try:
         from groq import Groq
+        # max_tokens must be generous: GPT-OSS-120B is a reasoning model and spends
+        # tokens "thinking" before it emits the answer — a tiny cap returned EMPTY
+        # content (blank summaries). 512 leaves room for reasoning + the one-line summary.
         resp = Groq(api_key=GROQ_API_KEY).chat.completions.create(
             model=GROQ_MODEL,
             messages=[{"role": "system", "content": SUMMARY_SYSTEM},
                       {"role": "user", "content": script_text[:8000]}],
-            temperature=0.3, max_tokens=120)
-        return resp.choices[0].message.content.strip().strip('"')[:200]
+            temperature=0.3, max_tokens=512)
+        content = (resp.choices[0].message.content or "").strip()
+        # If any reasoning leaked into content, the summary is the last non-empty line.
+        lines = [ln.strip() for ln in content.splitlines() if ln.strip()]
+        summary = lines[-1] if lines else ""
+        summary = re.sub(r"(?i)^(summary|topics)\s*[:\-]\s*", "", summary)  # strip a label
+        return summary.strip().strip('"').strip()[:200]
     except Exception as e:
         print(f"  WARN: summary generation failed: {e}", file=sys.stderr)
         return ""
