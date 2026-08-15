@@ -63,8 +63,8 @@ substantive detail.
 
 ## Community Reports (EP2) — structure
 
-Do NOT summarize the set of reports — walk through EACH item individually and give
-it its own moment. Aim for at least 1,300 words.
+Walk through EACH item individually and give it its own brief moment — but keep the
+whole digest tight (about 650–800 words). Cover every item; don't pad any of them.
 
 - **Lead with the NCC development report.** Go through EACH zoning case / variance
   ONE AT A TIME: what's being proposed, the street address, the applicant, and how
@@ -131,15 +131,16 @@ it its own moment. Aim for at least 1,300 words.
   - "BZA variance" → "zoning variance"; "C-2 district" → "commercial district".
   - "security and supplemental items" → "supplemental security items".
 
-## Depth & length (IMPORTANT — do not summarize)
+## Depth & length (cover everything, but stay tight)
 
-- Write a FULL episode: **at least 1,200 words** for the Meeting Recap and **at
-  least 1,300 words** for the Community Reports digest. Longer is fine.
-- Give EVERY included section real depth: **2 to 4 back-and-forth exchanges per
-  section**, not a single sentence. Cover the specifics — names, dates, numbers,
-  locations, decisions/votes — and briefly say what each item means for residents.
-- Do NOT compress several sections into one line, and do not rush to wrap up.
-  Only end after every included item has been genuinely discussed.
+- Target a concise episode of about **11–12 minutes total**: roughly **950–1,100
+  words** for the Meeting Recap and **650–800 words** for the Community Reports
+  digest. Do not pad or over-elaborate.
+- Cover EVERY included section, but keep each to **1–2 tight exchanges** — hit the
+  specifics that matter (names, dates, numbers, locations, decisions/votes) and
+  what each item means for residents, then move on. Don't linger.
+- Never DROP an included section, but don't stretch it either. Be warm and natural,
+  not wordy. If in doubt, err on the side of shorter.
 
 ---
 
@@ -147,9 +148,14 @@ it its own moment. Aim for at least 1,300 words.
 
 _Add dated entries as feedback comes in. The most recent guidance wins._
 
-- **2026-07-21:** First July episodes ran too short (~3.5 min each). Ryan wants
-  fuller episodes — added the Depth & length section above (1,200+/1,300+ words,
-  2–4 exchanges per section).
+- **2026-08-15:** Migrated to GPT-OSS-120B (llama-3.3-70b decommissioned). The new
+  model is more verbose — July ran ~16 min under the old "1,200+/1,300+, longer is
+  fine" targets. Recalibrated Depth & length DOWN to ~11–12 min total (recap
+  ~950–1,100 words, digest ~650–800), 1–2 tight exchanges per section, and lowered
+  the token ceilings. Supersedes the 2026-07-21 "fuller episodes" note below.
+- **2026-07-21:** First July episodes ran too short (~3.5 min each) on the OLD
+  (terse) llama model — we pushed for fuller episodes. This is now SUPERSEDED by the
+  2026-08-15 recalibration, since the current model is verbose, not terse.
 - **2026-07-21:** The July recap dropped the Old Business "Sign Team" item. Old
   Business must ALWAYS be covered — emphasized in the INCLUDE list above.
 - **2026-07-21:** A host tried to read a full URL aloud (unlistenable) and said
