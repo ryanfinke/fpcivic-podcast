@@ -66,6 +66,10 @@ VIDEO_FONT = os.environ.get(
 
 SITE_BASE_URL = os.environ.get("SITE_BASE_URL", "https://OWNER.github.io/fpcivic-podcast")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+# Groq model. llama-3.3-70b-versatile was decommissioned 2026-08-16; replacement is
+# GPT-OSS-120B (Groq's recommended successor). Override via the GROQ_MODEL env var to
+# switch models without a code change (e.g. a Qwen model) if needed.
+GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 
 # Prefix RSS enclosure URLs with OP3 (free, open-source podcast download analytics).
 # Only affects the feed apps use; the website plays the raw file (tracked separately).
@@ -541,7 +545,7 @@ def generate_script(system_prompt: str, user_content: str, max_tokens: int) -> l
     from groq import Groq
     client = Groq(api_key=GROQ_API_KEY)
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=GROQ_MODEL,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content},
@@ -576,7 +580,7 @@ def generate_summary(script_text: str) -> str:
     try:
         from groq import Groq
         resp = Groq(api_key=GROQ_API_KEY).chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             messages=[{"role": "system", "content": SUMMARY_SYSTEM},
                       {"role": "user", "content": script_text[:8000]}],
             temperature=0.3, max_tokens=120)
