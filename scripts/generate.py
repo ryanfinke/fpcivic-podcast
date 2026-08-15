@@ -608,7 +608,13 @@ def generate_summary(script_text: str) -> str:
         lines = [ln.strip() for ln in content.splitlines() if ln.strip()]
         summary = lines[-1] if lines else ""
         summary = re.sub(r"(?i)^(summary|topics)\s*[:\-]\s*", "", summary)  # strip a label
-        return summary.strip().strip('"').strip()[:200]
+        # Normalize fancy Unicode spaces/quotes, then truncate on a WORD boundary.
+        summary = summary.replace(" ", " ").replace(" ", " ")
+        summary = summary.replace("“", '"').replace("”", '"')
+        summary = re.sub(r"\s+", " ", summary).strip().strip('"').strip()
+        if len(summary) > 200:
+            summary = summary[:200].rsplit(" ", 1)[0].rstrip(" ,;.") + "…"
+        return summary
     except Exception as e:
         print(f"  WARN: summary generation failed: {e}", file=sys.stderr)
         return ""
