@@ -99,8 +99,8 @@ MEETING_MAX_CHARS = 9000         # full monthly minutes are ~9k chars
 DIGEST_PER_SOURCE_CHARS = 12000  # per-source cap before the combined DIGEST_MAX_CHARS cap
 DIGEST_MAX_CHARS = 7500          # combined community-report sources fed to the digest call
 RECAP_CONTEXT_CHARS = 2500       # of the recap fed into the digest call so it won't repeat items
-MEETING_MAX_TOKENS = 1600        # ceiling for a ~950-1,100-word recap (target ~11-12 min total)
-DIGEST_MAX_TOKENS = 1300         # ceiling for a ~650-800-word digest half
+MEETING_MAX_TOKENS = 2000        # ceiling for a ~1,100-1,300-word recap (target ~11-12 min total)
+DIGEST_MAX_TOKENS = 1600         # ceiling for a ~750-900-word digest half
 SPACING_SECONDS = 65
 
 # Forester newsletters are mostly masthead/ads; keep only pages relevant to the

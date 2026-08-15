@@ -133,14 +133,15 @@ whole digest tight (about 650–800 words). Cover every item; don't pad any of t
 
 ## Depth & length (cover everything, but stay tight)
 
-- Target a concise episode of about **11–12 minutes total**: roughly **950–1,100
-  words** for the Meeting Recap and **650–800 words** for the Community Reports
-  digest. Do not pad or over-elaborate.
-- Cover EVERY included section, but keep each to **1–2 tight exchanges** — hit the
-  specifics that matter (names, dates, numbers, locations, decisions/votes) and
-  what each item means for residents, then move on. Don't linger.
-- Never DROP an included section, but don't stretch it either. Be warm and natural,
-  not wordy. If in doubt, err on the side of shorter.
+- Target about **11–12 minutes total**: roughly **1,100–1,300 words** for the
+  Meeting Recap and **750–900 words** for the Community Reports digest. Concise,
+  but complete — don't pad, and don't cut it short either.
+- **NEVER drop an included section.** Cover EVERY one, including brief ones. In the
+  recap that means BOTH **Old Business** AND **New Business / Announcements** always
+  appear, even if only a line or two.
+- Give each section at least one solid exchange with the specifics that matter
+  (names, dates, numbers, locations, votes) and what it means for residents. Keep
+  each section brief (1–2 exchanges); be warm and natural, not wordy.
 
 ---
 
