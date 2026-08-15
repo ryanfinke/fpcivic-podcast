@@ -544,10 +544,22 @@ def resolve_digest_sources(anchor: dict) -> list[tuple[str, str]]:
 # ---------------------------------------------------------------------------
 
 
+def _groq_chat(client, **kwargs):
+    """chat.completions.create with reasoning_effort='low' for GPT-OSS reasoning
+    models — keeps the model from spending the token budget 'thinking' instead of
+    answering (which returned empty summaries and starved script length). Falls back
+    if the SDK/model doesn't accept the parameter."""
+    try:
+        return client.chat.completions.create(reasoning_effort="low", **kwargs)
+    except TypeError:
+        return client.chat.completions.create(**kwargs)
+
+
 def generate_script(system_prompt: str, user_content: str, max_tokens: int) -> list[tuple[str, str]]:
     from groq import Groq
     client = Groq(api_key=GROQ_API_KEY)
-    response = client.chat.completions.create(
+    response = _groq_chat(
+        client,
         model=GROQ_MODEL,
         messages=[
             {"role": "system", "content": system_prompt},
@@ -582,14 +594,15 @@ def generate_summary(script_text: str) -> str:
     returns '' if the LLM call fails (e.g. rate limit) so it never blocks an episode."""
     try:
         from groq import Groq
-        # max_tokens must be generous: GPT-OSS-120B is a reasoning model and spends
-        # tokens "thinking" before it emits the answer — a tiny cap returned EMPTY
-        # content (blank summaries). 512 leaves room for reasoning + the one-line summary.
-        resp = Groq(api_key=GROQ_API_KEY).chat.completions.create(
+        # GPT-OSS-120B reasons before answering; with a tiny cap it burned the whole
+        # budget "thinking" and returned EMPTY content (blank summaries). _groq_chat
+        # sets reasoning_effort='low', and 1024 tokens leaves ample room for the answer.
+        resp = _groq_chat(
+            Groq(api_key=GROQ_API_KEY),
             model=GROQ_MODEL,
             messages=[{"role": "system", "content": SUMMARY_SYSTEM},
                       {"role": "user", "content": script_text[:8000]}],
-            temperature=0.3, max_tokens=512)
+            temperature=0.3, max_tokens=1024)
         content = (resp.choices[0].message.content or "").strip()
         # If any reasoning leaked into content, the summary is the last non-empty line.
         lines = [ln.strip() for ln in content.splitlines() if ln.strip()]
