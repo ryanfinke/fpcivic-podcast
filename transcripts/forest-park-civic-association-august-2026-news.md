@@ -1,12 +1,12 @@
 # Forest Park Civic Association August News
 
 - Episode type: Combined News
-- Generated: 2026-08-17T13:38:24.981620+00:00
+- Generated: 2026-08-17T23:21:30.998738+00:00
 - Sources:
   - Meeting minutes — https://www.fpcivic.org/forest-park-civic-association-meeting-august-meeting/
-  - NCC Development Committee Report (20260624) — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf
+  - NCC Development Committee Report — June 24, 2026 (zoning cases & votes) — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf
   - August 2026 Outreach Report — https://www.fpcivic.org/august-2026-outreach-report/
-  - July 2026 Forester — security & supplemental — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf
+  - July 2026 Forester — security & supplemental items — https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf
 
 ---
 
@@ -14,41 +14,44 @@
 
 HOST: Hey everybody, welcome to the Forest Park Civic Association News podcast. Today we're giving you an update for August 2026.
 COHOST: Great, let’s dive right into what happened at the August meeting.
-HOST: First up, guest speakers—there weren’t any this month, so we’ll move on.
-COHOST: In the Community Concerns and Announcements, Paul Ball from Blue Ash Place stopped by the NCC Picnic to talk about the new Columbus City grant called “Our Voice, Our Choice.” He’s looking to get street lights installed for Blue Ash Place and asked for help writing the online proposal.
-HOST: Right, L. Bernard offered to assist Paul with the proposal, and anyone interested can find the application portal on the city’s grant website.
-COHOST: Next, the Public Relations Officer, Mary Sguerra, reminded everyone about the Fall Community Garage Sale on Saturday, September 12th. She asked folks to turn in their entry forms by Wednesday, September 9th, and she’s looking for two volunteers to hand out flyers at the Karl Road and Sandalwood entrance.
-HOST: If you want to help, just reach out to Mary.
-COHOST: Moving to the Forester Editor report—Rita Woeste shared a few important deadlines. All articles, photos, ads, and other submissions for the August issue need to be in by Tuesday, August 18th.
-HOST: She also mentioned that supplies for the newsletter delivery bags are running low—only a few hundred left. Rita plans to purchase enough for the next three newsletters and will revisit the decision in early 2027.
-COHOST: There was a technical hiccup with Canva: when an issue was uploaded, the content got broken into dozens of separate text boxes, making editing a nightmare. Rita is still looking for a solution and would welcome any tutorials from members who know Canva well.
-HOST: And a big thanks to Ashley and everyone who helped count, bag, and deliver the August Forester issue—Rita got to enjoy her vacation thanks to that teamwork.
-COHOST: The Supplemental Security Officer report just says “see report in the Forester,” so we’ll pick that up later in the community reports segment.
-HOST: The Civic Action/three-one-one Officer, Ed Vanasdale, had no report this month.
-COHOST: Now onto the Committee Reports. The Business Representative, Sheridan Landon, didn’t have anything new to share.
-HOST: The Welcome Committee Chair, Latia VanDyke, was absent and had no report.
-COHOST: The Volunteer Coordinator position is currently vacant, so no update there.
-HOST: Membership Coordinator Mike Stone reported that an additional 82 household memberships were processed in July, bringing the total paid memberships through July 31st to 366, with 84 still pending. In August, 11 more memberships came in, leaving 73 pending now.
-COHOST: The Social Activities chair is also vacant, so no report.
-HOST: For NCC Representatives, Mark Bell and Latia VanDyke were absent, while Ken Gilbert didn’t have a report to give.
-COHOST: The NCC Development Representative, Ed Vanasdale, was absent and directed us to see the report on the website.
-HOST: The Grant Writing Committee Chair, Quentin Monden, had no report, and the Outreach Committee Chair, Michael Cote, was absent with a note to see the report on the website.
-COHOST: The Website Administrators, Dave Paul and Ashley Howard, reminded everyone that the website and Facebook page are constantly updated with new information, and encouraged residents to subscribe and follow.
-HOST: That covers the committee updates.
-COHOST: On to Old Business—there are several open positions still needing volunteers: delivery routes for multiple areas, area representatives for FPW 5 and FPE 6, 8, 14, and the chairs for Volunteer Coordinator, Social Activities, and Social Media (Facebook, website).
-HOST: No new business or announcements were listed this month, and the picnic wrapped up around 7:30 PM.
-COHOST: That’s everything from the meeting recap. Now let's get into the community reports.
-HOST: Alright, let’s jump into the NCC development report. First up, case one – a graphics special permit for Northland High School at 1919 Northcliff Drive. Carissa Izzo on behalf of the Board of Education is asking to put up to four banners on two light poles, extending the display time indefinitely and increasing the total banner area to 48 square feet. The committee voted unanimously, twelve‑zero, to recommend approval.
-COHOST: Case two follows a similar request, this time for Columbus International High School at 4077 Karl Road. Again, Carissa Izzo is the applicant, seeking four banners on two poles with the same extended duration and size. The vote was again twelve‑zero in favor of recommendation.
-HOST: Moving on to case three, we have a graphics variance for a wall sign at 2500 Corporate Exchange Drive. The applicant, LetterGraphics Inc., wants a 354‑square‑foot sign on the north elevation, which exceeds the standard allowance by about 126 percent. The committee again went twelve‑zero to recommend approval.
-COHOST: Case four is a bit different – it’s a zoning variance for a residential duplex on a 1.66‑acre parcel at 2580 Lauffer Ravines Drive, located in a CAC district. Carly Maggio representing SJM Studio LLC and John Wang of six-one-four Rentals are behind the application. The committee voted unanimously, twelve‑zero, to recommend approval of all the requested variances.
-HOST: That wraps up the development cases. The next meeting’s scheduled for July twenty‑nine, so we’ll see if any of these get finalized then.
-COHOST: Shifting gears to outreach, the North YMCA hosted a fantastic National Night Out on August fourth. Hundreds turned out, families grabbed free backpacks and school supplies, kids enjoyed games, free haircuts, and even a cameo from Spiderman. Steve Jennings grilled over 180 pounds of hot dogs, and local law enforcement officers were on hand. The Forest Park Civic Association staffed a table and made new contacts with the city council, SWACO, and CRIS for future collaborations.
-HOST: That sounds like a great community‑building night. Over in the garden scene, the New Americans Garden and Farm Stand kept the fresh produce flowing throughout July. Managed by the Bhutanese Community of Central Ohio, the stand is open every Friday from ten to noon at the corner of Karl Road and Sandalwood Place, right in front of the North YMCA. Residents have been picking up cucumbers, green beans, and even some exotic greens like jamma‑jamma and amaranth.
-COHOST: Speaking of green, Green Columbus is back with their annual free tree giveaway. They’re offering three‑thousand‑plus trees this fall, and anyone can reserve a tree online and choose a pickup location and date. It’s a simple way to boost our neighborhood canopy.
-HOST: And looking ahead, the Northland Unity Festival returns to the North YMCA on September nineteenth, from three to seven p.m. It’s a multicultural celebration with music, dance, food vendors, crafts, and resources from local nonprofits. It’s free to the public, so it’s a perfect way to connect with neighbors.
-COHOST: Those are all the outreach highlights. Now, the supplemental security items from the Forester didn’t include any new updates this month—just the usual contact list—so there’s nothing new to report there.
-HOST: That brings us to the end of today’s community reports. If you’d like to get involved—whether it’s helping with the upcoming Unity Festival, volunteering at the farm stand, or staying in touch about development cases—reach out through the Forest Park Civic Association website or drop us an email. Thanks for listening, and we’ll see you next month!
+HOST: First up, there wasn’t a guest speaker this month, so we’ll move on to the community concerns and announcements.
+COHOST: Right. Paul Ball from Blue Ash Place stopped by the picnic to talk about the new Columbus City grant called “Our Voice, Our Choice.” He’s looking to secure street lights for Blue Ash Place and asked for help writing the online proposal.
+HOST: And Lou Bernard offered to assist with that proposal. That’s a solid step toward better lighting for the area.
+COHOST: Next, the Public Relations Officer, Mary Sguerra, reminded everyone about the Fall Community Garage Sale on Saturday, September 12th.
+HOST: She asked folks to turn in their entry forms by Wednesday, September 9th, and she’s looking for two volunteers to hand out flyers at the Karl Road and Sandalwood entrance.
+COHOST: If anyone wants to help, just reach out to Mary.
+HOST: Moving on to the Forester Editor, Rita Woeste. She reminded us that all articles, photos, ads, and other submissions for the newsletter are due by Tuesday, August 18th.
+COHOST: She also mentioned that supplies for the newsletter delivery bags are running low—only a few hundred left. Rita plans to purchase enough bags for the next three newsletters, covering September through November/December, and will revisit the decision in early 2027.
+HOST: There’s a technical hiccup with Canva for the print version of the Forester. When the issue was uploaded, the content got split into dozens of separate text boxes, making layout a nightmare. Rita is still investigating a fix and would love tutorials or tips from anyone experienced with Canva.
+COHOST: She also thanked Ashley and everyone who helped count, bag, and deliver the August issue, which gave her a chance to enjoy a vacation.
+HOST: The Civic Action/three-one-one Officer didn’t have a report this month, so we’ll skip that.
+COHOST: Same with the Supplemental Security Officer—no new details to share.
+HOST: Let’s touch on the committee reports. The Business Representative, Sheridan Landon, had no report. The Welcome Committee Chair, Latia VanDyke, was absent and also had no report.
+COHOST: The Volunteer Coordinator position is currently vacant, so there’s nothing to report there.
+HOST: Membership Coordinator Mike Stone shared that an additional 82 household memberships were processed in July, bringing the total paid memberships through July 31st to 366, with 84 still pending. In August, 11 more memberships were received, leaving 73 pending now.
+COHOST: The Social Activities Chair is vacant, so no update on that front.
+HOST: For the NCC Representatives, Mark Bell and Latia VanDyke were absent, and Ken Gilbert didn’t have a report.
+COHOST: The NCC Development Representative, Ed Vanasdale, was also absent, and his report is available on the website.
+HOST: The Grant Writing Committee Chair, Quentin Monden, had no report, and the Outreach Committee Chair, Michael Cote, was absent with his report posted online.
+COHOST: Website administrators Dave Paul and Ashley Howard are keeping the website and social media up to date, encouraging everyone to check the site and follow the pages for the latest info.
+HOST: Now for old business. The board is still looking to fill several open positions: delivery volunteers for multiple routes, area representatives for FPW 5 and FPE 6, 8, 14, and chairs for the Volunteer Coordinator, Social Activities, and Social Media (Facebook and website).
+COHOST: If you’re interested in any of those roles, please let the board know.
+HOST: Finally, new business. There’s nothing new to announce, but we do have the next meeting scheduled for September 8th, 2026, from seven to eight p.m. at Epworth United Methodist Church, 5100 Karl Road, Columbus, Ohio.
+COHOST: Eugene Rutigliano from the Columbus Metropolitan Library will be the guest speaker, walking us through the new Forest Park Civic Association digital collection on the library’s website.
+HOST: The picnic wrapped up around seven‑thirty p.m., and the minutes were submitted by Lou Bernard.
+COHOST: That covers the meeting recap. Now let's get into the community reports.
+HOST: Alright, let's dive into the NCC development report. Starting with case one – the Columbus Board of Education wants to put up four banners on two light poles at Northland High School, located at 1919 Northcliff Drive. The committee voted unanimously, twelve‑zero, to recommend approval.
+COHOST: Good news for the school’s visibility. Moving on, case two involves Columbus International High School at 4077 Karl Road. Same request—four banners on two poles, and again the committee went twelve‑zero in favor of recommending approval.
+HOST: Consistent support there. Case three is a bit different: a wall sign for The Village Network at 2500 Corporate Exchange Drive. They’re seeking a 354‑square‑foot sign on the north elevation, which exceeds the usual allowance. The committee still voted twelve‑zero to recommend approval.
+COHOST: That’s a big sign, but it looks like the board thinks it fits the neighborhood’s character. Case four shifts to residential development: a duplex on a 1.66‑acre parcel in the CAC district at 2580 Lauffer Ravines Drive. The application covered several zoning variances, and the committee again voted unanimously, twelve‑zero, to recommend approval.
+HOST: So all four cases got the green light from the development committee. That wraps up the NCC updates.
+COHOST: Shifting gears to outreach, the North YMCA hosted a fantastic National Night Out on August fourth. Hundreds turned out, kids got free backpacks and school supplies, there were games, free haircuts, hotdogs grilled by Steve Jennings, music, door prizes, and even a visit from Spiderman and local deputies. Our association staffed a table, chatted with residents, and connected with city council members, SWACO, and CRIS for future collaborations.
+HOST: That sounds like a real community builder. Also, the New Americans Garden and Farm Stand has been busy throughout July, offering fresh cucumbers, green beans, and leafy greens like jamma‑jamma and amaranth. The stand is run by the Bhutanese Community of Central Ohio and operates every Friday from ten to noon at the corner of Karl Road and Sandalwood Place, right in front of the North YMCA.
+COHOST: If anyone missed the OSU Community Outreach Center’s nutrition workshop that was slated for August seventh, it’s been postponed because of rain. Keep an eye on our Facebook page for the new date—it's still open to everyone.
+HOST: And for those looking to add a tree to their yard, Green Columbus is running its annual free tree giveaway. You can reserve a tree online, choose the species, and pick up a four‑to‑six‑foot tree at one of three locations this fall.
+COHOST: Looking ahead, the Northland Unity Festival returns to the North YMCA on September nineteenth, from three to seven p.m. Expect music, dance, food vendors, local crafts, and resources from community groups. It’s a great way to celebrate the multicultural spirit of Northland.
+HOST: Those are the key outreach highlights. Now, turning to the Forester’s supplemental security items—there were no new updates or incidents reported this month, so the status remains unchanged.
+COHOST: That covers everything on the community reports front. If you’d like to get involved—whether it’s helping with upcoming events, joining a committee, or sharing your ideas—just reach out through our website or drop a note to the association email. Thanks for listening, and we’ll catch you next month!
 
 ---
 
@@ -197,11 +200,17 @@ Area Reps: FPW: 5; FPE: 6, 8, 14
 Committee Chairs: Volunteer Coordinator, Social Activities Chair, Social Media (Facebook, Website)
 NEW BUSINESS/ANNOUNCEMENTS/IDEAS
 NONE
+Our next FPCA meeting will be
+September 8, 2026
+7-8 pm
+Epworth United Methodist Church, 5100 Karl Rd, Columbus, OH 43229
+Eugene Rutigliano from the Columbus Metropolitan Library will be our guest speaker
+to explain and give us a walk through of the new Forest Park Civic Association digital collection on the library’s website.
 Picnic adjourned around 7:30 PM
 Meeting minutes submitted by Lou Bernard, Secretary, FPCA
 ```
 
-### NCC Development Committee Report (20260624)
+### NCC Development Committee Report — June 24, 2026 (zoning cases & votes)
 <https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf>
 
 ```
@@ -272,7 +281,7 @@ where you can select from different tree species as well as schedule where to pi
 The Northland Unity Festival will be returning to the North YMCA (1640 Sandalwood Pl) this year. The Unity Festival is Northland’s premier community event and will feature music, dance, food vendors, local crafts, and informational resources from local businesses and nonprofit organizations working in Northland.  Come and enjoy Northland’s free festival of unity on September 19, 2026, 3-7 pm and celebrate being a part of a multicultural community that gives Northland its reputation as the international gateway to Columbus.
 ```
 
-### July 2026 Forester — security & supplemental
+### July 2026 Forester — security & supplemental items
 <https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf>
 
 ```
