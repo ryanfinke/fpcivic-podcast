@@ -214,6 +214,25 @@ REGEN_CONFIGS = {
         ],
         "supersede": ["https://www.fpcivic.org/?p=5407"],  # March Outreach Report
     },
+    "august": {
+        "title": "Forest Park Civic Association August News",
+        "slug": "forest-park-civic-association-august-2026-news",
+        "minutes": {
+            "id": "https://www.fpcivic.org/?p=5571",
+            "title": "FOREST PARK CIVIC ASSOCIATION MEETING August Meeting",
+            "link": "https://www.fpcivic.org/forest-park-civic-association-meeting-august-meeting/",
+            "published": "Sun, 16 Aug 2026 17:28:30 +0000", "author": "Lou Bernard",
+        },
+        "sources": [
+            ("NCC Development Committee Report — June 24, 2026 (zoning cases & votes)",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf"),
+            ("August 2026 Outreach Report",
+             "https://www.fpcivic.org/august-2026-outreach-report/"),
+            ("July 2026 Forester — security & supplemental items",
+             "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"),
+        ],
+        "supersede": [],  # combined episode upserts on the meeting post id (5571)
+    },
 }
 
 MONTHS = {m.lower(): i for i, m in enumerate(
@@ -674,7 +693,22 @@ def normalize_for_speech(text: str) -> str:
     text = re.sub(r"\bBZA\s+(variances?)\b", r"zoning \1", text, flags=re.I)
     text = re.sub(r"\bC-?2\s+district\b", "commercial district", text, flags=re.I)
     text = re.sub(r"security and supplemental", "supplemental security", text, flags=re.I)
+    # Read dates as ordinals: "July 29" -> "July 29th"; "30 July" -> "30th July".
+    _months = ("January|February|March|April|May|June|July|August|September|"
+               "October|November|December")
+    text = re.sub(rf"\b({_months})\s+(\d{{1,2}})(?!\d)(?!\s*(?:st|nd|rd|th)\b)",
+                  lambda m: f"{m.group(1)} {_ordinal(m.group(2))}", text, flags=re.I)
+    text = re.sub(rf"\b(\d{{1,2}})\s+({_months})\b",
+                  lambda m: f"{_ordinal(m.group(1))} {m.group(2)}", text, flags=re.I)
+    # Secretary is Lou Bernard; minutes abbreviate as "L. Bernard".
+    text = re.sub(r"\bL\.\s*Bernard\b", "Lou Bernard", text)
     return text
+
+
+def _ordinal(day: str) -> str:
+    n = int(day)
+    suffix = "th" if 11 <= (n % 100) <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
 
 
 def clean_script(script: list[tuple[str, str]]) -> list[tuple[str, str]]:

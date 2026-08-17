@@ -32,14 +32,17 @@ substantive detail.
 
 ## Meeting Recap (EP1) — INCLUDE these sections
 
-- Guest speakers
+- Guest speakers — **only if there actually was one.** If there was no guest
+  speaker, SKIP this entirely; do NOT say "there was no guest speaker."
 - **Community Concerns / Announcements / Ideas — cover EVERY announcement and
   event in full**, each with its date, time, and location. Spell out new venues
   and full addresses (e.g. the NCC Picnic's new location and street address, the
   monthly "Gather at Gabby's", and Beautification Committee deadlines / judge or
   volunteer needs). Never reduce this to a single passing mention.
 - Public Relations Officer report
-- Forester Editor report
+- Forester Editor report — when it mentions needing delivery volunteers for
+  certain areas, say they're looking for delivery help in a few areas WITHOUT
+  reading out the list of area numbers.
 - Civic Action / 311 Officer report
 - Committee Reports
 - **Old Business — ALWAYS include every Old Business item**, even brief ones. Name
@@ -49,15 +52,20 @@ substantive detail.
 
 ## Meeting Recap (EP1) — SKIP these
 
-- Any section whose content is essentially "no report."
+- Any section whose content is essentially "no report." Skip it silently — do NOT
+  say the officer had "no report."
+- **A vacant office / role.** If a position is vacant, skip it entirely; do NOT
+  mention that the office is vacant or that no one holds it.
 - The **Secretary** report.
 - The **Treasurer** report — UNLESS it contains something genuinely important.
   Specifically DO NOT cover: routine budget reviews, welcoming new business
   members, or expense summaries. If the Treasurer says something materially
   significant (a shortfall, a major new expense, a vote affecting members),
   include just that.
-- When a section only says "see the report in the Forester," do not fabricate
-  content — that material is covered in EP2 instead.
+- **Do NOT relay "see the report in the Forester" / "see the report on the
+  website" pointers.** Skip that phrase entirely — don't tell listeners to go read
+  it elsewhere. That underlying material is covered in the community reports (EP2),
+  so just omit the pointer in the recap.
 
 ---
 
@@ -130,6 +138,8 @@ whole digest tight (about 650–800 words). Cover every item; don't pad any of t
   - "161" → "one-sixty-one" (smooth, no pause); "RT 161" / "Route 161" → "route one-sixty-one".
   - "BZA variance" → "zoning variance"; "C-2 district" → "commercial district".
   - "security and supplemental items" → "supplemental security items".
+  - Dates as ordinals: write "July 29th," not "July 29"; "August 1st," not "August 1".
+  - Write the Secretary's name as "Lou Bernard" (never "L. Bernard").
 
 ## Depth & length (cover everything, but stay tight)
 
@@ -149,6 +159,12 @@ whole digest tight (about 650–800 words). Cover every item; don't pad any of t
 
 _Add dated entries as feedback comes in. The most recent guidance wins._
 
+- **2026-08-17:** Six recap tweaks from Ryan: (1) skip "no report" silently and (2)
+  skip vacant offices — don't announce either; (3) never relay "see the report in
+  the Forester / on the website" pointers (that content is in EP2); (4) skip guest
+  speakers if there were none (don't say there wasn't one); (5) Forester delivery-
+  volunteer needs — don't read the area numbers; (6) dates as ordinals ("July 29th")
+  and Secretary as "Lou Bernard" (both also enforced in normalize_for_speech).
 - **2026-08-15:** Migrated to GPT-OSS-120B (llama-3.3-70b decommissioned). The new
   model is more verbose — July ran ~16 min under the old "1,200+/1,300+, longer is
   fine" targets. Recalibrated Depth & length DOWN to ~11–12 min total (recap
