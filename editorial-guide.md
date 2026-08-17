@@ -56,6 +56,8 @@ substantive detail.
   say the officer had "no report."
 - **A vacant office / role.** If a position is vacant, skip it entirely; do NOT
   mention that the office is vacant or that no one holds it.
+- **Attendance / absences.** Do NOT report who was present or absent, and do NOT
+  say anyone was absent — skip attendance entirely.
 - The **Secretary** report.
 - The **Treasurer** report — UNLESS it contains something genuinely important.
   Specifically DO NOT cover: routine budget reviews, welcoming new business
@@ -164,7 +166,8 @@ _Add dated entries as feedback comes in. The most recent guidance wins._
   the Forester / on the website" pointers (that content is in EP2); (4) skip guest
   speakers if there were none (don't say there wasn't one); (5) Forester delivery-
   volunteer needs — don't read the area numbers; (6) dates as ordinals ("July 29th")
-  and Secretary as "Lou Bernard" (both also enforced in normalize_for_speech).
+  and Secretary as "Lou Bernard" (both also enforced in normalize_for_speech);
+  (7) don't report attendance or who was absent.
 - **2026-08-15:** Migrated to GPT-OSS-120B (llama-3.3-70b decommissioned). The new
   model is more verbose — July ran ~16 min under the old "1,200+/1,300+, longer is
   fine" targets. Recalibrated Depth & length DOWN to ~11–12 min total (recap
