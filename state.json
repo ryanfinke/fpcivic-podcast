@@ -17,7 +17,9 @@
     "https://www.fpcivic.org/?p=5557",
     "https://www.fpcivic.org/?p=5561",
     "https://www.fpcivic.org/?p=5563",
-    "https://www.fpcivic.org/?p=5567"
+    "https://www.fpcivic.org/?p=5567",
+    "https://www.fpcivic.org/?p=5571",
+    "https://www.fpcivic.org/?p=5574"
   ],
   "episodes": [
     {
@@ -150,6 +152,32 @@
         },
         {
           "label": "July 2026 Forester \u2014 security & supplemental items",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"
+        }
+      ]
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5571",
+      "title": "Forest Park Civic Association August News",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-august-meeting/",
+      "web_title": "August 2026 FPCA News",
+      "summary": "Columbus \"Our Voice, Our Choice\" street\u2011light grant proposal, Fall Garage Sale entry deadline Sep 9, Forester article deadline Aug 18, Canva text\u2011box glitch, membership count 366 paid, open volunteer\u2026",
+      "filename": "forest-park-civic-association-august-2026-news.mp3",
+      "pub_date": "Sun, 16 Aug 2026 17:28:30 GMT",
+      "author": "Lou Bernard",
+      "file_size": 7718829,
+      "generated_at": "2026-08-17T13:38:25.808067+00:00",
+      "digest_sources": [
+        {
+          "label": "NCC Development Committee Report (20260624)",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/06/NCC_Development_Report_20260624.pdf"
+        },
+        {
+          "label": "August 2026 Outreach Report",
+          "url": "https://www.fpcivic.org/august-2026-outreach-report/"
+        },
+        {
+          "label": "July 2026 Forester \u2014 security & supplemental",
           "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"
         }
       ]
