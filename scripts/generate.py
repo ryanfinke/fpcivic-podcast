@@ -692,6 +692,7 @@ def normalize_for_speech(text: str) -> str:
     text = re.sub(r"\b161\b", "one-sixty-one", text)                # SR-161 (smooth, no pause)
     text = re.sub(r"\bBZA\s+(variances?)\b", r"zoning \1", text, flags=re.I)
     text = re.sub(r"\bC-?2\s+district\b", "commercial district", text, flags=re.I)
+    text = re.sub(r"\bCAC\s+district\b", "Community Activity Center district", text, flags=re.I)
     text = re.sub(r"security and supplemental", "supplemental security", text, flags=re.I)
     # Read dates as ordinals: "July 29" -> "July 29th"; "30 July" -> "30th July".
     _months = ("January|February|March|April|May|June|July|August|September|"

@@ -27,7 +27,7 @@ HOST: That wraps up the meeting recap. Now let's get into the community reports.
 HOST: Let's jump into the NCC development report. Case one involves Northland High School on Northcliff Drive—1919 Northcliff Drive. The Columbus Board of Education, represented by Carissa Izzo, is seeking a special permit for up to four banners on two light poles, extending display time indefinitely and increasing total banner area to 48 square feet. The committee voted unanimously, twelve to zero, to recommend approval.
 COHOST: Case two is at Columbus International High School, 4077 Karl Road. Again, Carissa Izzo on behalf of the Board of Education wants the same banner allowance—four banners on two poles, indefinite display, 48 square feet total. The committee also went twelve to zero in favor of recommending approval.
 HOST: Moving on to case three, this one's a wall sign at 2500 Corporate Exchange Drive. LetterGraphics Inc., represented by Paul Magee, is asking for a variance to install a 354‑square‑foot wall sign on the north elevation, which exceeds the standard by about 126 percent. The committee unanimously recommended approval, twelve to zero.
-COHOST: Case four concerns a residential duplex at 2580 Lauffer Ravines Drive. SJM Studio LLC, representing John Wang of six-one-four Rentals, is requesting multiple variances—including façade, transparency, setback, landscape, and ground‑floor depth—to allow a duplex on a 1.66‑acre parcel in a CAC district. The committee again voted twelve to zero to recommend approval.
+COHOST: Case four concerns a residential duplex at 2580 Lauffer Ravines Drive. SJM Studio LLC, representing John Wang of six-one-four Rentals, is requesting multiple variances—including façade, transparency, setback, landscape, and ground‑floor depth—to allow a duplex on a 1.66‑acre parcel in a Community Activity Center district. The committee again voted twelve to zero to recommend approval.
 HOST: That wraps up the development cases. Now, on to the outreach report. The North YMCA hosted a National Night Out on August fourth. Hundreds turned out for games, free haircuts, hot‑dog grilling by Steve Jennings, music, and even a Spiderman appearance. The Civic Association staffed a table, connected with city council members, SWACO and CRIS, and are looking to build on those partnerships.
 COHOST: The New Americans Garden and Farm Stand has been busy in July, offering fresh cucumbers, green beans, jamma‑jamma, and amaranth. Run by the Bhutanese Community of Central Ohio, the stand is open every Friday from ten to noon at the corner of Karl Road and Sandalwood Place, right in front of the North YMCA.
 HOST: There was also a nutrition workshop scheduled for August seventh by the OSU Community Outreach Center at the James Comprehensive Cancer Hospital, but it was postponed because of rain. They'll post a new date on the association’s Facebook page, so keep an eye out if you want to attend.
@@ -240,7 +240,7 @@ Case #4 Application #BZA26-057 (BZA variances from Title 34 §E.20.080(C) Façad
 zone, §E.20.080(F) Transparency, §E.20.080(G) Setback, §G.20.030(A)
 Landscape requirements, and §E.20.030.(C)(2) Ground floor depth to
 permit the construction of a residential duplex on a 1.66 AC parcel in a
-CAC district) Trimmer
+Community Activity Center district) Trimmer
 Carly Maggio/SJM Studio LLC representing
 John Wang/614 Rentals
 2580 Lauffer Ravines Dr, 43231 (PID 600-175624)

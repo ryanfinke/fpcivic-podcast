@@ -152,6 +152,7 @@ whole digest tight (about 650–800 words). Cover every item; don't pad any of t
   - "311" → "three-one-one"; "614" → "six-one-four" (digit-by-digit, never "hundred").
   - "161" → "one-sixty-one" (smooth, no pause); "RT 161" / "Route 161" → "route one-sixty-one".
   - "BZA variance" → "zoning variance"; "C-2 district" → "commercial district".
+  - "CAC district" → "Community Activity Center district".
   - "security and supplemental items" → "supplemental security items".
   - Dates as ordinals: write "July 29th," not "July 29"; "August 1st," not "August 1".
   - Write the Secretary's name as "Lou Bernard" (never "L. Bernard").
