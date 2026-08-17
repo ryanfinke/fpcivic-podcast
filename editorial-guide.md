@@ -40,11 +40,16 @@ substantive detail.
   monthly "Gather at Gabby's", and Beautification Committee deadlines / judge or
   volunteer needs). Never reduce this to a single passing mention.
 - Public Relations Officer report
-- Forester Editor report — when it mentions needing delivery volunteers for
-  certain areas, say they're looking for delivery help in a few areas WITHOUT
-  reading out the list of area numbers.
+- Forester Editor report — when it mentions needing delivery volunteers or area
+  representatives for certain areas, say they're looking for help in a few areas
+  WITHOUT reading out the specific area numbers/designations (e.g. don't say "FPW 5
+  and FPE 6, 8, 14" — just "a few areas").
 - Civic Action / 311 Officer report
-- Committee Reports
+- Committee Reports — **cover ONLY the committees that have a real, substantive
+  update.** SILENTLY SKIP every committee that had no report, whose chair was
+  absent, or whose seat is vacant. Do NOT walk through the roster. Do NOT name a
+  committee just to say it had nothing. If most committees had nothing, the
+  Committee Reports portion may be just a sentence or two — that's correct.
 - **Old Business — ALWAYS include every Old Business item**, even brief ones. Name
   the specific item and its status/outcome (e.g., the Sign Team's request for 4
   more entrance signs and the city's response). Do not skip or gloss this section.
@@ -58,6 +63,14 @@ substantive detail.
   mention that the office is vacant or that no one holds it.
 - **Attendance / absences.** Do NOT report who was present or absent, and do NOT
   say anyone was absent — skip attendance entirely.
+
+**These phrasings must NEVER appear in the script** (if an officer/committee only
+warrants one of these, drop them from the episode completely):
+- "…had no report" / "no update" / "nothing to report"
+- "…was absent" / "were absent"
+- "…is currently vacant" / "the position is vacant"
+- "…report is available on the website" / "report posted online" / "see the report
+  in the Forester"
 - The **Secretary** report.
 - The **Treasurer** report — UNLESS it contains something genuinely important.
   Specifically DO NOT cover: routine budget reviews, welcoming new business

@@ -711,11 +711,31 @@ def _ordinal(day: str) -> str:
     return f"{n}{suffix}"
 
 
+# Sentences dominated by these are noise the recap should never voice (no report,
+# absent, vacant, "see the report ... online/website"). Safety net over the guide.
+_NOISE_SENTENCE = re.compile(
+    r"(?:\bno report\b|\bnothing to report\b|\bno update\b|\bno new (?:details|updates?|info)"
+    r"|\bnothing new\b|\bdid(?:n't|nt| not) have a report\b|\bhad nothing\b"
+    r"|\bwas absent\b|\bwere absent\b"
+    r"|\bis (?:currently )?vacant\b|\bposition is (?:currently )?vacant\b"
+    r"|report (?:is )?(?:available|posted)\b|see the (?:full )?report\b"
+    r"|report (?:in the forester|on the website|online))", re.I)
+
+
+def _drop_noise_sentences(text: str) -> str:
+    """Remove whole sentences that are just no-report / absent / vacant / see-the-
+    report noise, keeping the rest of the turn intact."""
+    parts = re.split(r"(?<=[.!?])\s+", text)
+    kept = [p for p in parts if p.strip() and not _NOISE_SENTENCE.search(p)]
+    return " ".join(kept).strip()
+
+
 def clean_script(script: list[tuple[str, str]]) -> list[tuple[str, str]]:
-    """Apply speech normalization and drop lines that end up empty/unspeakable."""
+    """Normalize for speech, strip no-report/absent/vacant noise sentences, and drop
+    lines that end up empty/unspeakable."""
     out = []
     for speaker, text in script:
-        t = normalize_for_speech(text)
+        t = normalize_for_speech(_drop_noise_sentences(text))
         if t and _speakable(t):
             out.append((speaker, t))
     return out
