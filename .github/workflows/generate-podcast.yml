@@ -28,6 +28,11 @@ permissions:
   pages: write
   id-token: write
 
+# Serialize runs so two generations can't race on the git push (queue, don't cancel).
+concurrency:
+  group: generate-podcast
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -64,10 +69,22 @@ jobs:
           git add episodes/ transcripts/ videos/ feed.xml state.json
           if git diff --staged --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "Add new podcast episode(s)"
-            git push
+            exit 0
           fi
+          git commit -m "Add new podcast episode(s)"
+          # Push with retry: if the remote moved (non-fast-forward), rebase our freshly
+          # generated files on top of it (prefer ours on conflict) and try again.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected — syncing with remote and retrying ($attempt)…"
+            git pull --rebase -X theirs origin main || git rebase --abort || true
+            sleep $((RANDOM % 8 + 3))
+          done
+          echo "Push still failing after retries" >&2
+          exit 1
 
   deploy-pages:
     needs: generate
