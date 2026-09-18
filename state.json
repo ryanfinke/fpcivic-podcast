@@ -19,7 +19,9 @@
     "https://www.fpcivic.org/?p=5563",
     "https://www.fpcivic.org/?p=5567",
     "https://www.fpcivic.org/?p=5571",
-    "https://www.fpcivic.org/?p=5574"
+    "https://www.fpcivic.org/?p=5574",
+    "https://www.fpcivic.org/?p=5588",
+    "https://www.fpcivic.org/?p=5591"
   ],
   "episodes": [
     {
@@ -179,6 +181,32 @@
         {
           "label": "July 2026 Forester \u2014 security & supplemental items",
           "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/07-JULY-Forester-2026-Hi-Res-1.pdf"
+        }
+      ]
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5591",
+      "title": "Forest Park Civic Association September News",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-september-meeting/",
+      "web_title": "September 2026 FPCA News",
+      "summary": "library digitization tour & Forest Park History Day preview, Sep 12 community garage sale flyers, Forester bag purchase & Sep 18 article deadline, no security liaison, 388 memberships renewed\u2026",
+      "filename": "forest-park-civic-association-september-2026-news.mp3",
+      "pub_date": "Thu, 17 Sep 2026 21:42:03 GMT",
+      "author": "Lou Bernard",
+      "file_size": 7017261,
+      "generated_at": "2026-09-18T16:53:20.200984+00:00",
+      "digest_sources": [
+        {
+          "label": "NCC Development Committee Report (20260729)",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/08/NCC_Development_Report_20260729.pdf"
+        },
+        {
+          "label": "September 2026 Outreach Report",
+          "url": "https://www.fpcivic.org/september-2026-outreach-report/"
+        },
+        {
+          "label": "June 2026 Forester \u2014 security & supplemental",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/06-JUNE-Forester-2026.pdf"
         }
       ]
     }
