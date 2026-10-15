@@ -21,7 +21,11 @@
     "https://www.fpcivic.org/?p=5571",
     "https://www.fpcivic.org/?p=5574",
     "https://www.fpcivic.org/?p=5588",
-    "https://www.fpcivic.org/?p=5591"
+    "https://www.fpcivic.org/?p=5591",
+    "https://www.fpcivic.org/?p=5607",
+    "https://www.fpcivic.org/?p=5610",
+    "https://www.fpcivic.org/?p=5613",
+    "https://www.fpcivic.org/?p=5615"
   ],
   "episodes": [
     {
@@ -207,6 +211,38 @@
         {
           "label": "June 2026 Forester \u2014 security & supplemental",
           "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/07/06-JUNE-Forester-2026.pdf"
+        }
+      ]
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5607",
+      "title": "October 2026 Meeting Recap",
+      "source_link": "https://www.fpcivic.org/5607-2/",
+      "filename": "october-2026-meeting-recap.mp3",
+      "pub_date": "Wed, 14 Oct 2026 19:14:44 GMT",
+      "author": "Lou Bernard",
+      "file_size": 1421229,
+      "generated_at": "2026-10-15T17:30:53.836028+00:00"
+    },
+    {
+      "post_id": "https://www.fpcivic.org/?p=5615",
+      "title": "Forest Park Civic Association October News",
+      "source_link": "https://www.fpcivic.org/forest-park-civic-association-meeting-october-minutes/",
+      "web_title": "October 2026 FPCA News",
+      "summary": "senior lunch and bingo at Woodward Park, Trunk\u2011or\u2011Treat Oct 28, Woodward Care class Jan, YMCA North director intro, fall garage sale Sep 12, Forester article deadline Oct 31, new police liaison\u2026",
+      "filename": "forest-park-civic-association-october-2026-news.mp3",
+      "pub_date": "Thu, 15 Oct 2026 00:04:44 GMT",
+      "author": "Lou Bernard",
+      "file_size": 6875949,
+      "generated_at": "2026-10-15T17:40:11.880466+00:00",
+      "digest_sources": [
+        {
+          "label": "NCC Development Committee Report (20260930)",
+          "url": "https://www.fpcivic.org/wordpress/wp-content/uploads/2026/10/NCC_Development_Report_20260930.pdf"
+        },
+        {
+          "label": "October 2026 Outreach Report",
+          "url": "https://www.fpcivic.org/october-2026-outreach-report/"
         }
       ]
     }
