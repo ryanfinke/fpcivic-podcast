@@ -92,7 +92,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_first.outputs.page_url || steps.deploy_retry.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -108,6 +108,19 @@ jobs:
         with:
           path: "."
 
+      # GitHub sometimes can't see the just-uploaded artifact yet ("No artifacts named
+      # github-pages were found"). Wait and try once more in the same job instead of
+      # failing the whole run (a full rerun can't fix it: it then finds 2 artifacts).
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deploy_first
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Wait before retrying deploy
+        if: steps.deploy_first.outcome == 'failure'
+        run: sleep 90
+
+      - name: Deploy to GitHub Pages (retry)
+        id: deploy_retry
+        if: steps.deploy_first.outcome == 'failure'
         uses: actions/deploy-pages@v4
